@@ -1,0 +1,78 @@
+﻿@page
+@model KoolExplorer.Pages.GovAPI.IndexModel
+
+
+<h2>Index</h2>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().centre_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().centre_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().class_of_licence)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().type_of_service)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().levels_offered)
+            <th>
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().fees)
+            <th>
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().type_of_citizenship)
+            <th>
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().last_updated)
+            <th>
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().remarks)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.centreServicesList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.centre_code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.centre_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.class_of_licence)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type_of_service)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.levels_offered)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fees)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type_of_citizenship)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.last_updated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.remarks)
+                </td>
+                @*<td>
+                    <a asp-action="Edit" asp-route-id="@item._id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item._id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item._id">Delete</a>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

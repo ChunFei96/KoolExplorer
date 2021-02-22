@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "U58pKi+yw++Mz7EmPoPo4AFlvtxrjdhTWlt2vVOu/EjDrz9F6wHvbhrZMp59fVXifk6VlPBwlbglpkbsjV/7gg==",
+  "success": true,
+  "projectFilePath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.2.0\\microsoft.extensions.configuration.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.2.0\\microsoft.extensions.dependencyinjection.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\2.2.0\\microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\2.2.0\\microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.2.0\\microsoft.extensions.logging.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

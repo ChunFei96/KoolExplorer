@@ -1,0 +1,17 @@
+F:\NTU\Y2S2\SE\KoolExplorerTest\Core\bin\Debug\netcoreapp3.1\Core.deps.json
+F:\NTU\Y2S2\SE\KoolExplorerTest\Core\bin\Debug\netcoreapp3.1\Core.dll
+F:\NTU\Y2S2\SE\KoolExplorerTest\Core\bin\Debug\netcoreapp3.1\Core.pdb
+F:\NTU\Y2S2\SE\KoolExplorerTest\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfoInputs.cache
+F:\NTU\Y2S2\SE\KoolExplorerTest\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfo.cs
+F:\NTU\Y2S2\SE\KoolExplorerTest\Core\obj\Debug\netcoreapp3.1\Core.csproj.CoreCompileInputs.cache
+F:\NTU\Y2S2\SE\KoolExplorerTest\Core\obj\Debug\netcoreapp3.1\Core.dll
+F:\NTU\Y2S2\SE\KoolExplorerTest\Core\obj\Debug\netcoreapp3.1\Core.pdb
+F:\NTU\Y2S2\SE\KoolExplorerTest\Core\obj\Debug\netcoreapp3.1\Core.csprojAssemblyReference.cache
+F:\NTU\Y2S2\SE\KoolExplorer\Core\bin\Debug\netcoreapp3.1\Core.deps.json
+F:\NTU\Y2S2\SE\KoolExplorer\Core\bin\Debug\netcoreapp3.1\Core.dll
+F:\NTU\Y2S2\SE\KoolExplorer\Core\bin\Debug\netcoreapp3.1\Core.pdb
+F:\NTU\Y2S2\SE\KoolExplorer\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfoInputs.cache
+F:\NTU\Y2S2\SE\KoolExplorer\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfo.cs
+F:\NTU\Y2S2\SE\KoolExplorer\Core\obj\Debug\netcoreapp3.1\Core.csproj.CoreCompileInputs.cache
+F:\NTU\Y2S2\SE\KoolExplorer\Core\obj\Debug\netcoreapp3.1\Core.dll
+F:\NTU\Y2S2\SE\KoolExplorer\Core\obj\Debug\netcoreapp3.1\Core.pdb

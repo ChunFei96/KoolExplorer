@@ -1,0 +1,316 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Framework\\Framework.csproj": {}
+  },
+  "projects": {
+    "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\Core.csproj",
+        "projectName": "Core",
+        "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
+            "Autofac": {
+              "target": "Package",
+              "version": "[4.9.2, )"
+            },
+            "Microsoft.AspNetCore.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.FileProviders.Physical": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\DAL\\DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\DAL\\DAL.csproj",
+        "projectName": "DAL",
+        "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\Core.csproj": {
+                "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.11, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Framework\\Framework.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Framework\\Framework.csproj",
+        "projectName": "Framework",
+        "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Framework\\Framework.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Framework\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\Core.csproj": {
+                "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\Core.csproj"
+              },
+              "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\DAL\\DAL.csproj": {
+                "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\DAL\\DAL.csproj"
+              },
+              "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Services\\Services.csproj": {
+                "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Services\\Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Autofac.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[9.3.0, )"
+            },
+            "FluentValidation.ValidatorAttribute": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Services\\Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Services\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\Core.csproj": {
+                "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\Core\\Core.csproj"
+              },
+              "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\DAL\\DAL.csproj": {
+                "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorerTest\\DAL\\DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
