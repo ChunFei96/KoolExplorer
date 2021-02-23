@@ -1,6 +1,5 @@
 ﻿using Core.Domain.GovAPI;
 using DAL;
-using DAL.Entities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,19 +11,17 @@ namespace Services.GovAPI
 {
     public partial class GovAPIService : IGovAPIService
     {
-
-        private readonly EFDbContext _db;
-
-        public GovAPIService(EFDbContext db)
+        private readonly IUnitOfWork _unitOfWork;
+        public GovAPIService(IUnitOfWork unitOfWork)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
 
-        public virtual async Task<List<GetListingOfCentreServicesResponse>> GetListOfCentreServices()
+        public virtual async Task<List<CentreServices>> GetListOfCentreServices()
         {
             try
             {
-                List<GetListingOfCentreServicesResponse> output = new List<GetListingOfCentreServicesResponse>();
+                List<CentreServices> output = new List<CentreServices>();
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://data.gov.sg/api/action/datastore_search?resource_id=53a18f6c-1032-44eb-af44-d9babb41d9ef");
                 request.Method = "Get";
 
@@ -34,51 +31,16 @@ namespace Services.GovAPI
                     throw new System.Exception();
 
                 var responseData = JsonConvert.DeserializeObject<GovAPIResponse>(new StreamReader(response.GetResponseStream()).ReadToEnd());
-                responseData.result.records.ForEach(a => output.Add(a.ToObject<GetListingOfCentreServicesResponse>()));
+                responseData.result.records.ForEach(a => output.Add(a.ToObject<CentreServices>()));
 
-                SaveListingOfCentreServices(output);
+                foreach(var row in output)
+                    _unitOfWork.CentreServicesRepository.Insert(row);
 
                 return output;
             }
             catch (Exception ex)
             {
                 return null;
-            }
-        }
-
-        private async Task SaveListingOfCentreServices(List<GetListingOfCentreServicesResponse> output)
-        {
-            try
-            {
-                if(output != null && output.Count > 0)
-                {
-                    List<CentreServices> centreServices = new List<CentreServices>();
-                    foreach(var data in output)
-                    {
-                        CentreServices centreService = new CentreServices
-                        {
-                            Code = data.centre_code,
-                            Name = data.centre_name,
-                            Licence = data.class_of_licence,
-                            Service = data.type_of_service,
-                            Level = data.levels_offered,
-                            Fee = data.fees,
-                            Citizenship = data.type_of_citizenship,
-                            Remark = data.remarks,
-                            LastUpdated = data.last_updated,
-                            Status = 1,
-                            CreatedTimeStamp = DateTime.Now
-                        };
-                        _db.CentreService.Add(centreService);
-                    }
-
-                    
-                    _db.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                
             }
         }
     }

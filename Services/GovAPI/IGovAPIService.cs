@@ -6,6 +6,6 @@ namespace Services.GovAPI
 {
     public interface IGovAPIService
     {
-        Task<List<GetListingOfCentreServicesResponse>> GetListOfCentreServices();
+        Task<List<CentreServices>> GetListOfCentreServices();
     }
 }

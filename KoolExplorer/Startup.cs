@@ -27,6 +27,8 @@ namespace KoolExplorer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IGovAPIService, GovAPIService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
             services.AddDbContext<EFDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 

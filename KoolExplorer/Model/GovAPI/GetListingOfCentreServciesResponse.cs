@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Core.Domain.GovAPI
+namespace KoolExplorer.Model.GovAPI
 {
     public partial class GetListingOfCentreServicesResponse
     {
-        [Display(Name ="Code")]
+        [Display(Name = "Code")]
         public string centre_code { get; set; }
         [Display(Name = "Level")]
         public string levels_offered { get; set; }

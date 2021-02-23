@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Domain.GovAPI;
+using KoolExplorer.Model.GovAPI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Services.GovAPI;
@@ -12,7 +13,7 @@ namespace KoolExplorer.Pages.GovAPI
     public class IndexModel : PageModel
     {
         private readonly IGovAPIService _govAPIService;
-        public List<GetListingOfCentreServicesResponse> centreServicesList { get; set; }
+        public List<CentreServices> centreServicesList { get; set; }
 
         public IndexModel(IGovAPIService govAPIService)
         {
