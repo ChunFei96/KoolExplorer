@@ -1,4 +1,4 @@
-﻿using Core.Domain.GovAPI;
+﻿using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL

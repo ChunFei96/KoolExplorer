@@ -32,6 +32,8 @@ namespace KoolExplorer
 
             services.AddDbContext<EFDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddControllersWithViews(); //Allow API calls 
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
