@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj": {}
+    "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj": {}
   },
   "projects": {
-    "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj": {
+    "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj",
+        "projectUniqueName": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\obj\\",
+        "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
+        "outputPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

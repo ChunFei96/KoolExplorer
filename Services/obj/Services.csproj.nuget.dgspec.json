@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Services\\Services.csproj": {}
+    "F:\\School\\github\\ChunFei96\\KoolExplorer\\Services\\Services.csproj": {}
   },
   "projects": {
-    "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj": {
+    "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj",
+        "projectUniqueName": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\obj\\",
+        "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
+        "outputPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,20 +64,17 @@
         }
       }
     },
-    "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\DAL\\DAL.csproj": {
+    "F:\\School\\github\\ChunFei96\\KoolExplorer\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\DAL\\DAL.csproj",
+        "projectUniqueName": "F:\\School\\github\\ChunFei96\\KoolExplorer\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\DAL\\DAL.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\DAL\\obj\\",
+        "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
+        "outputPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\DAL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -94,8 +88,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj": {
-                "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj"
+              "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj": {
+                "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj"
               }
             }
           }
@@ -148,20 +142,17 @@
         }
       }
     },
-    "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Services\\Services.csproj": {
+    "F:\\School\\github\\ChunFei96\\KoolExplorer\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Services\\Services.csproj",
+        "projectUniqueName": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Services\\obj\\",
+        "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
+        "outputPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Services\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -175,11 +166,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj": {
-                "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj"
+              "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj": {
+                "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj"
               },
-              "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\DAL\\DAL.csproj": {
-                "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\DAL\\DAL.csproj"
+              "F:\\School\\github\\ChunFei96\\KoolExplorer\\DAL\\DAL.csproj": {
+                "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\DAL\\DAL.csproj"
               }
             }
           }
