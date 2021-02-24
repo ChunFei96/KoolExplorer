@@ -81,5 +81,91 @@ namespace Services.GovAPI
                 
             }
         }
+
+        //pending change the leftover API methods
+
+
+        public virtual async Task<List<NetEnrolementRatioResponse>> GetNetEnrolmentRatio()
+        {
+            try
+            {
+                List<NetEnrolementRatioResponse> output = new List<NetEnrolementRatioResponse>();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://data.gov.sg/api/action/datastore_search?resource_id=7b184af5-b718-4c93-b217-c3bb3ab304f4");
+                request.Method = "Get";
+
+                HttpWebResponse response = (HttpWebResponse)await Task.Factory.FromAsync<WebResponse>(request.BeginGetResponse, request.EndGetResponse, null);
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                    throw new System.Exception();
+
+                var responseData = JsonConvert.DeserializeObject<GovAPIResponse>(new StreamReader(response.GetResponseStream()).ReadToEnd());
+                responseData.result.records.ForEach(a => output.Add(a.ToObject<NetEnrolementRatioResponse>()));
+
+                //TODO: Save the API data into db
+                //SaveListingOfCentreServices(output);
+
+                return output;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public virtual async Task<List<ListingOfCentresResponse>> GetListingOfCentres()
+        {
+            try
+            {
+                List<ListingOfCentresResponse> output = new List<ListingOfCentresResponse>();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://data.gov.sg/api/action/datastore_search?resource_id=ca9cae4b-40b9-4e89-a032-f7d17ff741c6");
+                request.Method = "Get";
+
+                HttpWebResponse response = (HttpWebResponse)await Task.Factory.FromAsync<WebResponse>(request.BeginGetResponse, request.EndGetResponse, null);
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                    throw new System.Exception();
+
+                var responseData = JsonConvert.DeserializeObject<GovAPIResponse>(new StreamReader(response.GetResponseStream()).ReadToEnd());
+                responseData.result.records.ForEach(a => output.Add(a.ToObject<ListingOfCentresResponse>()));
+
+                //TODO: Save the API data into db
+                //SaveListingOfCentreServices(output);
+
+                return output;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public virtual async Task<List<MOEEnrolmentResponse>> GetEnrolmentMOEKindergartens()
+        {
+            try
+            {
+                List<MOEEnrolmentResponse> output = new List<MOEEnrolmentResponse>();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://data.gov.sg/api/action/datastore_search?resource_id=4ad866a7-c43a-4645-87fd-fc961c9de78a");
+                request.Method = "Get";
+
+                HttpWebResponse response = (HttpWebResponse)await Task.Factory.FromAsync<WebResponse>(request.BeginGetResponse, request.EndGetResponse, null);
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                    throw new System.Exception();
+
+                var responseData = JsonConvert.DeserializeObject<GovAPIResponse>(new StreamReader(response.GetResponseStream()).ReadToEnd());
+                responseData.result.records.ForEach(a => output.Add(a.ToObject<MOEEnrolmentResponse>()));
+
+                //TODO: Save the API data into db
+                //SaveListingOfCentreServices(output);
+
+                return output;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
     }
 }
