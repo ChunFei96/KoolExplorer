@@ -21,7 +21,12 @@ namespace KoolExplorer.Pages.GovAPI
 
         public async Task OnGetAsync()
         {
-            centreServicesList = await _govAPIService.GetListOfCentreServices();
+            //centreServicesList = await _govAPIService.GetListOfCentreServices();
+            //var test1 = await _govAPIService.GetNetEnrolmentRatio();
+            //var test2 = await _govAPIService.GetListingOfCentres();
+            var test3 = await _govAPIService.GetEnrolmentMOEKindergartens();
+
+            var aa = 0;
         }
 
 
