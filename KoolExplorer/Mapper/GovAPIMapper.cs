@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using Core.Domain.GovAPI;
 using DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace KoolExplorer
+namespace KoolExplorer.Mapper
 {
     public class GovAPIMapper : Profile
     {
@@ -40,9 +36,7 @@ namespace KoolExplorer
                 .ForMember(dest =>
                 dest.LastUpdated,
                 opt => opt.MapFrom(src => src.last_updated));
-
-            CreateMap<GetListingOfCentreServicesResponse, KoolExplorer.Model.GovAPI.GetListingOfCentreServicesResponse>();
         }
-       
+
     }
 }

@@ -10,6 +10,7 @@ namespace DAL
         IEnumerable<T> GetAll();
         T GetById(int id);
         void Insert(T entity);
+        void BulkInsert(List<T> entity);
         void Update(T entity);
         void Delete(int id);
     }

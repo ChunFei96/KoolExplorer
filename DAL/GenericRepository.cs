@@ -32,6 +32,17 @@ namespace DAL
             entities.Add(entity);
             context.SaveChanges();
         }
+        public void BulkInsert(List<T> entityList)
+        {
+            for(int i =0; i < entityList.Count(); i++)
+            {
+                T entity = entityList.ElementAt<T>(i);
+                entities.Add(entity);
+            }
+                
+            context.SaveChanges();
+        }
+
         public void Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
