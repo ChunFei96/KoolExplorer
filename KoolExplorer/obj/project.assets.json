@@ -6429,11 +6429,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\School\\github\\ChunFei96\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
+      "projectUniqueName": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
       "projectName": "KoolExplorer",
-      "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
+      "projectPath": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
       "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
-      "outputPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\KoolExplorer\\obj\\",
+      "outputPath": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6450,8 +6450,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "F:\\School\\github\\ChunFei96\\KoolExplorer\\Services\\Services.csproj": {
-              "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Services\\Services.csproj"
+            "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj": {
+              "projectPath": "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj"
             }
           }
         }

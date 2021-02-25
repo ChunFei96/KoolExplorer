@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uuW8aJJd4L0IklfQ6ug4JF55u5ZisEPg09RUtSBqety1c/svZj6oVOEV+VyIaYf9eOQJCrQnfrH69JUCH8du3g==",
+  "dgSpecHash": "4CFUh88eVwArXEbBZLle4ITwTopNGJpSpYASPlMHl6iAxkRN+M1IzgfDmtkJDbfJr2Hw/EaLrSbR/BbANc1TjQ==",
   "success": true,
-  "projectFilePath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Services\\Services.csproj",
+  "projectFilePath": "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\monai\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\monai\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",

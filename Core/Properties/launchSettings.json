@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Core": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
+    }
+  }
+}

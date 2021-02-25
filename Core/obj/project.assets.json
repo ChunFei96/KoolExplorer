@@ -365,11 +365,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj",
+      "projectUniqueName": "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj",
+      "projectPath": "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj",
       "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
-      "outputPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\obj\\",
+      "outputPath": "F:\\School\\github\\KoolExplorer\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -6292,11 +6292,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\School\\github\\ChunFei96\\KoolExplorer\\DAL\\DAL.csproj",
+      "projectUniqueName": "F:\\School\\github\\KoolExplorer\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\DAL\\DAL.csproj",
+      "projectPath": "F:\\School\\github\\KoolExplorer\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
-      "outputPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\DAL\\obj\\",
+      "outputPath": "F:\\School\\github\\KoolExplorer\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6313,8 +6313,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj": {
-              "projectPath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\Core\\Core.csproj"
+            "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj": {
+              "projectPath": "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj"
             }
           }
         }

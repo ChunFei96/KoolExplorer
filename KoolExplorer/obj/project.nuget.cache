@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j0c8rT7z9AO/Bqi3CXEtKnMCt3G5JvuUFbjtpTRe8dQYxHJ1/uWO2U3wSaIuNQApNgoK6Ps0M4LCSVQ34PO0Cw==",
+  "dgSpecHash": "kWI6zLa2GUAexKW+ae183RGfV3OiNEf4rShPDGJUyn6/SpxFK8mzpxQedC6Hex0mL00SbBZ5KFzIZ2R3oExlGQ==",
   "success": true,
-  "projectFilePath": "F:\\School\\github\\ChunFei96\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
+  "projectFilePath": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\monai\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\monai\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.1\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.1.nupkg.sha512",
