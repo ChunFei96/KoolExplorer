@@ -1,0 +1,17 @@
+F:\School\github\ChunFei96\KoolExplorer\Services\bin\Release\netcoreapp3.1\Services.deps.json
+F:\School\github\ChunFei96\KoolExplorer\Services\bin\Release\netcoreapp3.1\Services.runtimeconfig.json
+F:\School\github\ChunFei96\KoolExplorer\Services\bin\Release\netcoreapp3.1\Services.runtimeconfig.dev.json
+F:\School\github\ChunFei96\KoolExplorer\Services\bin\Release\netcoreapp3.1\Services.dll
+F:\School\github\ChunFei96\KoolExplorer\Services\bin\Release\netcoreapp3.1\Services.pdb
+F:\School\github\ChunFei96\KoolExplorer\Services\bin\Release\netcoreapp3.1\Core.dll
+F:\School\github\ChunFei96\KoolExplorer\Services\bin\Release\netcoreapp3.1\DAL.dll
+F:\School\github\ChunFei96\KoolExplorer\Services\bin\Release\netcoreapp3.1\Core.pdb
+F:\School\github\ChunFei96\KoolExplorer\Services\bin\Release\netcoreapp3.1\DAL.pdb
+F:\School\github\ChunFei96\KoolExplorer\Services\obj\Release\netcoreapp3.1\Services.csprojAssemblyReference.cache
+F:\School\github\ChunFei96\KoolExplorer\Services\obj\Release\netcoreapp3.1\Services.AssemblyInfoInputs.cache
+F:\School\github\ChunFei96\KoolExplorer\Services\obj\Release\netcoreapp3.1\Services.AssemblyInfo.cs
+F:\School\github\ChunFei96\KoolExplorer\Services\obj\Release\netcoreapp3.1\Services.csproj.CoreCompileInputs.cache
+F:\School\github\ChunFei96\KoolExplorer\Services\obj\Release\netcoreapp3.1\Services.csproj.CopyComplete
+F:\School\github\ChunFei96\KoolExplorer\Services\obj\Release\netcoreapp3.1\Services.dll
+F:\School\github\ChunFei96\KoolExplorer\Services\obj\Release\netcoreapp3.1\Services.pdb
+F:\School\github\ChunFei96\KoolExplorer\Services\obj\Release\netcoreapp3.1\Services.genruntimeconfig.cache
