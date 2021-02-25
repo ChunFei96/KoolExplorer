@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Configuration;
 using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,8 +28,15 @@ namespace KoolExplorer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IGovAPIService, GovAPIService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
             services.AddDbContext<EFDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.Configure<GovAPIURLConfig>(Configuration.GetSection("Gov_API"));
+            
 
             services.AddControllersWithViews(); //Allow API calls 
             services.AddRazorPages().AddRazorRuntimeCompilation();
