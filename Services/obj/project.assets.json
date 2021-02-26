@@ -6237,23 +6237,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\USER\\.nuget\\packages\\": {},
+    "C:\\Users\\65875\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Services\\Services.csproj",
+      "projectUniqueName": "C:\\Users\\65875\\Desktop\\SE_Proj\\Services\\Services.csproj",
       "projectName": "Services",
-      "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Services\\Services.csproj",
-      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Services\\obj\\",
+      "projectPath": "C:\\Users\\65875\\Desktop\\SE_Proj\\Services\\Services.csproj",
+      "packagesPath": "C:\\Users\\65875\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\65875\\Desktop\\SE_Proj\\Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\65875\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6265,13 +6265,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj": {
-              "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\Core\\Core.csproj"
+            "C:\\Users\\65875\\Desktop\\SE_Proj\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\65875\\Desktop\\SE_Proj\\Core\\Core.csproj"
             },
-            "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\DAL\\DAL.csproj": {
-              "projectPath": "F:\\NTU\\Y2S2\\SE\\KoolExplorer\\DAL\\DAL.csproj"
+            "C:\\Users\\65875\\Desktop\\SE_Proj\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\65875\\Desktop\\SE_Proj\\DAL\\DAL.csproj"
             }
           }
         }
@@ -6284,7 +6283,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -6300,7 +6298,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
