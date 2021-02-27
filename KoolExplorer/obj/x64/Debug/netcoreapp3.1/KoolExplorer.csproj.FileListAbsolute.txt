@@ -394,3 +394,5 @@ F:\School\github\KoolExplorer\KoolExplorer\obj\x64\Debug\netcoreapp3.1\KoolExplo
 F:\School\github\KoolExplorer\KoolExplorer\obj\x64\Debug\netcoreapp3.1\KoolExplorer.dll
 F:\School\github\KoolExplorer\KoolExplorer\obj\x64\Debug\netcoreapp3.1\KoolExplorer.pdb
 F:\School\github\KoolExplorer\KoolExplorer\obj\x64\Debug\netcoreapp3.1\KoolExplorer.genruntimeconfig.cache
+F:\School\github\KoolExplorer\KoolExplorer\obj\x64\Debug\netcoreapp3.1\Razor\Pages\AcceptOffer.cshtml.g.cs
+F:\School\github\KoolExplorer\KoolExplorer\obj\x64\Debug\netcoreapp3.1\Razor\Pages\UsefulLink.cshtml.g.cs
