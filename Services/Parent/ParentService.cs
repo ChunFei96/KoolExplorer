@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 ﻿using Core.Domain;
 using Core.Domain.Parent;
 using DAL.Entities;
-=======
-﻿using Core.Domain.Parent;
->>>>>>> db402c0cc53a5fe6ac1e10f36147291d84dacb38
 using System;
 using System.Collections.Generic;
 using System.Text;

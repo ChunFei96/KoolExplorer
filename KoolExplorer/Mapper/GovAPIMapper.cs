@@ -36,6 +36,24 @@ namespace KoolExplorer.Mapper
                 .ForMember(dest =>
                 dest.LastUpdated,
                 opt => opt.MapFrom(src => src.last_updated));
+
+            CreateMap<NetEnrolementRatioResponse, EnrolementRatio>()
+                .ForMember(dest =>
+                dest.Code,
+                opt => opt.MapFrom(src => src.total_net_enrolment_rate))
+                .ForMember(dest =>
+                dest.EnrolementRate,
+                opt => opt.MapFrom(src => src.sex))
+                .ForMember(dest =>
+                dest.Sex,
+                opt => opt.MapFrom(src => src.level_of_education))
+                .ForMember(dest =>
+                dest.EducationLevel,
+                opt => opt.MapFrom(src => src.year))
+                .ForMember(dest =>
+                dest.Year);
+
+
         }
 
     }

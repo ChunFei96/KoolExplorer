@@ -26,6 +26,9 @@ namespace Services.GovAPI
             _govAPIURLConfig = govAPIURLConfig.Value;
         }
 
+
+        //TODO: Method to compare CentreServices vs Centres before saving into db
+
         public virtual async Task<List<GetListingOfCentreServicesResponse>> GetListOfCentreServices()
         {
             try
@@ -52,46 +55,6 @@ namespace Services.GovAPI
                 return null;
             }
         }
-<<<<<<< HEAD
-
-        private async Task SaveListingOfCentreServices(List<GetListingOfCentreServicesResponse> output)
-        {
-            try
-            {
-                if(output != null && output.Count > 0)
-                {
-                    List<CentreServices> centreServices = new List<CentreServices>();
-                    foreach(var data in output)
-                    {
-                        CentreServices centreService = new CentreServices
-                        {
-                            Code = data.centre_code,
-                            Name = data.centre_name,
-                            Licence = data.class_of_licence,
-                            Service = data.type_of_service,
-                            Level = data.levels_offered,
-                            Fee = data.fees,
-                            Citizenship = data.type_of_citizenship,
-                            Remark = data.remarks,
-                            LastUpdated = data.last_updated,
-                            Status = 1,
-                            CreatedTimeStamp = DateTime.Now
-                        };
-                        _db.CentreService.Add(centreService);
-                    }
-
-                    
-                    _db.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                
-            }
-        }
-
-        //pending change the leftover API methods
-
 
         public virtual async Task<List<NetEnrolementRatioResponse>> GetNetEnrolmentRatio()
         {
@@ -110,7 +73,8 @@ namespace Services.GovAPI
                 responseData.result.records.ForEach(a => output.Add(a.ToObject<NetEnrolementRatioResponse>()));
 
                 //TODO: Save the API data into db
-                //SaveListingOfCentreServices(output);
+                // bulk insert to db by auto mapping to CentreServices db model
+                _unitOfWork.EnrolementRatioRepository.BulkInsert(_mapper.Map<List<NetEnrolementRatioResponse>>(output));
 
                 return output;
             }
@@ -173,9 +137,5 @@ namespace Services.GovAPI
                 return null;
             }
         }
-
-
-=======
->>>>>>> db402c0cc53a5fe6ac1e10f36147291d84dacb38
     }
 }
