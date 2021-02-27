@@ -1,0 +1,43 @@
+﻿@page
+@model KoolExplorer.Pages.Login.LoginModel
+
+@{
+    ViewBag.Title = "User Login";
+}
+
+<h1>User Login</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="loginModel.Email"></label>
+                <input asp-for="loginModel.Email" class="form-control" />
+                <span asp-validation-for="loginModel.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="loginModel.Password"></label>
+                <input asp-for="loginModel.Password" class="form-control" />
+                <span asp-validation-for="loginModel.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="loginModel.RememberMe" type="checkbox" />
+                        @Html.DisplayNameFor(m => m.loginModel.RememberMe)
+                    </label>
+                </div>
+                <a asp-page="/Login/Register">Register?</a>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-success btn-lg btn-block">Login</button>
+            </div>
+                
+        </form>
+    </div>
+</div>
+
+<script src="~/js/Login/Login.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="~/css/Login/Login.css" />
+

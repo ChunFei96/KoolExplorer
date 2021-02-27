@@ -1,9 +1,10 @@
 ﻿using DAL.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL
 {
-    public class EFDbContext : DbContext
+    public class EFDbContext : IdentityDbContext
     {
         public EFDbContext(DbContextOptions<EFDbContext> options) : base(options)
         {
@@ -14,6 +15,7 @@ namespace DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<CentreServices>().ToTable("CentreServices");
         }
     }
