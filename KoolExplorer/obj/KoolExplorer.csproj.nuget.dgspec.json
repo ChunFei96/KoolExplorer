@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ashmo/Documents/Github/KoolExplorer/KoolExplorer/KoolExplorer.csproj": {}
+    "F:\\School\\github\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj": {}
   },
   "projects": {
-    "/Users/ashmo/Documents/Github/KoolExplorer/Core/Core.csproj": {
+    "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ashmo/Documents/Github/KoolExplorer/Core/Core.csproj",
+        "projectUniqueName": "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/Core/Core.csproj",
-        "packagesPath": "/Users/ashmo/.nuget/packages/",
-        "outputPath": "/Users/ashmo/Documents/Github/KoolExplorer/Core/obj/",
+        "projectPath": "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
+        "outputPath": "F:\\School\\github\\KoolExplorer\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ashmo/.config/NuGet/NuGet.Config"
+          "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,34 +60,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/ashmo/Documents/Github/KoolExplorer/DAL/DAL.csproj": {
+    "F:\\School\\github\\KoolExplorer\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ashmo/Documents/Github/KoolExplorer/DAL/DAL.csproj",
+        "projectUniqueName": "F:\\School\\github\\KoolExplorer\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/DAL/DAL.csproj",
-        "packagesPath": "/Users/ashmo/.nuget/packages/",
-        "outputPath": "/Users/ashmo/Documents/Github/KoolExplorer/DAL/obj/",
+        "projectPath": "F:\\School\\github\\KoolExplorer\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
+        "outputPath": "F:\\School\\github\\KoolExplorer\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ashmo/.config/NuGet/NuGet.Config"
+          "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "/Users/ashmo/Documents/Github/KoolExplorer/Core/Core.csproj": {
-                "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/Core/Core.csproj"
+              "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj": {
+                "projectPath": "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj"
               }
             }
           }
@@ -134,34 +138,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/ashmo/Documents/Github/KoolExplorer/KoolExplorer/KoolExplorer.csproj": {
+    "F:\\School\\github\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ashmo/Documents/Github/KoolExplorer/KoolExplorer/KoolExplorer.csproj",
+        "projectUniqueName": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
         "projectName": "KoolExplorer",
-        "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/KoolExplorer/KoolExplorer.csproj",
-        "packagesPath": "/Users/ashmo/.nuget/packages/",
-        "outputPath": "/Users/ashmo/Documents/Github/KoolExplorer/KoolExplorer/obj/",
+        "projectPath": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
+        "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
+        "outputPath": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ashmo/.config/NuGet/NuGet.Config"
+          "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "/Users/ashmo/Documents/Github/KoolExplorer/Services/Services.csproj": {
-                "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/Services/Services.csproj"
+              "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj": {
+                "projectPath": "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj"
               }
             }
           }
@@ -221,37 +227,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/ashmo/Documents/Github/KoolExplorer/Services/Services.csproj": {
+    "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ashmo/Documents/Github/KoolExplorer/Services/Services.csproj",
+        "projectUniqueName": "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/Services/Services.csproj",
-        "packagesPath": "/Users/ashmo/.nuget/packages/",
-        "outputPath": "/Users/ashmo/Documents/Github/KoolExplorer/Services/obj/",
+        "projectPath": "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
+        "outputPath": "F:\\School\\github\\KoolExplorer\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ashmo/.config/NuGet/NuGet.Config"
+          "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "/Users/ashmo/Documents/Github/KoolExplorer/Core/Core.csproj": {
-                "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/Core/Core.csproj"
+              "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj": {
+                "projectPath": "F:\\School\\github\\KoolExplorer\\Core\\Core.csproj"
               },
-              "/Users/ashmo/Documents/Github/KoolExplorer/DAL/DAL.csproj": {
-                "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/DAL/DAL.csproj"
+              "F:\\School\\github\\KoolExplorer\\DAL\\DAL.csproj": {
+                "projectPath": "F:\\School\\github\\KoolExplorer\\DAL\\DAL.csproj"
               }
             }
           }
@@ -280,7 +288,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

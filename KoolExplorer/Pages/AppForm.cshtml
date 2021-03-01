@@ -5,8 +5,6 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>You can slot the form below this line</p>
-
 <div class="container container-narrow notranslate">
     <hr style="margin:50px 0;">
     <div class="text-center mb-5">
@@ -18,7 +16,7 @@
             <li class="nav-item"> <a class="nav-link active" href="#tab1" role="tab" data-toggle="tab"> <em>Step 1 </em><strong>General Information</strong> </a> </li>
             <li class="nav-item"> <a class="nav-link disable" href="#tab2" role="tab" data-toggle="tab"> <em>Step 2 </em><strong>Parents' Particulars</strong> </a> </li>
             <li class="nav-item"> <a class="nav-link disable" href="#tab3" role="tab" data-toggle="tab"> <em>Step 3 </em><strong>Child's Particulars</strong> </a> </li>
-            <li class="nav-item"> <a class="nav-link disable" href="#tab5" role="tab" data-toggle="tab"> <em>Step 4 </em><strong>Term &amp; Conditions</strong> </a> </li>
+            <li class="nav-item"> <a class="nav-link disable" href="#tab4" role="tab" data-toggle="tab"> <em>Step 4 </em><strong>Term &amp; Conditions</strong> </a> </li>
         </ul>
         <div class="tab-content register-tab-content aos-init aos-animate" data-aos="fade-left" data-aos-duration="500">
             <div role="tabpanel" class="tab-pane fade show active" id="tab1">
@@ -43,9 +41,6 @@
                             <option value="">* Please select pre-school</option>
                         </select>
                     </div>
-                </div>
-                <div id="location">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d127639.23927255438!2d103.82681632800715!3d1.3406049038612906!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssg!4v1539878322281" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen=""></iframe>
                 </div>
                 <div class="form-row">
                     <div class="col-12 col-sm-6 form-group">
@@ -72,37 +67,37 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="tab2">
-                <p>Please provide at least <span class="text-red">1 parent's particular</span>.</p>
+                <p>Please provide at least <span class="text-red">1 parent/guardian's particular</span>.</p>
                 <div class="form-row">
                     <div class="col-12 form-group">
-                        <input name="parent1" type="text" class="form-control" placeholder="* Parent 1" required="">
+                        <input name="parent1" type="text" class="form-control" placeholder="* Parent/Guardian 1" required="">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-12 col-sm-4 form-group">
-                        <input name="parent1NRIC" type="text" class="form-control" placeholder="* Parents Passport No./NRIC" required="">
+                        <input name="parent1NRIC" type="text" class="form-control" placeholder="* Parent/Guardian's Passport No./NRIC" required="">
                     </div>
                     <div class="col-12 col-sm-4 form-group">
-                        <input name="parent1Mobile" type="text" class="form-control" placeholder="* Parent 1's Mobile No." required="">
+                        <input name="parent1Mobile" type="text" class="form-control" placeholder="* Parent/Guardian 1's Mobile No." required="">
                     </div>
                     <div class="col-12 col-sm-4 form-group">
-                        <input name="parent1Email" type="email" class="form-control" placeholder="* Parent 1's Email" required="">
+                        <input name="parent1Email" type="email" class="form-control" placeholder="* Parent/Guardian 1's Email" required="">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-12 form-group">
-                        <input name="parent2" type="text" class="form-control" placeholder="Parent 2">
+                        <input name="parent2" type="text" class="form-control" placeholder="Parent/Guardian 2">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-12 col-sm-4 form-group">
-                        <input name="parent2NRIC" type="text" class="form-control" placeholder="Parents Passport No./NRIC">
+                        <input name="parent2NRIC" type="text" class="form-control" placeholder="Parent/Guardian's Passport No./NRIC">
                     </div>
                     <div class="col-12 col-sm-4 form-group">
-                        <input name="parent2Mobile" type="text" class="form-control" placeholder="Parent 2's Mobile No.">
+                        <input name="parent2Mobile" type="text" class="form-control" placeholder="Parent/Guardian 2's Mobile No.">
                     </div>
                     <div class="col-12 col-sm-4 form-group">
-                        <input name="parent2Email" type="text" class="form-control" placeholder="Parent 2's Email">
+                        <input name="parent2Email" type="text" class="form-control" placeholder="Parent/Guardian 2's Email">
                     </div>
                 </div>
                 <div class="form-row">
@@ -140,7 +135,8 @@
                 <div class="btns text-center">
                     <a href="#tab3" class="btn btn-orange btn-continue" data-next="3">Continue</a>
                 </div>
-            </div> <div role="tabpanel" class="tab-pane fade" id="tab3">
+            </div> 
+            <div role="tabpanel" class="tab-pane fade" id="tab3">
                 <div class="form-row">
                     <div class="col-12 form-group">
                         <input name="childName" type="text" class="form-control" placeholder="* Name of Child (as in BC)" required="">
@@ -203,7 +199,7 @@
                 <label class="acklabel"><input type="checkbox" name="checkall" value="checkall"> <strong>Click here to check all</strong></label><br>
                 <label class="acklabel"><input type="checkbox" name="acknowledge" class="acknowledge" value="Yes"> <strong><a href="#moreInfo">*</a> I acknowledge that I have read and agree to the above Terms and Conditions.</strong></label>
                 <label class="error" for="acknowledge" style="display:none; margin-top:-15px; margin-bottom:15px;">Please acknowledge that you have read and agree to the Terms &amp; Conditions.</label>
-                <label class="acklabel"><input type="checkbox" class="agree1" name="agree1" value="Yes"> <strong>You agree to receive information sent by My First Skool, our affiliated companies and partners to update you in relation to childcare and related services, including but not limited to new products, services and promotions via emails, text messages and phone calls.</strong></label>
+                <label class="acklabel"><input type="checkbox" class="agree1" name="agree1" value="Yes"> <strong>You agree to receive information sent by Kool Explorer, our affiliated companies and partners to update you in relation to childcare and related services, including but not limited to new products, services and promotions via emails, text messages and phone calls.</strong></label>
                 <div class="btns text-center">
                     <button type="button" class="btn btn-orange btn-finish">Continue</button>
                 </div>
