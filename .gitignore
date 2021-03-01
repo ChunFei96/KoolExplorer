@@ -32,3 +32,18 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+
+
+# Ignore DAL
+DAL/Migrations/
+DAL/bin/
+
+# Ignore KoolExplorer
+KoolExplorer/bin/
+
+# Ignore Services
+Services/obj/
+
+# Ignore Core
+Core/bin/
+Core/obj/

@@ -1,0 +1,49 @@
+﻿@page
+@model KoolExplorer.Pages.GovAPI.EnrolementRatioModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrolementList.FirstOrDefault().Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrolementList.FirstOrDefault().EducationLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrolementList.FirstOrDefault().Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrolementList.FirstOrDefault().Sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrolementList.FirstOrDefault().EnrolementRate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.EnrolementList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EducationLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnrolementRate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -11,23 +11,24 @@ using DAL.Entities;
 
 namespace KoolExplorer.Pages.GovAPI
 {
-    public class IndexModel : PageModel
+    
+
+    public class MOEEnrolmentModel : PageModel
     {
         private readonly IGovAPIService _govAPIService;
         private readonly IMapper _mapper;
-        public List<CentreServices> centreServicesList { get; set; }
+        public List<KindergartenEnrolement> KindergartenList { get; set; }
 
-        public IndexModel(IGovAPIService govAPIService, IMapper mapper)
+        public MOEEnrolmentModel(IGovAPIService govAPIService, IMapper mapper)
         {
             _govAPIService = govAPIService;
             _mapper = mapper;
         }
 
+
         public async Task OnGetAsync()
         {
-            centreServicesList = await _govAPIService.GetListOfCentreServices();
+            KindergartenList = await _govAPIService.GetEnrolmentMOEKindergartens();
         }
-
-
     }
 }

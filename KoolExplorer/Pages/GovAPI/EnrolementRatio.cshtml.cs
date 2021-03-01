@@ -11,23 +11,22 @@ using DAL.Entities;
 
 namespace KoolExplorer.Pages.GovAPI
 {
-    public class IndexModel : PageModel
+    public class EnrolementRatioModel : PageModel
     {
         private readonly IGovAPIService _govAPIService;
         private readonly IMapper _mapper;
-        public List<CentreServices> centreServicesList { get; set; }
+        public List<EnrolementRatio> EnrolementList { get; set; }
 
-        public IndexModel(IGovAPIService govAPIService, IMapper mapper)
+        public EnrolementRatioModel(IGovAPIService govAPIService, IMapper mapper)
         {
             _govAPIService = govAPIService;
             _mapper = mapper;
         }
 
+
         public async Task OnGetAsync()
         {
-            centreServicesList = await _govAPIService.GetListOfCentreServices();
+            EnrolementList = await _govAPIService.GetNetEnrolmentRatio();
         }
-
-
     }
 }

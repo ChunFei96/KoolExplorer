@@ -11,27 +11,27 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().centre_code)
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().Code)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().centre_name)
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().class_of_licence)
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().Licence)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().type_of_service)
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().Service)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().levels_offered)
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().Level)
             <th>
-                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().fees)
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().Fee)
             <th>
-                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().type_of_citizenship)
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().Citizenship)
             <th>
-                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().last_updated)
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().LastUpdated)
             <th>
-                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().remarks)
+                @Html.DisplayNameFor(model => model.centreServicesList.FirstOrDefault().Remark)
             </th>
             <th></th>
         </tr>
@@ -41,31 +41,31 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.centre_code)
+                    @Html.DisplayFor(modelItem => item.Code)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.centre_name)
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.class_of_licence)
+                    @Html.DisplayFor(modelItem => item.Licence)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.type_of_service)
+                    @Html.DisplayFor(modelItem => item.Service)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.levels_offered)
+                    @Html.DisplayFor(modelItem => item.Level)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.fees)
+                    @Html.DisplayFor(modelItem => item.Fee)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.type_of_citizenship)
+                    @Html.DisplayFor(modelItem => item.Citizenship)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.last_updated)
+                    @Html.DisplayFor(modelItem => item.LastUpdated)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.remarks)
+                    @Html.DisplayFor(modelItem => item.Remark)
                 </td>
                 @*<td>
                     <a asp-action="Edit" asp-route-id="@item._id">Edit</a> |
@@ -76,3 +76,5 @@
         }
     </tbody>
 </table>
+
+

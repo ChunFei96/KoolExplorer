@@ -26,10 +26,7 @@ namespace Services.GovAPI
             _govAPIURLConfig = govAPIURLConfig.Value;
         }
 
-
-        //TODO: Method to compare CentreServices vs Centres before saving into db
-
-        public virtual async Task<List<GetListingOfCentreServicesResponse>> GetListOfCentreServices()
+        public virtual async Task<List<CentreServices>> GetListOfCentreServices()
         {
             try
             {
@@ -45,10 +42,12 @@ namespace Services.GovAPI
                 var responseData = JsonConvert.DeserializeObject<GovAPIResponse>(new StreamReader(response.GetResponseStream()).ReadToEnd());
                 responseData.result.records.ForEach(a => output.Add(a.ToObject<GetListingOfCentreServicesResponse>()));
 
-                // bulk insert to db by auto mapping to CentreServices db model
-                _unitOfWork.CentreServicesRepository.BulkInsert(_mapper.Map<List<CentreServices>>(output));
+                var mapList = _mapper.Map<List<CentreServices>>(output);
 
-                return output;
+                // bulk insert to db by auto mapping to CentreServices db model
+                _unitOfWork.CentreServicesRepository.BulkInsert(mapList);
+
+                return mapList;
             }
             catch (Exception ex)
             {
@@ -56,11 +55,11 @@ namespace Services.GovAPI
             }
         }
 
-        public virtual async Task<List<NetEnrolementRatioResponse>> GetNetEnrolmentRatio()
+        public virtual async Task<List<EnrolementRatio>> GetNetEnrolmentRatio()
         {
             try
             {
-                List<NetEnrolementRatioResponse> output = new List<NetEnrolementRatioResponse>();
+                List<EnrolementRatio> output = new List<EnrolementRatio>();
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://data.gov.sg/api/action/datastore_search?resource_id=7b184af5-b718-4c93-b217-c3bb3ab304f4");
                 request.Method = "Get";
 
@@ -70,21 +69,24 @@ namespace Services.GovAPI
                     throw new System.Exception();
 
                 var responseData = JsonConvert.DeserializeObject<GovAPIResponse>(new StreamReader(response.GetResponseStream()).ReadToEnd());
-                responseData.result.records.ForEach(a => output.Add(a.ToObject<NetEnrolementRatioResponse>()));
+                responseData.result.records.ForEach(a => output.Add(a.ToObject<EnrolementRatio>()));
 
-                //TODO: Save the API data into db
-                // bulk insert to db by auto mapping to CentreServices db model
-                _unitOfWork.EnrolementRatioRepository.BulkInsert(_mapper.Map<List<NetEnrolementRatioResponse>>(output));
+                var mapList = _mapper.Map<List<EnrolementRatio>>(output);
 
-                return output;
+                _unitOfWork.EnrolementRatioRepository.BulkInsert(mapList);
+
+                return mapList;
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return null;
             }
         }
 
-        public virtual async Task<List<ListingOfCentresResponse>> GetListingOfCentres()
+        //TODO: 2. Compare CentreServices vs Centres in ssms using query
+
+        public virtual async Task<List<Centres>> GetListingOfCentres()
         {
             try
             {
@@ -100,10 +102,12 @@ namespace Services.GovAPI
                 var responseData = JsonConvert.DeserializeObject<GovAPIResponse>(new StreamReader(response.GetResponseStream()).ReadToEnd());
                 responseData.result.records.ForEach(a => output.Add(a.ToObject<ListingOfCentresResponse>()));
 
-                //TODO: Save the API data into db
-                //SaveListingOfCentreServices(output);
 
-                return output;
+                var mapList = _mapper.Map<List<Centres>>(output);
+
+                _unitOfWork.CentresRepository.BulkInsert(mapList);
+
+                return mapList;
             }
             catch (Exception ex)
             {
@@ -111,7 +115,7 @@ namespace Services.GovAPI
             }
         }
 
-        public virtual async Task<List<MOEEnrolmentResponse>> GetEnrolmentMOEKindergartens()
+        public virtual async Task<List<KindergartenEnrolement>> GetEnrolmentMOEKindergartens()
         {
             try
             {
@@ -127,10 +131,10 @@ namespace Services.GovAPI
                 var responseData = JsonConvert.DeserializeObject<GovAPIResponse>(new StreamReader(response.GetResponseStream()).ReadToEnd());
                 responseData.result.records.ForEach(a => output.Add(a.ToObject<MOEEnrolmentResponse>()));
 
-                //TODO: Save the API data into db
-                //SaveListingOfCentreServices(output);
+                var mapList = _mapper.Map<List<KindergartenEnrolement>>(output);
+                _unitOfWork.KindergartenEnrolementRepository.BulkInsert(mapList);
 
-                return output;
+                return mapList;
             }
             catch (Exception ex)
             {

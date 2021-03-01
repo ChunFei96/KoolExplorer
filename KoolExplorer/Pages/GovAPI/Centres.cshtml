@@ -1,0 +1,41 @@
+﻿@page
+@model KoolExplorer.Pages.GovAPI.CentresModel
+@{
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                _id
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentresList.FirstOrDefault().TPCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentresList.FirstOrDefault().Code)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int counter = 1;
+            foreach (var item in Model.CentresList)
+            {
+                <tr>
+                    <td>
+                        @counter
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TPCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                </tr>
+                counter += 1;
+            }
+        }
+    </tbody>
+</table>

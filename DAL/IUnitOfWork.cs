@@ -10,6 +10,7 @@ namespace DAL
         IRepository<CentreServices> CentreServicesRepository { get; }
         IRepository<EnrolementRatio> EnrolementRatioRepository { get; }
         IRepository<KindergartenEnrolement> KindergartenEnrolementRepository { get; }
+        IRepository<Centres> CentresRepository { get; }
         void Commit();
     }
 }
