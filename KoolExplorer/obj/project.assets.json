@@ -6424,34 +6424,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\monai\\.nuget\\packages\\": {}
+    "/Users/ashmo/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
+      "projectUniqueName": "/Users/ashmo/Documents/Github/KoolExplorer/KoolExplorer/KoolExplorer.csproj",
       "projectName": "KoolExplorer",
-      "projectPath": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\KoolExplorer.csproj",
-      "packagesPath": "C:\\Users\\monai\\.nuget\\packages\\",
-      "outputPath": "F:\\School\\github\\KoolExplorer\\KoolExplorer\\obj\\",
+      "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/KoolExplorer/KoolExplorer.csproj",
+      "packagesPath": "/Users/ashmo/.nuget/packages/",
+      "outputPath": "/Users/ashmo/Documents/Github/KoolExplorer/KoolExplorer/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\monai\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/ashmo/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj": {
-              "projectPath": "F:\\School\\github\\KoolExplorer\\Services\\Services.csproj"
+            "/Users/ashmo/Documents/Github/KoolExplorer/Services/Services.csproj": {
+              "projectPath": "/Users/ashmo/Documents/Github/KoolExplorer/Services/Services.csproj"
             }
           }
         }
@@ -6511,7 +6509,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
       }
     }
   }

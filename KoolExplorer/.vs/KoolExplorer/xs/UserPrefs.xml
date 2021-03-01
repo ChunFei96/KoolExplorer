@@ -1,10 +1,25 @@
-﻿<Properties StartupConfiguration="{680493F5-01FF-4E61-A14D-CAF0FD31B615}|Default">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{680493F5-01FF-4E61-A14D-CAF0FD31B615}|Default">
   <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="Pages/AppForm.cshtml" Line="29" Column="60" />
+      <File FileName="Pages/Index.cshtml" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="KoolExplorer" expanded="True" selected="True" />
+          <Node name="KoolExplorer" expanded="True">
+            <Node name="Presentation" expanded="True">
+              <Node name="KoolExplorer" expanded="True">
+                <Node name="Pages" expanded="True">
+                  <Node name="AppForm.cshtml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
