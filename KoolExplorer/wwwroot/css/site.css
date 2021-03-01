@@ -69,3 +69,25 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*Contact Us Page*/
+.info-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+}
+
+.info-box {
+    background-color: #ffff00;
+    margin: auto 2em;
+    text-align: center;
+    width: auto;
+    height:7em;
+    padding:20px 0;
+
+}
+#googleMap {
+    width: auto;
+    height: 20em;
+    margin: 20px 30px;
+}
