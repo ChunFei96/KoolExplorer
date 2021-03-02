@@ -19,15 +19,15 @@ a {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
@@ -68,4 +68,74 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+/*Contact Us Page*/
+.info-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+}
+
+.info-box {
+    background-color: #ffff00;
+    margin: auto 2em;
+    text-align: center;
+    width: auto;
+    height:7em;
+    padding:20px 0;
+
+}
+#googleMap {
+    width: auto;
+    height: 20em;
+    margin: 20px 30px;
+}
+
+/*Dashboard*/
+#mainDiv {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    /*font:15px arial,sans-serif;*/
+}
+
+#bigDiv {
+    margin-top: 40px;
+}
+
+#centerDiv {
+    margin: 0 auto;
+}
+
+#leftDiv {
+    float: left;
+}
+
+.num {
+    width: 300px;
+    font: 125px arial sans-serif;
+    color: blue;
+    border-bottom: 3px solid blue;
+}
+
+/* Pre- School Search*/
+.form-row {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.zoneSearch {
+    width: 15%;
+    margin-left: 30px;
+}
+
+.districtSearch {
+    margin-left: 150px;
+}
+
+.table-responsive {
+    margin-top: 15px;
+    width: 1200px;
 }

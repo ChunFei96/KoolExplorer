@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +31,8 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Model\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
 </Project>

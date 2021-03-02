@@ -1,0 +1,47 @@
+﻿@page
+@model KoolExplorer.Pages.ContactModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+<!--Start of Page Area-->
+<div class="page-container">
+    <h1>@ViewData["Title"]</h1>
+</div>
+<br />
+<!--End of Page Area-->
+<!--Start of Contact Area-->
+<div>
+    <h3>Contact Details</h3>
+</div>
+<br />
+<!--Start of Information Row-->
+<div class="info-row">
+    <div class="info-box">
+        <p><b>Hotline Number:</b><br />+65-6421-7000</p>
+    </div>
+    <div class="info-box">
+        <p><b>Email Address:</b><br />koolexplorer123@gmail.com</p>
+    </div>
+    <div class="info-box">
+        <p><b>Address:</b><br />50 Nanyang Ave, Singapore 639798</p>
+    </div>
+</div>
+
+<!--End of Information Row-->
+<!--Start of Google Map-->
+<div id="googleMap">
+
+</div>
+<script>
+function myMap() {
+var mapProp= {
+    center: new google.maps.LatLng(1.344460, 103.680779),
+  zoom:5,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIL4klGXFPbCbmSHvvUfR5C_WLWbTTtcU&callback=myMap"></script>
+
+<!--End of Google Map-->
