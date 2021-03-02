@@ -1,9 +1,0 @@
-F:\School\github\KoolExplorer\Core\bin\x64\Debug\netcoreapp3.1\Core.deps.json
-F:\School\github\KoolExplorer\Core\bin\x64\Debug\netcoreapp3.1\Core.dll
-F:\School\github\KoolExplorer\Core\bin\x64\Debug\netcoreapp3.1\Core.pdb
-F:\School\github\KoolExplorer\Core\obj\x64\Debug\netcoreapp3.1\Core.csprojAssemblyReference.cache
-F:\School\github\KoolExplorer\Core\obj\x64\Debug\netcoreapp3.1\Core.AssemblyInfoInputs.cache
-F:\School\github\KoolExplorer\Core\obj\x64\Debug\netcoreapp3.1\Core.AssemblyInfo.cs
-F:\School\github\KoolExplorer\Core\obj\x64\Debug\netcoreapp3.1\Core.csproj.CoreCompileInputs.cache
-F:\School\github\KoolExplorer\Core\obj\x64\Debug\netcoreapp3.1\Core.dll
-F:\School\github\KoolExplorer\Core\obj\x64\Debug\netcoreapp3.1\Core.pdb

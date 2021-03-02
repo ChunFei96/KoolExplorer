@@ -1,9 +1,0 @@
-F:\School\github\ChunFei96\KoolExplorer\Core\bin\Release\netcoreapp3.1\Core.deps.json
-F:\School\github\ChunFei96\KoolExplorer\Core\bin\Release\netcoreapp3.1\Core.dll
-F:\School\github\ChunFei96\KoolExplorer\Core\bin\Release\netcoreapp3.1\Core.pdb
-F:\School\github\ChunFei96\KoolExplorer\Core\obj\Release\netcoreapp3.1\Core.csprojAssemblyReference.cache
-F:\School\github\ChunFei96\KoolExplorer\Core\obj\Release\netcoreapp3.1\Core.AssemblyInfoInputs.cache
-F:\School\github\ChunFei96\KoolExplorer\Core\obj\Release\netcoreapp3.1\Core.AssemblyInfo.cs
-F:\School\github\ChunFei96\KoolExplorer\Core\obj\Release\netcoreapp3.1\Core.csproj.CoreCompileInputs.cache
-F:\School\github\ChunFei96\KoolExplorer\Core\obj\Release\netcoreapp3.1\Core.dll
-F:\School\github\ChunFei96\KoolExplorer\Core\obj\Release\netcoreapp3.1\Core.pdb
