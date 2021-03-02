@@ -1,1 +1,9 @@
 Core/obj/Debug/netcoreapp3.1/Core.csprojAssemblyReference.cache
+Core/bin/
+Core/obj/
+DAL/bin/
+DAL/obj/
+KoolExplorer/bin/
+KoolExplorer/obj/
+Services/bin/
+Services/obj/
