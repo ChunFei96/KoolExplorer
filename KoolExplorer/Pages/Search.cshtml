@@ -1,8 +1,34 @@
 ﻿@page
 @model KoolExplorer.Pages.SearchPageModel
-@{
-}
+@{ }
 
+<script type="text/javascript">var proList = ["West", "Central", "East", "North", "North East"];
+    var allCityList = [
+        ["Clementi", "Bukit Batok", "Bukit Panjang", "Choa Chu Kang", "Jurong", "Yew Tee"],
+        ["Bukit Merah", "Bishan", "Chin Swee", "Geylang", "Holland", "Kallang", "Marine Parade", "Mountbatten", "Potong Pasir", "Tanjong Pagar", "Telok Blangah", "Toa Payoh", "Whampoa", "Macpherson", "Tiong Bahru"],
+        ["Bedok", "Pasir Ris", "Simei", "Tampines"],
+        ["Woodlands", "Canberra", "Sembawang", "Yishun"],
+        ["Sengkang", "Ang Mo Kio", "Hougang", "Punggol", "Serangoon"]
+    ];
+    function f1() {
+        var pro = document.getElementById("province");
+        pro.length = proList.length + 1;
+        for (var i = 1; i < pro.length; i++) {
+            pro[i].innerHTML = proList[i - 1];
+            pro[i].value = i;
+        }
+    }
+    function f2() {
+        var city = document.getElementById("city");
+        var pro = document.getElementById("province");
+        city.value = 0;
+        var cityList = allCityList[pro.value - 1];
+        city.length = cityList.length + 1;
+        for (var i = 1; i < city.length; i++) {
+            city[i].innerText = cityList[i - 1];
+            city[i].value = i;
+        }
+    }</script>
 <body>
     <div th:replace="commons/bar::#topbar"></div>
     <div class="container-fluid">
@@ -15,13 +41,8 @@
                         <div class="areaSearch">
                             <span class="zoneSearch">
                                 Search by Area:
-                                <select required="">
-                                    <option value="">* Please select area</option>
-                                    <option value="1">West</option>
-                                    <option value="2">Central</option>
-                                    <option value="3">East</option>
-                                    <option value="4">North</option>
-                                    <option value="5">North East</option>
+                                <select name="province" id="province" onfocus="f1()" onchange="f2()">
+                                    <option value="0">*Select Area</option>
                                 </select>
                             </span>
                         </div>
@@ -30,46 +51,13 @@
                         <div class="areaSearch">
                             <span class="districtSearch">
                                 Search by District:
-                                <select required="">
-                                    <option value="">* Please select district</option>
-                                    <option value="101">Clementi </option>
-                                    <option value="102">Bukit Batok </option>
-                                    <option value="103">Bukit Panjang </option>
-                                    <option value="104">Choa Chu Kang </option>
-                                    <option value="105">Jurong </option>
-                                    <option value="106">Yew Tee </option>
-                                    <option value="201">Bukit Merah </option>
-                                    <option value="202">Bishan </option>
-                                    <option value="203">Chin Swee </option>
-                                    <option value="204">Geylang </option>
-                                    <option value="205">Holland </option>
-                                    <option value="206">Kallang </option>
-                                    <option value="207">Marine Parade </option>
-                                    <option value="208">Mountbatten </option>
-                                    <option value="209">Potong Pasir </option>
-                                    <option value="210">Tanjong Pagar </option>
-                                    <option value="211">Telok Blangah </option>
-                                    <option value="212">Toa Payoh </option>
-                                    <option value="213">Whampoa </option>
-                                    <option value="214">Strathmore </option>
-                                    <option value="215">Macpherson </option>
-                                    <option value="216">Tiong Bahru </option>
-                                    <option value="301">Bedok </option>
-                                    <option value="302">Pasir Ris </option>
-                                    <option value="303">Simei </option>
-                                    <option value="304">Tampines </option>
-                                    <option value="401">Woodlands </option>
-                                    <option value="402">Canberra </option>
-                                    <option value="403">Sembawang </option>
-                                    <option value="404">Yishun </option>
-                                    <option value="501">Sengkang </option>
-                                    <option value="502">Ang Mo Kio </option>
-                                    <option value="503">Hougang </option>
-                                    <option value="504">Punggol </option>
-                                    <option value="505">Serangoon </option>
+                                <select name="city" id="city">
+                                    <option value="0">*Select District</option>
                                 </select>
                             </span>
+                            <button type="button" class="btn btn-success" style="margin-left:100px">Search</button>
                         </div>
+
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -84,10 +72,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th class="" th:text="1​​​​​​​​"></th>
-                                <td class="" th:text="2"></td>
-                                <td class="" th:text="3"></td>
-                                <td class="" th:text="4​​​​​​​​"></td>
+                                <th class="" th:text="1​​​​​​​​">1</th>
+                                <td class="" th:text="2">2</td>
+                                <td class="" th:text="3">3</td>
+                                <td class="" th:text="4​​​​​​​​">4</td>
                             </tr>
                         </tbody>
                     </table>
