@@ -73,7 +73,6 @@ namespace Services.GovAPI
         {
             try
             {
-                await ProcessedPreSchool(); //testing
                 var dbTable = _unitOfWork.EnrolementRatioRepository;
 
                 //Chk against from lee's lookup table
@@ -189,14 +188,13 @@ namespace Services.GovAPI
             }
         }
 
-        //TODO: 2. Compare CentreServices vs Centres in ssms using query
+
+        //Pending : a place to call the method, Centres & CentreServices must have data
+        //-> await ProcessedPreSchool(); 
         public virtual async Task<string> ProcessedPreSchool()
         { 
             try
             {
-
-                //var aa = from c in _unitOfWork.CentresRepository.GetAll().ToList() select c.Name;
-
                 var Centres_db  =   from c in _unitOfWork.CentresRepository.GetAll().ToList() select c;
                 var CentresList =   from c in Centres_db
                                     group c by c.Name into g
@@ -218,23 +216,17 @@ namespace Services.GovAPI
 
                 var duplicateRecords = new List<string>();
 
-                duplicateRecords = CentresList.Where(c => c.Count > 1).Select(m=> m.Name).ToList();
+                var asdas = CentresList.Where(c => c.Count > 1).ToList(); //test
 
-                var dupFlag = false;
                 foreach (var i in CentresList)
                 {
-                    if (dupFlag)
-                    {
-                        continue;
-                    }
-                    else //Save to DB
+                    if(!duplicateRecords.Contains(i.Name))
                     {
                         var data = Centres_db.Where(c => c.Name.Equals(i.Name)).ToList();
                         var getFirst = data.FirstOrDefault();
 
                         if (getFirst != null)
                         {
-                            var ff = DistrictProcessing(getFirst.PostalCode);
                             var CS_data = CentreServices_db.Where(m => m.Name.ToUpper().Equals(getFirst.Name.ToUpper())).FirstOrDefault();
 
                             ProcessedPreSchool pc = new ProcessedPreSchool();
@@ -270,12 +262,11 @@ namespace Services.GovAPI
                             pc.GovernmentSubsidy = getFirst.GovernmentSubsidy;
                             pc.GstRegistration = getFirst.GstRegistration;
                             pc.Remarks = getFirst.Remarks;
-                            pc.DistrictNo = 1; //pending Method()
+                            pc.DistrictNo = DistrictProcessing(getFirst.PostalCode);
                             _unitOfWork.ProcessedPreSchoolRepository.Insert(pc);
 
                             getFirst.Processed = true;
                             _unitOfWork.CentresRepository.Update(getFirst);
-
 
                             //LINQ 
                             //https://stackoverflow.com/questions/7325278/group-by-in-linq/7325306
@@ -328,40 +319,15 @@ namespace Services.GovAPI
                                 _unitOfWork.ProgrammeRepository.Insert(pg);
                             }
 
-                            
+                            duplicateRecords.Add(i.Name);
                         }
                     }
 
-                    //TODO: Function to convert Postal Code to District cat
+                    //DONE: Function to convert Postal Code to District cat
                     //https://en.m.wikipedia.org/wiki/Postal_codes_in_Singapore
                     //https://www.mingproperty.sg/singapore-district-code/
-
-                    //TODO: Settle what r the info that can draw from CentreServices Table
-                    if (CentreServicesList.Select(c=> c.Name == i.Name).Count() > 0)
-                    {
-                            
-                    }
-                    else
-                    {
-
-                    }
                 }
-                
-
-                //EFDbContext dd = new EFDbContext;
-                //var ac = dd.CentreService;
-                //var aa = from c in _unitOfWork.CentresRepository select c.Name;
-
-                var CentreServicesRepository = _unitOfWork.CentreServicesRepository.GetAll();
-                var CentresRepository = _unitOfWork.CentresRepository.GetAll();
-
-                //_unitOfWork.
-                //_unitOfWork.CentresRepository.GetAll().g
-
-                
-                //Programme M: 1 Preschool  
-
-                return "";
+                return "done";
             }
             catch (Exception ex)
             {
@@ -377,11 +343,6 @@ namespace Services.GovAPI
             if (!string.IsNullOrEmpty(digits) && int.TryParse(digits.Substring(0, 2), out int firsttwo))
             {
                 int PostalDistrict = 1;
-
-                //for(int i = 1; i < 83; i++)
-                //{
-                    
-                //}
 
                 if (firsttwo >= 1 && firsttwo <= 6)
                 {
