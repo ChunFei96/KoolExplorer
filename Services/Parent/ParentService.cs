@@ -57,20 +57,19 @@ namespace Services.Parent
             return new SearchModel();
         }
 
-        //public virtual async Task<int> getTotalSchools()
-        //{
-        //    _unitOfWork.CentreServicesRepository;
-        //    return 0;
-        //}
+        public virtual async Task<int> getTotalSchools()
+        {
+            return _unitOfWork.ProcessedPreSchoolRepository.GetAll().ToArray().Length;
+        }
 
-        //public virtual async Task<int> getTotalSubmissions(int createdBy)
-        //{
-        //    return 0;
-        //}
+        public virtual async Task<int> getTotalSubmissions(int createdBy)
+        {
+            return 0;
+        }
 
-        //public virtual async Task<int> getTotalAcceptances(int createdBy)
-        //{
-        //    return 0;
-        //}
+        public virtual async Task<int> getTotalAcceptances(int createdBy)
+        {
+            return 0;
+        }
     }
 }

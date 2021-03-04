@@ -20,8 +20,8 @@ namespace Services.Parent
 
 
         //Functions to display the total in Dashboard
-        //Task<int> getTotalSchools();
-        //Task<int> getTotalSubmissions(int createdBy);
-        //Task<int> getTotalAcceptances(int createdBy);
+        Task<int> getTotalSchools();
+        Task<int> getTotalSubmissions(int createdBy);
+        Task<int> getTotalAcceptances(int createdBy);
     }
 }
