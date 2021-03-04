@@ -1,0 +1,39 @@
+﻿#Form .steps {
+    display: none !important;
+}
+
+#Form .step-header .nav-item {
+    width: 25%;
+    display: none;
+}
+
+    #Form .step-header .nav-item.visited, #Form .step-header .nav-item.active {
+        display: block;
+    }
+
+#Form .nav-tabs {
+    border-bottom: 3px solid #000000
+}
+
+#Form .step-header .nav-tabs .nav-item {
+    margin-bottom: -3px;
+}
+
+#Form .step-header .nav-item a {
+    height: 70px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border: 2px solid #cecece;
+    border-bottom: 3px solid black;
+    border-radius: 10px 10px 0px 0px;
+}
+
+    #Form .step-header .nav-item a.active {
+        border: 3px solid black;
+        border-bottom: none;
+        border-radius: 10px 10px 0px 0px;
+    }

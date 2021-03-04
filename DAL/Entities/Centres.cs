@@ -16,9 +16,5 @@ namespace DAL.Entities
         public string Citizenship { get; set; }
         public string Licence { get; set; }
         public DateTime? LastUpdated { get; set; }
-        public int? Status { get; set; }
-        public int? CreatedBy { get; set; }
-        public int? ModifiedBy { get; set; }
-        public DateTime? ModifiedTimeStamp { get; set; }
     }
 }

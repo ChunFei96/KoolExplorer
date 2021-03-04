@@ -1,8 +1,11 @@
 ﻿using Core;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Text;
 
 namespace DAL
@@ -12,10 +15,13 @@ namespace DAL
         protected readonly EFDbContext context;
         private DbSet<T> entities;
         string errorMessage = string.Empty;
-        public GenericRepository(EFDbContext context)
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public GenericRepository(EFDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             this.context = context;
             entities = context.Set<T>();
+            _httpContextAccessor = httpContextAccessor;
         }
         public IEnumerable<T> GetAll()
         {
@@ -25,12 +31,44 @@ namespace DAL
         {
             return entities.SingleOrDefault(s => s.Id == id);
         }
+        public virtual List<T> GetAndInclude(
+       Expression<Func<T, bool>> filter = null,
+       Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+       params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = entities;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+
+
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            else
+            {
+                return query.ToList();
+            }
+        }
+        
         public void Insert(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
 
+            entity.CreatedBy = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) != null ?
+                               _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) : string.Empty;
             entities.Add(entity);
-            context.SaveChanges();
         }
         public void BulkInsert(List<T> entityList)
         {
@@ -39,14 +77,18 @@ namespace DAL
                 T entity = entityList.ElementAt<T>(i);
                 entities.Add(entity);
             }
-                
-            context.SaveChanges();
         }
 
         public void Update(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
-            context.SaveChanges();
+
+            entity.CreatedBy = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) != null ?
+                               _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) : string.Empty;
+            entity.ModifiedBy = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) != null ?
+                                _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) : string.Empty;
+            entity.ModifiedTimeStamp = DateTime.Now;
+            entities.Update(entity);
         }
         public void Delete(int id)
         {
@@ -54,7 +96,19 @@ namespace DAL
 
             T entity = entities.SingleOrDefault(s => s.Id == id);
             entities.Remove(entity);
-            context.SaveChanges();
+        }
+
+        private IEnumerable<T> GetAll(params Expression<Func<T, object>>[] properties)
+        {
+            if (properties == null)
+                throw new ArgumentNullException(nameof(properties));
+
+            var query = context as IQueryable<T>; // context = dbContext.Set<TEntity>()
+
+            query = properties
+                       .Aggregate(query, (current, property) => current.Include(property));
+
+            return query.AsNoTracking().ToList(); //readonly
         }
     }
 }

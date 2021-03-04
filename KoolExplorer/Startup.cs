@@ -6,14 +6,17 @@ using Core.Configuration;
 using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Services.GovAPI;
 using Services.Login;
+using Services.Parent;
 using Services.Register;
 
 namespace KoolExplorer
@@ -35,6 +38,7 @@ namespace KoolExplorer
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IRegisterService, RegisterService>();
+            services.AddScoped<IParentService, ParentService>();
 
             services.AddDbContext<EFDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -50,7 +54,12 @@ namespace KoolExplorer
                 options.Password.RequireNonAlphanumeric = false;
             })
             .AddEntityFrameworkStores<EFDbContext>();
-            
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // Or you can also register as follows
+
+            services.AddHttpContextAccessor();
 
             services.AddControllersWithViews(); //Allow API calls 
             services.AddRazorPages().AddRazorRuntimeCompilation();
