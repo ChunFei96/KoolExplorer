@@ -14,6 +14,7 @@ namespace Core.Domain.Form
         public ParentsParticularsViewModel ParentsParticularsViewModel;
 
         public ChildsParticularsViewModel ChildsParticularsViewModel;
+        [Display(Name = "Application Status")]
         public ApplicationStatus ApplicationStatus { get; set; } = ApplicationStatus.Pending;
 
         public AdmissionModel()

@@ -31,7 +31,7 @@
                 @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().ChildsParticularsViewModel.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().ChildsParticularsViewModel.Name)
+                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().ApplicationStatus)
             </th>
             <th></th>
         </tr>
@@ -59,7 +59,7 @@
                     @Html.DisplayFor(model => item.ChildsParticularsViewModel.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => item.ChildsParticularsViewModel.Name)
+                    @Html.DisplayFor(model => item.ApplicationStatus)
                 </td>
                 <td>
                     <form method="post" asp-page="../ApplicationForm/Edit" asp-route-id="@item.Id" asp-page-handler="Edit">
