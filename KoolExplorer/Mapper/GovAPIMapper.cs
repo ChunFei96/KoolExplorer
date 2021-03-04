@@ -32,10 +32,10 @@ namespace KoolExplorer.Mapper
                 opt => opt.MapFrom(src => src.fees))
                 .ForMember(dest =>
                 dest.Remark,
-                opt => opt.MapFrom(src => src.remarks))
-                .ForMember(dest =>
-                dest.LastUpdated,
-                opt => opt.MapFrom(src => src.last_updated));
+                opt => opt.MapFrom(src => src.remarks));
+                //.ForMember(dest =>
+                //dest.LastUpdated,
+                //opt => opt.MapFrom(src => src.last_updated)
 
             CreateMap<NetEnrolementRatioResponse, EnrolementRatio>()
                 .ForMember(dest =>
@@ -88,6 +88,9 @@ namespace KoolExplorer.Mapper
                 dest.PostalCode,
                 opt => opt.MapFrom(src => src.postal_code))
                 .ForMember(dest =>
+                dest.Address,
+                opt => opt.MapFrom(src => src.centre_address))
+                .ForMember(dest =>
                 dest.Website,
                 opt => opt.MapFrom(src => src.centre_website))
                 .ForMember(dest =>
@@ -138,9 +141,9 @@ namespace KoolExplorer.Mapper
                 .ForMember(dest =>
                 dest.GstRegistration,
                 opt => opt.MapFrom(src => src.gst_registration))
-                .ForMember(dest =>
-                dest.LastUpdated,
-                opt => opt.MapFrom(src => src.last_updated))
+                //.ForMember(dest =>
+                //dest.LastUpdated,
+                //opt => opt.MapFrom(src => src.last_updated))
                 .ForMember(dest =>
                 dest.Remarks,
                 opt => opt.MapFrom(src => src.remarks));

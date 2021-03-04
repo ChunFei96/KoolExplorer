@@ -2,6 +2,7 @@
 using DAL.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Services.GovAPI
 {
@@ -11,5 +12,7 @@ namespace Services.GovAPI
         Task<List<Centres>> GetListingOfCentres();
         Task<List<KindergartenEnrolement>> GetEnrolmentMOEKindergartens();
         Task<List<EnrolementRatio>> GetNetEnrolmentRatio();
+
+        Task<string> ProcessedPreSchool();
     }
 }

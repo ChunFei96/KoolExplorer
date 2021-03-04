@@ -17,5 +17,11 @@ namespace Services.Parent
         Task<AdmissionModel> ActionToOffer(Boolean isAccpet);
         Task<string> Search(string encId);
         Task<SearchModel> Search(SearchModel model);
+
+
+        //Functions to display the total in Dashboard
+        //Task<int> getTotalSchools();
+        //Task<int> getTotalSubmissions(int createdBy);
+        //Task<int> getTotalAcceptances(int createdBy);
     }
 }

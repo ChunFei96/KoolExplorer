@@ -5,11 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 
 namespace Services.Parent
 {
     public partial class ParentService : IParentService
     {
+        private readonly IUnitOfWork _unitOfWork;
 
         public ParentService()
         {
@@ -54,5 +56,21 @@ namespace Services.Parent
         {
             return new SearchModel();
         }
+
+        //public virtual async Task<int> getTotalSchools()
+        //{
+        //    _unitOfWork.CentreServicesRepository;
+        //    return 0;
+        //}
+
+        //public virtual async Task<int> getTotalSubmissions(int createdBy)
+        //{
+        //    return 0;
+        //}
+
+        //public virtual async Task<int> getTotalAcceptances(int createdBy)
+        //{
+        //    return 0;
+        //}
     }
 }

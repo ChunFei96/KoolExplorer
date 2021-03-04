@@ -15,6 +15,8 @@ namespace DAL
         public DbSet<Centres> Centres { get; set; }
         public DbSet<EnrolementRatio> EnrolementRatio { get; set; }
         public DbSet<KindergartenEnrolement> KindergartenEnrolement { get; set; }
+        public DbSet<ProcessedPreSchool> ProcessedPreSchool { get; set; }
+        public DbSet<Programme> Programme { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +25,8 @@ namespace DAL
             modelBuilder.Entity<Centres>().ToTable("Centres");
             modelBuilder.Entity<EnrolementRatio>().ToTable("EnrolementRatio");
             modelBuilder.Entity<KindergartenEnrolement>().ToTable("KindergartenEnrolement");
+            modelBuilder.Entity<ProcessedPreSchool>().ToTable("ProcessedPreSchool");
+            modelBuilder.Entity<Programme>().ToTable("Programme");
         }
     }
 }

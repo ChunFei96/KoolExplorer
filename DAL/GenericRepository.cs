@@ -17,14 +17,20 @@ namespace DAL
             this.context = context;
             entities = context.Set<T>();
         }
-        public IEnumerable<T> GetAll()
+        public List<T> GetAll()
         {
-            return entities.AsEnumerable();
+            return entities.ToList();
         }
         public T GetById(int id)
         {
             return entities.SingleOrDefault(s => s.Id == id);
         }
+
+        public T GetLast()
+        {
+            return entities.ToList().LastOrDefault();
+        }
+
         public void Insert(T entity)
         {
             if (entity == null) throw new ArgumentNullException("entity");
@@ -56,5 +62,6 @@ namespace DAL
             entities.Remove(entity);
             context.SaveChanges();
         }
+
     }
 }
