@@ -5,13 +5,16 @@
 }
 <h1>@ViewData["Title"]</h1>
 
+
+<link href="~/js/plugins/wizard/steps.css" rel="stylesheet" />
+
 <div class="container container-narrow notranslate">
     <hr style="margin:50px 0;">
     <div class="text-center mb-5">
         <h2 class="pb-0">Childcare/Infant Care Programme</h2>
         <p>Please note that the preferred enrolment date should not exceed 12 months from the date of registration.</p>
     </div>
-    <form class="registerform" novalidate="novalidate">
+    <form class="validation-wizard wizard-circle" novalidate="novalidate">
         <ul class="nav nav-tabs register-tabs" role="tablist">
             <li class="nav-item"> <a class="nav-link active" href="#tab1" role="tab" data-toggle="tab"> <em>Step 1 </em><strong>General Information</strong> </a> </li>
             <li class="nav-item"> <a class="nav-link disable" href="#tab2" role="tab" data-toggle="tab"> <em>Step 2 </em><strong>Parents' Particulars</strong> </a> </li>
@@ -135,7 +138,7 @@
                 <div class="btns text-center">
                     <a href="#tab3" class="btn btn-orange btn-continue" data-next="3">Continue</a>
                 </div>
-            </div> 
+            </div>
             <div role="tabpanel" class="tab-pane fade" id="tab3">
                 <div class="form-row">
                     <div class="col-12 form-group">
@@ -170,7 +173,7 @@
                     <a href="#tab4" class="btn btn-orange btn-continue" data-next="4">Continue</a>
                 </div>
             </div>
-            <script>$(function () { $('input[name="childOtherRace"]').hide(); $('select[name="childRace"]').on('change', function () { if (this.value == $('select[name="childRace"] option:last-child').val()) { $('input[name="childOtherRace"]').fadeIn(); } else { $('input[name="childOtherRace"]').fadeOut(); } }); });</script>
+
             <style>
                 .acklabel {
                     position: relative;
@@ -204,7 +207,7 @@
                     <button type="button" class="btn btn-orange btn-finish">Continue</button>
                 </div>
             </div>
-            <script>$("input[name='checkall']").click(function () { $('#tab5 input:checkbox').not(this).prop('checked', this.checked); }); $('#tab5 input:checkbox').not("input[name='checkall']").change(function () { if ($("#tab5 input:checkbox:not([name='checkall']):checked").length < 3) { $(".checkbox-tools").animate({ top: '200px' }); $("input[name='checkall']").prop("checked", false); } }); $(document).on('click', '.acklabel a[href^="#"]', function (event) { event.preventDefault(); $('html, body').animate({ scrollTop: $($.attr(this, 'href')).offset().top - $(".navbar").outerHeight() - 30 }, 500); });</script>
+
             <div class="modal fade" id="registerAgree" tabindex="-1" role="dialog" aria-labelledby="registerAgree" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
@@ -243,3 +246,12 @@
         </div>
     </form>
 </div>
+
+@section Scripts{
+
+    <script type="text/javascript">$(function () { $('input[name="childOtherRace"]').hide(); $('select[name="childRace"]').on('change', function () { if (this.value == $('select[name="childRace"] option:last-child').val()) { $('input[name="childOtherRace"]').fadeIn(); } else { $('input[name="childOtherRace"]').fadeOut(); } }); });</script>
+    <script type="text/javascript">$("input[name='checkall']").click(function () { $('#tab5 input:checkbox').not(this).prop('checked', this.checked); }); $('#tab5 input:checkbox').not("input[name='checkall']").change(function () { if ($("#tab5 input:checkbox:not([name='checkall']):checked").length < 3) { $(".checkbox-tools").animate({ top: '200px' }); $("input[name='checkall']").prop("checked", false); } }); $(document).on('click', '.acklabel a[href^="#"]', function (event) { event.preventDefault(); $('html, body').animate({ scrollTop: $($.attr(this, 'href')).offset().top - $(".navbar").outerHeight() - 30 }, 500); });</script>
+
+
+
+}

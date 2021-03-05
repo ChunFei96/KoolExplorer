@@ -1,0 +1,75 @@
+﻿@page
+@model KoolExplorer.Pages.AcceptOffer.ViewAllModel
+@{
+    ViewData["Title"] = "Offer Acceptance";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Belows are the list of center accepted your child</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().GeneralInformationViewModel.PreSchool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().GeneralInformationViewModel.Programme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().GeneralInformationViewModel.ProgrammeTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().GeneralInformationViewModel.StartPeriod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().ParentsParticularsViewModel.Name1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().ChildsParticularsViewModel.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().ApplicationStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.admissionViewModel)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.GeneralInformationViewModel.PreSchool)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.GeneralInformationViewModel.Programme)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.GeneralInformationViewModel.ProgrammeTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.GeneralInformationViewModel.StartPeriod)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ParentsParticularsViewModel.Name1)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ChildsParticularsViewModel.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ApplicationStatus)
+                </td>
+                <td>
+                    <form method="post" asp-page="../ApplicationForm/Edit" asp-route-id="@item.Id" asp-page-handler="Edit">
+                        <button type="submit" style="width:auto"
+                                class="nav-link btn btn-link py-0">
+                            Edit
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

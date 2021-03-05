@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using DAL.Entities.Form;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,12 +16,20 @@ namespace DAL
         private readonly IRepository<Centres> _centresRepository;
         private readonly IRepository<ProcessedPreSchool> _processedPreSchoolRepository;
         private readonly IRepository<Programme> _programmeRepository;
+        private readonly IRepository<ApplicationForm> _applicationFormRepository;
+        private readonly IRepository<GeneralInformationItems> _generalInformationItemsRepository;
+        private readonly IRepository<ParentParticularItems> _parentParticularItemsRepository;
+        private readonly IRepository<ChildParticularItems> _childParticularItemsRepository;
 
         public UnitOfWork(EFDbContext context,
             IRepository<CentreServices> centreServicesRepository, 
             IRepository<EnrolementRatio> enrolementRatioRepository, 
             IRepository<KindergartenEnrolement> kindergartenEnrolementRepository,
             IRepository<Centres> centresRepository,
+            IRepository<ApplicationForm> applicationFormRepository,
+            IRepository<GeneralInformationItems> generalInformationItemsRepository,
+            IRepository<ParentParticularItems> parentParticularItemsRepository,
+            IRepository<ChildParticularItems> childParticularItemsRepository,
             IRepository<ProcessedPreSchool> processedPreSchoolRepository,
             IRepository<Programme> programmeRepository)
         {
@@ -31,6 +40,10 @@ namespace DAL
             _centresRepository = centresRepository;
             _processedPreSchoolRepository = processedPreSchoolRepository;
             _programmeRepository = programmeRepository;
+            _applicationFormRepository = applicationFormRepository;
+            _generalInformationItemsRepository = generalInformationItemsRepository;
+            _parentParticularItemsRepository = parentParticularItemsRepository;
+            _childParticularItemsRepository = childParticularItemsRepository;
         }
 
         public IRepository<CentreServices> CentreServicesRepository => _centreServicesRepository;
@@ -39,6 +52,10 @@ namespace DAL
         public IRepository<Centres> CentresRepository => _centresRepository;
         public IRepository<ProcessedPreSchool> ProcessedPreSchoolRepository => _processedPreSchoolRepository;
         public IRepository<Programme> ProgrammeRepository => _programmeRepository;
+        public IRepository<ApplicationForm> ApplicationFormRepository => _applicationFormRepository;
+        public IRepository<GeneralInformationItems> GeneralInformationItemsRepository => _generalInformationItemsRepository;
+        public IRepository<ParentParticularItems> ParentParticularItemsRepository => _parentParticularItemsRepository;
+        public IRepository<ChildParticularItems> ChildParticularItemsRepository => _childParticularItemsRepository;
 
         public void Commit()
         {

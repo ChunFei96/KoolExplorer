@@ -1,60 +1,55 @@
-﻿using Core.Domain;
-using Core.Domain.Parent;
+﻿using Core.Domain.Form;
+using System.Threading.Tasks;
+using AutoMapper;
+using DAL;
+using System.Collections.Generic;
+using DAL.Entities.Form;
 using DAL.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using DAL;
+using System.Linq;
 
 namespace Services.Parent
 {
     public partial class ParentService : IParentService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public ParentService()
+        private readonly IMapper _mapper;
+        public ParentService(IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public virtual async Task<SubmissionResponse> SubmitApplicationForm(AdmissionModel admissionModel)
+        public virtual void SubmitApplicationForm(AdmissionModel admissionModel)
         {
-            return new SubmissionResponse();
+            _unitOfWork.ApplicationFormRepository.Insert(_mapper.Map<ApplicationForm>(admissionModel));
+            _unitOfWork.Commit();
         }
 
         public virtual async Task<AdmissionModel> EditApplicationForm(string encId)
         {
-            return new AdmissionModel();
+            return _mapper.Map<AdmissionModel>(_unitOfWork.ApplicationFormRepository.
+                GetAndInclude(x => x.Id == Convert.ToInt32(encId), null,
+                x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems).FirstOrDefault());
+
         }
 
-        public virtual async Task<AdmissionModel> EditApplicationForm(AdmissionModel model)
+        public virtual void EditApplicationForm(AdmissionModel editmodel)
         {
-            return new AdmissionModel();
+            _unitOfWork.ApplicationFormRepository.Update(_mapper.Map<ApplicationForm>(editmodel));
+            _unitOfWork.Commit();
         }
 
-        public virtual async Task<AdmissionModel> ViewApplicationForm(string encId)
+        public virtual async Task<List<AdmissionModel>> ViewAllApplication(string userId)
         {
-            return new AdmissionModel();
-        }
-
-        public virtual async Task<string> ActionToOffer(string encId)
-        {
-            return "";
-        }
-
-        public virtual async Task<AdmissionModel> ActionToOffer(Boolean isAccpet)
-        {
-            return new AdmissionModel();
-        }
-
-        public virtual async Task<string> Search(string encId)
-        {
-            return "";
-        }
-
-        public virtual async Task<SearchModel> Search(SearchModel model)
-        {
-            return new SearchModel();
+            var test = _unitOfWork.ApplicationFormRepository.GetAndInclude(x => x.CreatedBy.Equals(userId), null,
+                x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems);
+            var test2 = _mapper.Map<List<AdmissionModel>>(_unitOfWork.ApplicationFormRepository.
+                GetAndInclude(x => x.CreatedBy.Equals(userId), null,
+                x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems));
+            return _mapper.Map<List<AdmissionModel>>(_unitOfWork.ApplicationFormRepository.
+                GetAndInclude(x => x.CreatedBy.Equals(userId), null,
+                x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems));
         }
 
         public virtual async Task<int> getTotalSchools()
@@ -62,14 +57,39 @@ namespace Services.Parent
             return _unitOfWork.ProcessedPreSchoolRepository.GetAll().ToArray().Length;
         }
 
-        public virtual async Task<int> getTotalSubmissions(int createdBy)
+        public virtual async Task<int> getTotalSubmissions(string createdBy)
         {
             return 0;
         }
 
-        public virtual async Task<int> getTotalAcceptances(int createdBy)
+        public virtual async Task<int> getTotalAcceptances(string createdBy)
         {
             return 0;
         }
+
+        //public virtual async Task<AdmissionModel> ViewApplicationForm(string encId)
+        //{
+        //    return new AdmissionModel();
+        //}
+
+        //public virtual async Task<string> ActionToOffer(string encId)
+        //{
+        //    return "";
+        //}
+
+        //public virtual async Task<AdmissionModel> ActionToOffer(Boolean isAccpet)
+        //{
+        //    return new AdmissionModel();
+        //}
+
+        //public virtual async Task<string> Search(string encId)
+        //{
+        //    return "";
+        //}
+
+        //public virtual async Task<SearchModel> Search(SearchModel model)
+        //{
+        //    return new SearchModel();
+        //}
     }
 }

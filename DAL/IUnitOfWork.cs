@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using DAL.Entities.Form;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,10 @@ namespace DAL
         IRepository<Centres> CentresRepository { get; }
         IRepository<ProcessedPreSchool> ProcessedPreSchoolRepository { get; }
         IRepository<Programme> ProgrammeRepository { get; }
+        IRepository<ApplicationForm> ApplicationFormRepository { get; }
+        IRepository<GeneralInformationItems> GeneralInformationItemsRepository { get; }
+        IRepository<ParentParticularItems> ParentParticularItemsRepository { get; }
+        IRepository<ChildParticularItems> ChildParticularItemsRepository { get; }
         void Commit();
     }
 }

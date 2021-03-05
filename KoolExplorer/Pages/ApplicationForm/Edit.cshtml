@@ -1,0 +1,227 @@
+﻿@page
+@model KoolExplorer.Pages.ApplicationForm.EditModel
+@{
+    ViewData["Title"] = "Application Form";
+}
+<h1>@ViewData["Title"]</h1>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!--Boostrap CSS-->
+    <link href="~/js/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Step CSS-->
+    <link href="~/js/plugins/wizard/steps.css" rel="stylesheet" />
+
+    <link href="~/js/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/js/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+    <link href="~/css/Form.css" rel="stylesheet" />
+</head>
+<body id="Form">
+    @*Title*@
+    <hr style="margin:50px 0;">
+    <div class="text-center mb-5">
+        <h2 class="pb-0">Childcare/Infant Care Programme</h2>
+        <p>Please note that the preferred enrolment date should not exceed 12 months from the date of registration.</p>
+    </div>
+
+    @*steps header*@
+    <div class="row step-header">
+        <div class="col-12">
+            @*General Information*@
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item active">
+                    <a class="nav-link active cursor-pointer" data-toggle="tab" role="tab" onclick='HeaderNav(this)' data-value="0">
+                        <div class="cursor-pointer">
+                            <strong>General Information</strong>
+                        </div>
+                    </a>
+                </li>
+                @*Parents' Particulars*@
+                <li class="nav-item ">
+                    <a class="nav-link cursor-pointer" data-toggle="tab" role="tab" onclick='HeaderNav(this)' data-value="1">
+                        <div class="cursor-pointer">
+                            <strong>Parents' Particulars</strong>
+                        </div>
+                    </a>
+                </li>
+                @*Child's Particulars*@
+                <li class="nav-item ">
+                    <a class="nav-link cursor-pointer" data-toggle="tab" role="tab" onclick='HeaderNav(this)' data-value="2">
+                        <div class="cursor-pointer">
+                            <strong>Child's Particulars</strong>
+                        </div>
+                    </a>
+                </li>
+                @*Term Conditions*@
+                <li class="nav-item ">
+                    <a class="nav-link cursor-pointer" data-toggle="tab" role="tab" onclick='HeaderNav(this)' data-value="3">
+                        <div class="cursor-pointer">
+                            <strong>Term &amp; Conditions</strong>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    @*Partial View*@
+    <div class="wizard-content">
+        <form method="post" asp-page="../ApplicationForm/Edit" asp-page-handler="Post" class="validation-wizard wizard-circle" autocomplete="off">
+            <h6>General Information</h6>
+            @await Html.PartialAsync("Partial/GeneralInformation", Model.generalInformationViewModel)
+
+            <h6>Parents' Particulars</h6>
+            @await Html.PartialAsync("Partial/ParentsParticulars", Model.parentsParticulars)
+
+            <h6>Child's Particulars</h6>
+            @await Html.PartialAsync("Partial/ChildParticulars", Model.childsParticulars)
+
+            <h6>Term Conditions</h6>
+            @await Html.PartialAsync("Partial/TermConditions")
+
+            <input type="hidden" asp-for="formViewModel.Id" />
+        </form>
+    </div>
+
+
+
+</body>
+</html>
+
+@section Scripts{
+    @*Scripts*@
+    <script src="~/js/plugins/jquery/jquery.min.js"></script>
+
+    @*Bootstrap*@
+    <script src="~/js/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="~/js/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    @*select2*@
+    <script src="~/js/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+
+    @*datepicker*@
+    <script src="~/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
+    @*steps*@
+    <script src="~/js/plugins/wizard/jquery.steps.js?@DateTime.Now.ToString("yyyyMMddhhmmss")"></script>
+    <script src="~/js/plugins/wizard/jquery.validate.min.js"></script>
+
+    @*sweetalert*@
+    <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    @*form-validator*@
+    <script src="~/js/plugins/jquery.form-validator/jquery.form-validator.min.js"></script>
+
+    @*slimscroll*@
+    <script src="~/js/js/jquery.slimscroll.js"></script>
+
+    @*waves*@
+    <script src="~/js/js/waves.js"></script>
+
+    @*sidebar*@
+    <script src="~/js/js/sidebarmenu.js"></script>
+
+    @*sticky-kit*@
+    <script src="~/js/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+    @*inputmask*@
+    <script src="~/js/plugins/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+
+    <script src="~/js/js/lang.js"></script>
+    <script>
+
+        var form = $(".validation-wizard").show()
+        $(".validation-wizard").steps({
+            headerTag: "h6"
+            , bodyTag: "section"
+            , transitionEffect: "fade"
+            , titleTemplate: '<span class="step">#index#</span> #title#'
+            , labels: {
+                next: "Next",
+                previous: "Back",
+                finish: "Update"
+            },
+            onInit: function (event, current) {
+                console.log("onInit");
+                $("a[href$='previous']").hide();
+
+                $('.DateField').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    format: "dd/mm/yyyy",
+                    language: "tr"
+                });
+            }
+            ,
+            onStepChanging: function (event, currentIndex, newIndex) {
+                console.log("onStepChanging");
+                if (newIndex > currentIndex) {
+                    var isValid = $("form").isValid();
+                    console.log(isValid);
+                    if (!isValid) {
+                        swal("Please fill in the required fields", "", "");
+                        return false;
+                    }
+                }
+                return true;
+            }
+            , onStepChanged: function (event, currentIndex, previousIndex) {
+                console.log("onStepChanged");
+                $("a[href$='previous']").show();
+                $(".step-header").find("a.active").removeClass("active");
+                $(".step-header").find("td div").removeClass("no-border");
+                if (currentIndex < 5) {
+                    $(".step-header").find(".nav-item:eq(" + currentIndex + ")").addClass("active");
+                    $(".step-header").find(".nav-item:eq(" + currentIndex + ") a").addClass("active");
+                    $(".step-header").find(".nav-item:eq(" + currentIndex + ")").show();
+
+                }
+            }
+
+            , onFinishing: function (event, currentIndex) {
+
+                $("form").submit();
+
+            }
+
+            , onFinished: function (event, currentIndex) {
+                console.log("onFinished");
+            }
+
+        })
+
+        $(".validation-wizard").validate({
+            ignore: "input[type=hidden]"
+            , errorClass: "text-danger"
+            , successClass: "text-success"
+            , highlight: function (element, errorClass) {
+                $(element).removeClass(errorClass)
+            }
+            , unhighlight: function (element, errorClass) {
+                $(element).removeClass(errorClass)
+            }
+            , errorPlacement: function (error, element) {
+                error.insertAfter(element)
+            }
+            , rules: {
+                email: {
+                    email: !0
+                }
+            }
+        })
+
+        function HeaderNav(e) {
+            $("#steps-uid-0-t-" + $(e).attr("data-value")).click();
+        }
+
+
+    </script>
+
+}

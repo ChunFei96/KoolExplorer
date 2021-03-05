@@ -32,8 +32,8 @@ namespace DAL.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedTimeStamp")
                         .HasColumnType("datetime2");
@@ -41,23 +41,23 @@ namespace DAL.Migrations
                     b.Property<string>("Fee")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("LastUpdated")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Level")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Licence")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedTimeStamp")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Processed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Remark")
                         .HasColumnType("nvarchar(max)");
@@ -71,6 +71,567 @@ namespace DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CentreServices");
+                });
+
+            modelBuilder.Entity("DAL.Entities.Centres", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtendedOperatingHours")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FoodOffered")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GovernmentSubsidy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GstRegistration")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InfantVacancy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("K1Vacancy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("K2Vacancy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("N1Vacancy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("N2Vacancy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrganisationCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrganisationDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PgVacancy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Processed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ProvisionOfTransport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remarks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Saturday")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecondLanguageOffered")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServiceModel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SparkCertified")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TPCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WeekdayFullDay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Centres");
+                });
+
+            modelBuilder.Entity("DAL.Entities.EnrolementRatio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EducationLevel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnrolementRate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Sex")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Year")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EnrolementRatio");
+                });
+
+            modelBuilder.Entity("DAL.Entities.Form.ApplicationForm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ApplicationStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("childParticularItemsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("generalInformationItemsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("parentParticularItemsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("childParticularItemsId");
+
+                    b.HasIndex("generalInformationItemsId");
+
+                    b.HasIndex("parentParticularItemsId");
+
+                    b.ToTable("ApplicationForm");
+                });
+
+            modelBuilder.Entity("DAL.Entities.Form.ChildParticularItems", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BirthCerNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ChildName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Citizenship")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DOB")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Race")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChildParticularItems");
+                });
+
+            modelBuilder.Entity("DAL.Entities.Form.GeneralInformationItems", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Area")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("District")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PreSchool")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Programme")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProgrammeTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("StartPeriod")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GeneralInformationItems");
+                });
+
+            modelBuilder.Entity("DAL.Entities.Form.ParentParticularItems", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BlockNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BuildingName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FloorNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HomeTelNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HouseholdIncome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MobileNo1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MobileNo2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ParentName1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParentName2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PassportNo1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PassportNo2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StreetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UnitNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ParentParticularItems");
+                });
+
+            modelBuilder.Entity("DAL.Entities.KindergartenEnrolement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EnrolementRate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Year")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KindergartenEnrolement");
+                });
+
+            modelBuilder.Entity("DAL.Entities.LookUp", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LookUp");
+                });
+
+            modelBuilder.Entity("DAL.Entities.ProcessedPreSchool", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DistrictNo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Fee")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FoodOffered")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GovernmentSubsidy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GstRegistration")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Licence")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrganisationCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrganisationDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProgrammeTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProvisionOfTransport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remarks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchemeType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecondLanguageOffered")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServiceModel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SparkCertified")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TPCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProcessedPreSchool");
+                });
+
+            modelBuilder.Entity("DAL.Entities.Programme", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedTimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PreSchoolId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Programme");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -267,6 +828,27 @@ namespace DAL.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("DAL.Entities.Form.ApplicationForm", b =>
+                {
+                    b.HasOne("DAL.Entities.Form.ChildParticularItems", "childParticularItems")
+                        .WithMany()
+                        .HasForeignKey("childParticularItemsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Entities.Form.GeneralInformationItems", "generalInformationItems")
+                        .WithMany()
+                        .HasForeignKey("generalInformationItemsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Entities.Form.ParentParticularItems", "parentParticularItems")
+                        .WithMany()
+                        .HasForeignKey("parentParticularItemsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

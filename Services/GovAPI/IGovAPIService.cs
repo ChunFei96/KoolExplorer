@@ -3,6 +3,7 @@ using DAL.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Services.GovAPI
 {
@@ -14,5 +15,6 @@ namespace Services.GovAPI
         Task<List<EnrolementRatio>> GetNetEnrolmentRatio();
 
         Task<string> ProcessedPreSchool();
+        //Task<List<SelectListItem>> GetDistrictList();
     }
 }
