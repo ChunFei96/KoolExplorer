@@ -34,11 +34,12 @@ namespace Services.GovAPI
             try
             {
                 var dbTable = _unitOfWork.CentreServicesRepository;
-                
-                //Chk against from lee's lookup table
-                var lastUpdates = true;  //Check against .ModifiedTimeStamp.Value.AddDays(15)
 
-                if (dbTable.GetAll().Count == 0 || lastUpdates)
+                var GovAPI_lookup = _unitOfWork.LookUpRepository.GetAll().Where(c => c.Text.Equals("GovAPI")).FirstOrDefault();
+                var isNextUpdates = false;
+                isNextUpdates = DateTime.Today == Convert.ToDateTime(GovAPI_lookup.Value);
+
+                if (dbTable.GetAll().Count == 0 || isNextUpdates)
                 {
                     List<GetListingOfCentreServicesResponse> output = new List<GetListingOfCentreServicesResponse>();
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_govAPIURLConfig.ListingOfCentreServices);
@@ -76,10 +77,11 @@ namespace Services.GovAPI
             {
                 var dbTable = _unitOfWork.EnrolementRatioRepository;
 
-                //Chk against from lee's lookup table
-                var lastUpdates = true;  //Check against .ModifiedTimeStamp.Value.AddDays(15)
+                var GovAPI_lookup = _unitOfWork.LookUpRepository.GetAll().Where(c => c.Text.Equals("GovAPI")).FirstOrDefault();
+                var isNextUpdates = false;
+                isNextUpdates = DateTime.Today == Convert.ToDateTime(GovAPI_lookup.Value);
 
-                if (dbTable.GetAll().Count == 0 || lastUpdates)
+                if (dbTable.GetAll().Count == 0 || isNextUpdates)
                 {
                     List<EnrolementRatio> output = new List<EnrolementRatio>();
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://data.gov.sg/api/action/datastore_search?resource_id=7b184af5-b718-4c93-b217-c3bb3ab304f4");
@@ -117,10 +119,11 @@ namespace Services.GovAPI
             {
                 var dbTable = _unitOfWork.CentresRepository;
 
-                //Chk against from lee's lookup table
-                var lastUpdates = true;  //Check against .ModifiedTimeStamp.Value.AddDays(15)
+                var GovAPI_lookup = _unitOfWork.LookUpRepository.GetAll().Where(c => c.Text.Equals("GovAPI")).FirstOrDefault();
+                var isNextUpdates = false;
+                isNextUpdates = DateTime.Today == Convert.ToDateTime(GovAPI_lookup.Value);
 
-                if (dbTable.GetAll().Count == 0 || lastUpdates)
+                if (dbTable.GetAll().Count == 0 || isNextUpdates)
                 {
                     List<ListingOfCentresResponse> output = new List<ListingOfCentresResponse>();
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://data.gov.sg/api/action/datastore_search?resource_id=ca9cae4b-40b9-4e89-a032-f7d17ff741c6");
@@ -156,10 +159,11 @@ namespace Services.GovAPI
             {
                 var dbTable = _unitOfWork.KindergartenEnrolementRepository;
 
-                //Chk against from lee's lookup table
-                var lastUpdates = true;  //Check against .ModifiedTimeStamp.Value.AddDays(15)
+                var GovAPI_lookup = _unitOfWork.LookUpRepository.GetAll().Where(c => c.Text.Equals("GovAPI")).FirstOrDefault();
+                var isNextUpdates = false;
+                isNextUpdates = DateTime.Today == Convert.ToDateTime(GovAPI_lookup.Value);
 
-                if (dbTable.GetAll().Count == 0 || lastUpdates)
+                if (dbTable.GetAll().Count == 0 || isNextUpdates)
                 {
                     List<MOEEnrolmentResponse> output = new List<MOEEnrolmentResponse>();
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://data.gov.sg/api/action/datastore_search?resource_id=4ad866a7-c43a-4645-87fd-fc961c9de78a");
