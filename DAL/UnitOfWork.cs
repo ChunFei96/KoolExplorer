@@ -20,6 +20,8 @@ namespace DAL
         private readonly IRepository<GeneralInformationItems> _generalInformationItemsRepository;
         private readonly IRepository<ParentParticularItems> _parentParticularItemsRepository;
         private readonly IRepository<ChildParticularItems> _childParticularItemsRepository;
+        private readonly IRepository<LookUp> _lookUpRepository;
+        private readonly IRepository<DropDownOptions> _dropDownOptionsRepository;
 
         public UnitOfWork(EFDbContext context,
             IRepository<CentreServices> centreServicesRepository, 
@@ -31,7 +33,9 @@ namespace DAL
             IRepository<ParentParticularItems> parentParticularItemsRepository,
             IRepository<ChildParticularItems> childParticularItemsRepository,
             IRepository<ProcessedPreSchool> processedPreSchoolRepository,
-            IRepository<Programme> programmeRepository)
+            IRepository<Programme> programmeRepository,
+            IRepository<LookUp> lookUpRepository, 
+            IRepository<DropDownOptions> dropDownOptionsRepository)
         {
             _context = context;
             _centreServicesRepository = centreServicesRepository;
@@ -44,6 +48,8 @@ namespace DAL
             _generalInformationItemsRepository = generalInformationItemsRepository;
             _parentParticularItemsRepository = parentParticularItemsRepository;
             _childParticularItemsRepository = childParticularItemsRepository;
+            _lookUpRepository = lookUpRepository;
+            _dropDownOptionsRepository = dropDownOptionsRepository;
         }
 
         public IRepository<CentreServices> CentreServicesRepository => _centreServicesRepository;
@@ -56,6 +62,8 @@ namespace DAL
         public IRepository<GeneralInformationItems> GeneralInformationItemsRepository => _generalInformationItemsRepository;
         public IRepository<ParentParticularItems> ParentParticularItemsRepository => _parentParticularItemsRepository;
         public IRepository<ChildParticularItems> ChildParticularItemsRepository => _childParticularItemsRepository;
+        public IRepository<LookUp> LookUpRepository => _lookUpRepository;
+        public IRepository<DropDownOptions> DropDownOptionsRepository => _dropDownOptionsRepository;
 
         public void Commit()
         {

@@ -18,6 +18,8 @@ namespace DAL
         IRepository<GeneralInformationItems> GeneralInformationItemsRepository { get; }
         IRepository<ParentParticularItems> ParentParticularItemsRepository { get; }
         IRepository<ChildParticularItems> ChildParticularItemsRepository { get; }
+        IRepository<LookUp> LookUpRepository { get; }
+        IRepository<DropDownOptions> DropDownOptionsRepository { get; }
         void Commit();
     }
 }

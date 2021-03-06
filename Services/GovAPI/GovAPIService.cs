@@ -34,11 +34,12 @@ namespace Services.GovAPI
             try
             {
                 var dbTable = _unitOfWork.CentreServicesRepository;
-                
-                //Chk against from lee's lookup table
-                var lastUpdates = true;  //Check against .ModifiedTimeStamp.Value.AddDays(15)
 
-                if (dbTable.GetAll().Count == 0 || lastUpdates)
+                var GovAPI_lookup = _unitOfWork.LookUpRepository.GetAll().Where(c => c.Text.Equals("GovAPI")).FirstOrDefault();
+                var isNextUpdates = false;
+                isNextUpdates = DateTime.Today == Convert.ToDateTime(GovAPI_lookup.Value);
+
+                if (dbTable.GetAll().Count == 0 || isNextUpdates)
                 {
                     List<GetListingOfCentreServicesResponse> output = new List<GetListingOfCentreServicesResponse>();
                     HttpWebRequest request = (HttpWebRequest)WebRequest.Create(_govAPIURLConfig.ListingOfCentreServices);
@@ -56,6 +57,11 @@ namespace Services.GovAPI
 
                     // bulk insert to db by auto mapping to CentreServices db model
                     _unitOfWork.CentreServicesRepository.BulkInsert(mapList);
+
+                    if (isNextUpdates)
+                    {
+                        _unitOfWork.LookUpRepository.GetAll().Where(c => c.Text.Equals("GovAPI")).First().Value = DateTime.Today.AddDays(15).ToString("yyyy/MM/dd");
+                    }
 
                     return mapList;
                 }
@@ -152,6 +158,7 @@ namespace Services.GovAPI
 
         public virtual async Task<List<KindergartenEnrolement>> GetEnrolmentMOEKindergartens()
         {
+            await GetListOfCentreServices();
             try
             {
                 var dbTable = _unitOfWork.KindergartenEnrolementRepository;
