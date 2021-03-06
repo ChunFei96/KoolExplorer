@@ -113,7 +113,6 @@ namespace Services.GovAPI
 
         public virtual async Task<List<Centres>> GetListingOfCentres()
         {
-            //await GetDistrictList("West"); //test
             try
             {
                 var dbTable = _unitOfWork.CentresRepository;
@@ -464,36 +463,85 @@ namespace Services.GovAPI
             return results;
         }
 
-        //public virtual async Task<List<SelectListItem>> GetDistrictList(String area)
-        //{
-        //    var AreaList = new List<SelectListItem>();
+        public virtual async Task<List<SelectListItem>> GetDistrictList(string area)
+        {
+            var AreaList = new List<SelectListItem>();
 
-        //    if (!string.IsNullOrEmpty(area))
-        //    {
-        //        /*
-        //         * 1. West
-        //         * 2. Central
-        //         * 3. East
-        //         * 4. North
-        //         * 5. North East
-        //        */
-        //        var DistrictNo = 0;
+            if (!string.IsNullOrEmpty(area))
+            {
+                /*
+                 * 1. West
+                 * 2. Central
+                 * 3. East
+                 * 4. North
+                 * 5. North East
+                */
 
-        //        List<ProcessedPreSchool> cc = new List<ProcessedPreSchool>();
-        //        List<int> districtList = new List<int>();
+                List<int> districtNo = new List<int>();
+                List<string> districtNames = new List<string>();
 
-        //        if (area.ToUpper().Equals("WEST"))
-        //        {
-        //            districtList = new List<int>() { 23, 22, 21, 24, 10, 5 };
-        //            var data = _unitOfWork.ProcessedPreSchoolRepository.GetAll().Where(c => districtList.Contains(c.DistrictNo)).ToList();
-        //            var mm = 0;
-        //        }
+                if (area.ToUpper().Equals("WEST"))
+                {
+                    districtNo = new List<int>() { 5,10, 21, 22, 23,24 };
+                    districtNames = new List<string>() { "South West", "Central - Near Orchard", "Central West","Far West", "North West", "Far North West" };
+                }
+                else if(area.ToUpper().Equals("CENTRAL"))
+                {
+                    districtNo = new List<int>() { 3, 4, 12, 14, 15, 20 };
+                    districtNames = new List<string>() { "Central South", "South", "Central", "Central East", "East Coast", "Central North" };
+                }
+                else if(area.ToUpper().Equals("EAST"))
+                {
+                    districtNo = new List<int>() { 14, 16, 17, 18 };
+                    districtNames = new List<string>() { "Central East", "Upper East Coast", "Far East", "Far East" };
+                }
+                else if(area.ToUpper().Equals("NORTH"))
+                {
+                    districtNo = new List<int>() { 24,25, 27 };
+                    districtNames = new List<string>() { "Far North West", "Far North", "Far North"};
+                }
+                else if (area.ToUpper().Equals("NORTH EAST"))
+                {
+                    districtNo = new List<int>() { 19, 20, 27, 28 };
+                    districtNames = new List<string>() { "North East", "Central North", "Far North", "North East"};
+                }
 
-        //        var bb = _unitOfWork.ProcessedPreSchoolRepository.GetAll().Where(c => c.DistrictNo == DistrictNo).ToList();
-        //    }
+                if (districtNo.Count() > 0)
+                {
+                    for(var i = 0; i < districtNo.Count();i++)
+                    {
+                        SelectListItem listItem = new SelectListItem();
+                        listItem.Text = districtNames[i];
+                        listItem.Value = districtNo[i].ToString();
+                        AreaList.Add(listItem);
+                    }
+                }
+            }
 
-        //    return AreaList;
-        //}
+            return AreaList;
+        }
 
+        public virtual async Task<List<SelectListItem>> GetPreSchoolList(int districtNo)
+        {
+            var AreaList = new List<SelectListItem>();
+
+            if (districtNo >= 1 && districtNo <= 28)
+            {
+                var preSchools = _unitOfWork.ProcessedPreSchoolRepository.GetAll().Where(c => c.DistrictNo == districtNo).ToList();
+
+                if (preSchools.Count() > 0)
+                {
+                    foreach(var i in preSchools)
+                    {
+                        SelectListItem listItem = new SelectListItem();
+                        listItem.Text = i.Name;
+                        listItem.Value = i.Id.ToString();
+                        AreaList.Add(listItem);
+                    }
+                }
+            }
+
+            return AreaList;
+        }
     }
 }

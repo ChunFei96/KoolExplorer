@@ -15,6 +15,8 @@ namespace Services.GovAPI
         Task<List<EnrolementRatio>> GetNetEnrolmentRatio();
 
         Task<string> ProcessedPreSchool();
-        //Task<List<SelectListItem>> GetDistrictList();
+        Task<List<SelectListItem>> GetDistrictList(string area);  //Retrieve "District" Dropdown options using "area" as  param
+        Task<List<SelectListItem>> GetPreSchoolList(int districtNo);  //Retrieve "PreSchools" Dropdown options using "districtNo" as  param
+
     }
 }
