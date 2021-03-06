@@ -59,3 +59,4 @@ Services/obj/
 Core/bin/**
 Core/obj/**
 KoolExplorer/appsettings.json
+KoolExplorer/Pages/Shared/_Layout.cshtml

@@ -76,19 +76,29 @@
                     <table class="table table- table_list_font table-hover table-condensed">
                         <thead class="thead-dark">
                             <tr>
-                                <th>Center Name</th>
-                                <th>Center Address</th>
-                                <th>Contact Number</th>
-                                <th>Website</th>
+                                <th class="col-sm-1">No</th>
+                                <th class="col-sm-4">Center Name</th>
+                                <th class="col-sm-3">Center Address</th>
+                                <th class="col-sm-1">Contact Number</th>
+                                <th class="col-sm-1">Website</th>
+                                <th class="col-sm-2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th class="" th:text="1​​​​​​​​"></th>
-                                <td class="" th:text="2"></td>
-                                <td class="" th:text="3"></td>
-                                <td class="" th:text="4​​​​​​​​"></td>
-                            </tr>
+                            @{
+                                for (var i = 0; i < Model.PreSchools.Count; i++)
+                                {
+                                    string website = @Model.PreSchools[i].Website.Equals("na") ? "-" : @Model.PreSchools[i].Website;
+                                    <tr>
+                                        <td class="col-sm-1">@(i+1)</td>
+                                        <td class="col-sm-4">@Model.PreSchools[i].Name</td>
+                                        <td class="col-sm-3">@Model.PreSchools[i].Address</td>
+                                        <td class="col-sm-1">@Model.PreSchools[i].ContactNo</td>
+                                        <td class="col-sm-1">@website</td>
+                                        <td class="col-sm-2"><button type="button" class="btn btn-dark"> View More</button></td>
+                                    </tr>
+                                }
+                            }
                         </tbody>
                     </table>
                 </div>
