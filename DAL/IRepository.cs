@@ -17,6 +17,11 @@ namespace DAL
        Expression<Func<T, bool>> filter = null,
        Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
        params Expression<Func<T, object>>[] includeProperties);
+
+        List<T> Get(
+        Expression<Func<T, bool>> filter = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+        string includeProperties = "");
         void Insert(T entity);
         void BulkInsert(List<T> entity);
         void Update(T entity);
