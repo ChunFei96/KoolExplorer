@@ -7,6 +7,8 @@ using DAL.Entities.Form;
 using DAL.Entities;
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace Services.Parent
 {
@@ -14,10 +16,12 @@ namespace Services.Parent
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+       
         public ParentService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            
         }
 
         public virtual void SubmitApplicationForm(AdmissionModel admissionModel)
@@ -59,12 +63,12 @@ namespace Services.Parent
 
         public virtual async Task<int> getTotalSubmissions(string createdBy)
         {
-            return 0;
+            return _unitOfWork.ApplicationFormRepository.Get(p => p.CreatedBy.Equals(createdBy) && p.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Pending).ToArray().Length;
         }
 
         public virtual async Task<int> getTotalAcceptances(string createdBy)
         {
-            return 0;
+            return _unitOfWork.ApplicationFormRepository.Get(p => p.CreatedBy.Equals(createdBy) && p.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Approved).ToArray().Length;
         }
 
         //public virtual async Task<AdmissionModel> ViewApplicationForm(string encId)
