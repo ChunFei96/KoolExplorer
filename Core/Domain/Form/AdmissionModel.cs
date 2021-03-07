@@ -29,65 +29,25 @@ namespace Core.Domain.Form
     {
         public int Id { get; set; }
         [Display(Name = "Area")]
-        public string Area { get; set; }
+        public int? Area { get; set; }
         public List<SelectListItem> AreaList { get; set; }
 
         [Display(Name = "District")]
-        public string District { get; set; }
+        public int? District { get; set; }
         public IEnumerable<SelectListItem> DistrictList { get; set; }
 
         [Display(Name = "Pre-School")]
-        public string PreSchool { get; set; }
+        public int? PreSchool { get; set; }
         public IEnumerable<SelectListItem> PreSchoolList { get; set; }
 
         [Display(Name = "Programme")]
-        public string Programme { get; set; }
+        public int? Programme { get; set; }
         public IEnumerable<SelectListItem> ProgrammeList { get; set; }
 
-        [Display(Name = "Programme Time")]
-        public string ProgrammeTime { get; set; }
         public IEnumerable<SelectListItem> ProgrammeTimeList { get; set; }
 
         [Display(Name = "Start Period")]
-        public DateTime? StartPeriod { get; set; }
-
-        public GeneralInformationViewModel()
-        {
-            AreaList = new List<SelectListItem>
-            {
-                 new SelectListItem
-                {
-                    Text = "Please select an Area",
-                    Value = ""
-                },
-                new SelectListItem
-                {
-                    Text = "West",
-                    Value = "West"
-                },
-                 new SelectListItem
-                {
-                    Text = "Central",
-                    Value = "Central"
-                },
-                  new SelectListItem
-                {
-                    Text = "East",
-                    Value = "East"
-                },
-                   new SelectListItem
-                {
-                    Text = "North",
-                    Value = "North"
-                },
-                    new SelectListItem
-                {
-                    Text = "North East",
-                    Value = "North East"
-                },
-
-            };
-        }
+        public string StartPeriod { get; set; }
     }
 
     public class ParentsParticularsViewModel
@@ -199,7 +159,7 @@ namespace Core.Domain.Form
         public string BirthCertNo { get; set; }
 
         [Display(Name = "Date of Birth")]
-        public DateTime? DOB { get; set; }
+        public string DOB { get; set; }
 
         [Display(Name = "Gender")]
         public Gender? Gender { get; set; }

@@ -7,6 +7,8 @@ using Core.Domain.Form;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Services.DropDown;
 using Services.Parent;
 
 namespace KoolExplorer.Pages.AcceptOffer
@@ -15,12 +17,18 @@ namespace KoolExplorer.Pages.AcceptOffer
     {
         private readonly IParentService _parentService;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IDropDownService _dropDownService;
         [BindProperty]
         public List<AdmissionModel> admissionViewModel { get; set; }
-        public ViewAllModel(IParentService parentService, IHttpContextAccessor httpContextAccessor)
+        [BindProperty]
+        public List<SelectListItem> PreSchoolList { get; set; }
+        [BindProperty]
+        public List<SelectListItem> ProgrammeList { get; set; }
+        public ViewAllModel(IParentService parentService, IHttpContextAccessor httpContextAccessor, IDropDownService dropDownService)
         {
             _parentService = parentService;
             _httpContextAccessor = httpContextAccessor;
+            _dropDownService = dropDownService;
         }
 
         public async Task OnGet()
@@ -30,6 +38,10 @@ namespace KoolExplorer.Pages.AcceptOffer
             if(!string.IsNullOrEmpty(userid))
             {
                 admissionViewModel = await _parentService.ViewAllApplication(userid);
+
+                //Init dropdownlist
+                PreSchoolList = await _dropDownService.GetDropDownByType("PreSchool");
+                ProgrammeList = await _dropDownService.GetDropDownByType("Programme");
             }
             else
                 ModelState.AddModelError("Error", "Application records not found");

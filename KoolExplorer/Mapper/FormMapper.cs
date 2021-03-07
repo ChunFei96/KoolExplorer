@@ -44,9 +44,6 @@ namespace KoolExplorer.Mapper
                 dest.Programme,
                 opt => opt.MapFrom(src => src.Programme))
                  .ForMember(dest =>
-                dest.ProgrammeTime,
-                opt => opt.MapFrom(src => src.ProgrammeTime))
-                 .ForMember(dest =>
                 dest.StartPeriod,
                 opt => opt.MapFrom(src => src.StartPeriod))
                  .ReverseMap();

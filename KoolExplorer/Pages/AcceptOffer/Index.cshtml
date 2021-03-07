@@ -10,16 +10,13 @@
 
 
 <table class="table">
-    <thead>
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().GeneralInformationViewModel.PreSchool)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().GeneralInformationViewModel.Programme)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().GeneralInformationViewModel.ProgrammeTime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.admissionViewModel.FirstOrDefault().GeneralInformationViewModel.StartPeriod)
@@ -41,13 +38,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(model => item.GeneralInformationViewModel.PreSchool)
+                    @Html.DisplayFor(model => Model.PreSchoolList.Where(p => p.Value == item.GeneralInformationViewModel.PreSchool.ToString()).FirstOrDefault().Text)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => item.GeneralInformationViewModel.Programme)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.GeneralInformationViewModel.ProgrammeTime)
+                    @Html.DisplayFor(model => Model.ProgrammeList.Where(p => p.Value == item.GeneralInformationViewModel.Programme.ToString()).FirstOrDefault().Text)
                 </td>
                 <td>
                     @Html.DisplayFor(model => item.GeneralInformationViewModel.StartPeriod)
@@ -63,8 +57,8 @@
                 </td>
                 <td>
                     <form method="post" asp-page="../ApplicationForm/Edit" asp-route-id="@item.Id" asp-page-handler="Edit">
-                        <button type="submit" style="width:auto"
-                                class="nav-link btn btn-link py-0">
+                        <button type="submit" style="width:auto" 
+                                class="nav-link btn py-0 btn-dark">
                             Edit
                         </button>
                     </form>

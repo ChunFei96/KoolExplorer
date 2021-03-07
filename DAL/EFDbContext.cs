@@ -23,6 +23,7 @@ namespace DAL
         public DbSet<ProcessedPreSchool> ProcessedPreSchool { get; set; }
         public DbSet<Programme> Programme { get; set; }
         public DbSet<LookUp> LookUp { get; set; }
+        public DbSet<DropDownOptions> DropDownOptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,6 +39,7 @@ namespace DAL
             modelBuilder.Entity<ProcessedPreSchool>().ToTable("ProcessedPreSchool");
             modelBuilder.Entity<Programme>().ToTable("Programme");
             modelBuilder.Entity<LookUp>().ToTable("LookUp");
+            modelBuilder.Entity<DropDownOptions>().ToTable("DropDownOptions");
         }
     }
 }

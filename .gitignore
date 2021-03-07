@@ -58,5 +58,3 @@ Services/obj/
 # Ignore Core
 Core/bin/**
 Core/obj/**
-KoolExplorer/appsettings.json
-KoolExplorer/Pages/Shared/_Layout.cshtml

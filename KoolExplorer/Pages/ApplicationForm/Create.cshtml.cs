@@ -1,10 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Domain.Filter;
 using Core.Domain.Form;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
+using Services.DropDown;
+using Services.Filter;
 using Services.Parent;
 
 namespace KoolExplorer.Pages.ApplicationForm
@@ -21,13 +27,15 @@ namespace KoolExplorer.Pages.ApplicationForm
         public ChildsParticularsViewModel childsParticulars { get; set; }
 
         private readonly IParentService _parentService;
+        private readonly IDropDownService _dropDownService;
 
-        public FormModel(IParentService parentService)
+        public FormModel(IParentService parentService, IDropDownService dropDownService)
         {
             _parentService = parentService;
-
+            _dropDownService = dropDownService;
         }
-        public void OnGet()
+
+        public async void OnGet()
         {
             formViewModel = new AdmissionModel();
             generalInformationViewModel = new GeneralInformationViewModel();
@@ -35,11 +43,11 @@ namespace KoolExplorer.Pages.ApplicationForm
             childsParticulars = new ChildsParticularsViewModel();
 
             // dummy data
-            generalInformationViewModel.Area = "West";
-            generalInformationViewModel.District = "Clementi";
-            generalInformationViewModel.PreSchool = "First School";
-            generalInformationViewModel.Programme = "K1";
-            generalInformationViewModel.ProgrammeTime = "Full-Day";
+            //generalInformationViewModel.Area = "West";
+            //generalInformationViewModel.District = "Clementi";
+            //generalInformationViewModel.PreSchool = "First School";
+            //generalInformationViewModel.Programme = "K1";
+            //generalInformationViewModel.ProgrammeTime = "Full-Day";
             //generalInformationViewModel.StartPeriod = "2021/10/08";
 
             parentsParticulars.Name1 = "Parent Name 1";
@@ -68,6 +76,9 @@ namespace KoolExplorer.Pages.ApplicationForm
             childsParticulars.BirthCertNo = "A910293";
             //childsParticulars.DOB = "1996/06/04";
             //childsParticulars.Gender = Core.Expansion.Enum.Gender.Male;
+
+            //Init dropdownlist
+            generalInformationViewModel.AreaList = await  _dropDownService.GetDropDownByType("Area");
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -79,8 +90,12 @@ namespace KoolExplorer.Pages.ApplicationForm
                 formViewModel.ChildsParticularsViewModel = childsParticulars;
 
                 _parentService.SubmitApplicationForm(formViewModel);
+                return new RedirectToPageResult("../AcceptOffer/Index");
             }
-            return new RedirectToPageResult("../AcceptOffer/Index");
+            return Page();
+
         }
+
+       
     }
 }

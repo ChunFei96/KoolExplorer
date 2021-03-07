@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Services.DropDown;
+using Services.Filter;
 using Services.GovAPI;
 using Services.Login;
 using Services.Parent;
@@ -39,6 +41,8 @@ namespace KoolExplorer
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IRegisterService, RegisterService>();
             services.AddScoped<IParentService, ParentService>();
+            services.AddScoped<IDropDownService, DropDownService>();
+            services.AddScoped<IFilterService, FilterService>();
 
             services.AddDbContext<EFDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -60,6 +64,8 @@ namespace KoolExplorer
             // Or you can also register as follows
 
             services.AddHttpContextAccessor();
+
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
 
             services.AddControllersWithViews(); //Allow API calls 
             services.AddRazorPages().AddRazorRuntimeCompilation();

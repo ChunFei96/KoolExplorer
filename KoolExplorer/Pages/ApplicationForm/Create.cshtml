@@ -20,7 +20,7 @@
 
     <link href="~/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
 
-    <link href="~/css/Form.css" rel="stylesheet"/>
+    <link href="~/css/Form.css" rel="stylesheet" />
 </head>
 <body id="Form">
     @*Title*@
@@ -89,7 +89,7 @@
         </form>
     </div>
 
-   
+
 
 </body>
 </html>
@@ -107,6 +107,7 @@
 
     @*datepicker*@
     <script src="~/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     @*steps*@
     <script src="~/js/plugins/wizard/jquery.steps.js?@DateTime.Now.ToString("yyyyMMddhhmmss")"></script>
@@ -154,8 +155,115 @@
                 $('.DateField').datepicker({
                     changeMonth: true,
                     changeYear: true,
-                    format: "dd/mm/yyyy",
-                    language: "tr"
+                    dateFormat: "dd/mm/yy",
+                    yearRange:"0:+1",
+                    minDate: new Date(2021, 03, 07)
+                });
+
+                $('.DOBDateField').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: "dd/mm/yy",
+                    defaultDate: new Date(2016, 01, 01),
+                    minDate: new Date(2016, 01, 01),
+                    maxDate: new Date(2020, 01, 01),
+
+                });
+
+                $("#Area").change(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: '/ApplicationForm/Filter?handler=Filter',
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader("XSRF-TOKEN",
+                                $('input:hidden[name="__RequestVerificationToken"]').val());
+                        },
+                        data: JSON.stringify({
+                            Target: "District",
+                            Value: $("#Area option:selected").text(),
+                        }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            $("#District").empty();
+                            $("#PreSchool").empty();
+                            $("#Programme").empty();
+
+                            var s = '<option value="-1">Please Select a District</option>';
+                            for (var i = 0; i < response.length; i++) {
+                                s += '<option value="' + response[i].value + '">' + response[i].text + '</option>';
+                            }
+                            $("#District").html(s);
+                        },
+                        failure: function (response) {
+                            alert(response);
+                        }
+                    }).done(function (data) {
+                        console.log(data.result);
+                    })
+                });
+
+                $("#District").change(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: '/ApplicationForm/Filter?handler=Filter',
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader("XSRF-TOKEN",
+                                $('input:hidden[name="__RequestVerificationToken"]').val());
+                        },
+                        data: JSON.stringify({
+                            Target: "PreSchool",
+                            Value: $("#District option:selected").val(),
+                        }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            $("#PreSchool").empty();
+                            $("#Programme").empty();
+
+                            var s = '<option value="-1">Please Select a Pre School</option>';
+                            for (var i = 0; i < response.length; i++) {
+                                s += '<option value="' + response[i].value + '">' + response[i].text + '</option>';
+                            }
+                            $("#PreSchool").html(s);
+                        },
+                        failure: function (response) {
+                            alert(response);
+                        }
+                    }).done(function (data) {
+                        console.log(data.result);
+                    })
+                });
+
+                $("#PreSchool").change(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: '/ApplicationForm/Filter?handler=Filter',
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader("XSRF-TOKEN",
+                                $('input:hidden[name="__RequestVerificationToken"]').val());
+                        },
+                        data: JSON.stringify({
+                            Target: "Programme",
+                            Value: $("#PreSchool option:selected").val(),
+                        }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            $("#Programme").empty();
+
+                            var s = '<option value="-1">Please Select a Programme</option>';
+                            for (var i = 0; i < response.length; i++) {
+                                s += '<option value="' + response[i].value + '">' + response[i].text + '</option>';
+                            }
+                            $("#Programme").html(s);
+                        },
+                        failure: function (response) {
+                            alert(response);
+                        }
+                    }).done(function (data) {
+                        console.log(data.result);
+                    })
                 });
             }
             ,

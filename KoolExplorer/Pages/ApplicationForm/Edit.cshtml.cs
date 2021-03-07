@@ -7,6 +7,7 @@ using Core.Domain.Form;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Services.DropDown;
 using Services.Parent;
 
 namespace KoolExplorer.Pages.ApplicationForm
@@ -22,12 +23,12 @@ namespace KoolExplorer.Pages.ApplicationForm
         [BindProperty]
         public ChildsParticularsViewModel childsParticulars { get; set; }
         private readonly IParentService _parentService;
-        
+        private readonly IDropDownService _dropDownService;
 
-        public EditModel(IParentService parentService)
+        public EditModel(IParentService parentService, IDropDownService dropDownService)
         {
             _parentService = parentService;
-           
+            _dropDownService = dropDownService;
         }
 
         public async Task OnGetAsync(int id)
@@ -41,6 +42,12 @@ namespace KoolExplorer.Pages.ApplicationForm
             generalInformationViewModel = formViewModel.GeneralInformationViewModel;
             parentsParticulars = formViewModel.ParentsParticularsViewModel;
             childsParticulars = formViewModel.ChildsParticularsViewModel;
+
+            //Init dropdownlist
+            generalInformationViewModel.AreaList = await _dropDownService.GetDropDownByType("Area");
+            generalInformationViewModel.DistrictList = await _dropDownService.GetDropDownByType("District");
+            generalInformationViewModel.PreSchoolList = await _dropDownService.GetDropDownByType("PreSchool");
+            generalInformationViewModel.ProgrammeList = await _dropDownService.GetDropDownByType("Programme");
         }
 
         public async Task<IActionResult> OnPostAsync()

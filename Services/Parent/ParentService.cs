@@ -46,11 +46,6 @@ namespace Services.Parent
 
         public virtual async Task<List<AdmissionModel>> ViewAllApplication(string userId)
         {
-            var test = _unitOfWork.ApplicationFormRepository.GetAndInclude(x => x.CreatedBy.Equals(userId), null,
-                x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems);
-            var test2 = _mapper.Map<List<AdmissionModel>>(_unitOfWork.ApplicationFormRepository.
-                GetAndInclude(x => x.CreatedBy.Equals(userId), null,
-                x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems));
             return _mapper.Map<List<AdmissionModel>>(_unitOfWork.ApplicationFormRepository.
                 GetAndInclude(x => x.CreatedBy.Equals(userId), null,
                 x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems));

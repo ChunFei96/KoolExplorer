@@ -10,7 +10,7 @@ namespace DAL.Entities.Form
         public string Citizenship { get; set; }
         public string Race { get; set; }
         public string BirthCerNo { get; set; }
-        public DateTime? DOB { get; set; }
+        public string DOB { get; set; }
         public Gender? Gender { get; set; }
     }
 }
