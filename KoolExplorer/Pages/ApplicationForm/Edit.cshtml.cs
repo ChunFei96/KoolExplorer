@@ -7,6 +7,7 @@ using Core.Domain.Form;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Services.DropDown;
 using Services.Parent;
 
@@ -44,7 +45,8 @@ namespace KoolExplorer.Pages.ApplicationForm
             childsParticulars = formViewModel.ChildsParticularsViewModel;
 
             //Init dropdownlist
-            generalInformationViewModel.AreaList = await _dropDownService.GetDropDownByType("Area");
+            generalInformationViewModel.AreaList = new List<SelectListItem>() { new SelectListItem() { Value = "-", Text = "Please select an Area" } };
+            generalInformationViewModel.AreaList.AddRange(await _dropDownService.GetDropDownByType("Area"));
             generalInformationViewModel.DistrictList = await _dropDownService.GetDropDownByType("District");
             generalInformationViewModel.PreSchoolList = await _dropDownService.GetDropDownByType("PreSchool");
             generalInformationViewModel.ProgrammeList = await _dropDownService.GetDropDownByType("Programme");

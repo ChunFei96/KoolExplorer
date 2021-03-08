@@ -43,7 +43,9 @@ namespace KoolExplorer.Pages.ApplicationForm
             childsParticulars = new ChildsParticularsViewModel();
 
             //Init dropdownlist
-            generalInformationViewModel.AreaList = await  _dropDownService.GetDropDownByType("Area");
+            generalInformationViewModel.AreaList = new List<SelectListItem>() { new SelectListItem() { Value = "-", Text = "Please select an Area" } };
+            generalInformationViewModel.AreaList.AddRange(await  _dropDownService.GetDropDownByType("Area"));
+            
         }
 
         public async Task<IActionResult> OnPostAsync()
