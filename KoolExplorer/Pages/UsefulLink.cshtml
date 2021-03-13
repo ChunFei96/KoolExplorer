@@ -3,6 +3,133 @@
 @{
     ViewData["Title"] = "Useful Links";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Belows are the links which will be useful to you</p>
+
+
+
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card card_backgroundColor card_marginBottom">
+            <div class="card-body">
+                <h5 class="card-title">​Overview of Pre-school Education</h5>
+                <p class="textParagraph">
+                    Kindergartens are defined as education centres with 10 or more
+                </p>
+                <p class="textParagraph">
+                    children.They offer structured, comprehensive and holistic preschool
+                </p>
+                <p>
+                    education programme for children from 18 months to below 7 years of age.
+                </p>
+                <a href="https://www.ecda.gov.sg/Parents/Pages/Overview-of-PSE.aspx" target="_blank" class="btn btn-primary" style="float:right">View More</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card card_backgroundColor card_marginBottom">
+            <div class="card-body">
+                <h5 class="card-title">​Overview of Preschool</h5>
+                <p class="textParagraph">
+                    What is preschool? Preschool is for children under the age of 7 and broadly includes:
+                    <ul>
+                        <li><span>Half-day or full-day care programmes.</span></li>
+                        <li><span>Kindergarten preschool education.</span></li>
+                    </ul>
+                </p>
+                <a href="https://www.moe.gov.sg/preschool/overview" target="_blank" class="btn btn-primary" style="float:right">View More</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card card_backgroundColor card_marginBottom">
+            <div class="card-body">
+                <h5 class="card-title">​Academic Calendar</h5>
+                <p class="textParagraph" id="setYear">
+                    Look up admissions dates, school terms, national exam dates and holidays for 2021.
+                </p>
+                <a href="https://www.moe.gov.sg/calendar" target="_blank" class="btn btn-primary" style="float:right;margin-top: 20px;">View More</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card card_backgroundColor card_marginBottom">
+            <div class="card-body">
+                <h5 class="card-title">Subsidies and Financial Assistance</h5>
+                <p class="textParagraph">
+                    Government Subsidies for Infant Care and Child Care. The purpose is
+                </p>
+                <p class="textParagraph">
+                    to help parents defray preschool expenses for Singapore children.
+                </p>
+                <a href="https://www.ecda.gov.sg/Pages/Subsidies-and-Financial-Assistance.aspx" target="_blank" class="btn btn-primary" style="float:right;margin-top: 20px;">View More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1>News</h1>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card card_backgroundColor card_marginBottom">
+            <div class="card-body">
+                <h5 class="card-title">​ECDA</h5>
+                <p class="textParagraph">
+                    Press release for Early Childhood Development Agency which regulates and develop the early childhood sector in Singapore.
+                </p>
+                <a href="https://www.ecda.gov.sg/pressreleases/pages/default.aspx" target="_blank" class="btn btn-primary" style="float:right;margin-top: 20px;">View More</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card card_backgroundColor card_marginBottom">
+            <div class="card-body">
+                <h5 class="card-title">MOE</h5>
+                <p class="textParagraph">
+                    Press release for Ministry Of Education which provides interesting news on development of Education system in Singapore.
+                </p>
+                <a href="https://www.moe.gov.sg/search?q=*&app=site_search&fl=*&fq=content_type_s%3A(%22news%22)" target="_blank" class="btn btn-primary" style="float:right;margin-top: 20px;">View More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .txtOverflow {
+        /*width: 10em;*/ /* the element needs a fixed width (in px, em, %, etc) */
+        overflow: hidden; /* make sure it hides the content that overflows */
+        white-space: nowrap; /* don't break the line */
+        text-overflow: ellipsis; /* give the beautiful '...' effect */
+    }
+
+    .textParagraph {
+        margin: 0px;
+    }
+
+    .card_backgroundColor {
+        background-color: #fcc;
+    }
+
+    .card_marginBottom {
+        margin-bottom: 30px;
+    }
+</style>
+
+
+@section scripts {
+    <script>
+        function AcademicCalendar() {
+            var date = new Date();
+            var content = "Look up admissions dates, school terms, national exam dates and holidays for " + date.getFullYear() + ".";
+            console.log(content)
+            $('#setYear').text(content);
+        }
+
+        //jQuery document Ready
+        (function () {
+            AcademicCalendar();
+        })();
+
+    </script>
+}
+

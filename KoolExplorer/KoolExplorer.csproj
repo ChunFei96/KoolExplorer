@@ -32,7 +32,13 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\img\ContactUs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\img\ContactUs\email.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

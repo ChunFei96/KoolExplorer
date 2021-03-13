@@ -9,71 +9,24 @@
         <div class="row">
             <main role="main">
                 <h1>Pre-Schools</h1>
+                <div class="form-row" style="margin:0">
+                    <div class="col-12 col-sm-6 form-group">
+                        <label asp-for="Area"></label>
+                        <select asp-for="Area" asp-items="@Model.AreaList" class="form-control select-area" data-validation="required">
+                        </select>
+                        <span asp-validation-for="Area" class="text-danger"></span>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <div class="areaSearch">
-                            <span class="zoneSearch">
-                                Search by Area:
-                                <select required="">
-                                    <option value="">* Please select area</option>
-                                    <option value="1">West</option>
-                                    <option value="2">Central</option>
-                                    <option value="3">East</option>
-                                    <option value="4">North</option>
-                                    <option value="5">North East</option>
-                                </select>
-                            </span>
-                        </div>
                     </div>
-                    <div class="form-group">
-                        <div class="areaSearch">
-                            <span class="districtSearch">
-                                Search by District:
-                                <select required="">
-                                    <option value="">* Please select district</option>
-                                    <option value="101">Clementi </option>
-                                    <option value="102">Bukit Batok </option>
-                                    <option value="103">Bukit Panjang </option>
-                                    <option value="104">Choa Chu Kang </option>
-                                    <option value="105">Jurong </option>
-                                    <option value="106">Yew Tee </option>
-                                    <option value="201">Bukit Merah </option>
-                                    <option value="202">Bishan </option>
-                                    <option value="203">Chin Swee </option>
-                                    <option value="204">Geylang </option>
-                                    <option value="205">Holland </option>
-                                    <option value="206">Kallang </option>
-                                    <option value="207">Marine Parade </option>
-                                    <option value="208">Mountbatten </option>
-                                    <option value="209">Potong Pasir </option>
-                                    <option value="210">Tanjong Pagar </option>
-                                    <option value="211">Telok Blangah </option>
-                                    <option value="212">Toa Payoh </option>
-                                    <option value="213">Whampoa </option>
-                                    <option value="214">Strathmore </option>
-                                    <option value="215">Macpherson </option>
-                                    <option value="216">Tiong Bahru </option>
-                                    <option value="301">Bedok </option>
-                                    <option value="302">Pasir Ris </option>
-                                    <option value="303">Simei </option>
-                                    <option value="304">Tampines </option>
-                                    <option value="401">Woodlands </option>
-                                    <option value="402">Canberra </option>
-                                    <option value="403">Sembawang </option>
-                                    <option value="404">Yishun </option>
-                                    <option value="501">Sengkang </option>
-                                    <option value="502">Ang Mo Kio </option>
-                                    <option value="503">Hougang </option>
-                                    <option value="504">Punggol </option>
-                                    <option value="505">Serangoon </option>
-                                </select>
-                            </span>
-                        </div>
+                    <div class="col-12 col-sm-6 form-group">
+                        <label asp-for="District"></label>
+                        <select asp-for="District" asp-items="@Model.DistrictList" class="form-control select-area" required="">
+                        </select>
                     </div>
                 </div>
+                <div class="form-row">
+                </div>
                 <div class="table-responsive">
-                    <table class="table table- table_list_font table-hover table-condensed">
+                    <table class="table table- table_list_font table-hover table-condensed " id="PreSchoolList">
                         <thead class="thead-dark">
                             <tr>
                                 <th class="col-sm-1">No</th>
@@ -86,17 +39,24 @@
                         </thead>
                         <tbody>
                             @{
-                                for (var i = 0; i < Model.PreSchools.Count; i++)
+                                if (Model.PreSchools != null && Model.PreSchools.Count > 0)
                                 {
-                                    string website = @Model.PreSchools[i].Website.Equals("na") ? "-" : @Model.PreSchools[i].Website;
-                                    <tr>
-                                        <td class="col-sm-1">@(i+1)</td>
-                                        <td class="col-sm-4">@Model.PreSchools[i].Name</td>
-                                        <td class="col-sm-3">@Model.PreSchools[i].Address</td>
-                                        <td class="col-sm-1">@Model.PreSchools[i].ContactNo</td>
-                                        <td class="col-sm-1">@website</td>
-                                        <td class="col-sm-2"><button type="button" class="btn btn-dark"> View More</button></td>
-                                    </tr>
+                                    for (var i = 0; i < Model.PreSchools.Count; i++)
+                                    {
+                                        string website = @Model.PreSchools[i].Website.Equals("na") ? "-" : @Model.PreSchools[i].Website;
+                                        <tr>
+                                            <td class="col-sm-1">@(Model.PreSchools[i].Id)</td>
+                                            <td class="col-sm-4">@Model.PreSchools[i].Name</td>
+                                            <td class="col-sm-3">@Model.PreSchools[i].Address</td>
+                                            <td class="col-sm-1">@Model.PreSchools[i].ContactNo</td>
+                                            <td class="col-sm-1">@website</td>
+                                            <td class="col-sm-2"><button type="button" class="btn btn-dark viewMore" data-rowId="@(Model.PreSchools[i].Id)"> View More</button></td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr><td>No Data Available</td></tr>
                                 }
                             }
                         </tbody>
@@ -105,5 +65,177 @@
             </main>
         </div>
     </div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="max-width: 650px; ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel" style="font-weight: bold;">PreSchool Information</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover" id="preSchoolTable">
+                        <thead>
+                            <tr>
+                                <th scope="col"> </th>
+                                <th scope="col">Property Name</th>
+                                <th scope="col">Property Value</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" style="background-color: #f26b6b;" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
+<style>
+    .ow {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+</style>
+
+
+@section scripts
+{
+   <script>
+       //jQuery document Ready
+       (function () {
+           $('.viewMore').on('click', function (e) {
+               var id = e.target.dataset["rowid"];
+               GetData(id);
+               $('#myModal').modal('show');
+           })
+
+           $("#Area").change(function () {
+               $.ajax({
+                   type: "POST",
+                   url: '/ApplicationForm/Filter?handler=Filter',
+                   beforeSend: function (xhr) {
+                       xhr.setRequestHeader("XSRF-TOKEN",
+                           $('input:hidden[name="__RequestVerificationToken"]').val());
+                   },
+                   data: JSON.stringify({
+                       Target: "District",
+                       Value: $("#Area option:selected").text(),
+                   }),
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   success: function (response) {
+                       $("#District").empty();
+
+                       var s = '<option value="-1">Please Select a District</option>';
+                       for (var i = 0; i < response.length; i++) {
+                           s += '<option value="' + response[i].value + '">' + response[i].text + '</option>';
+                       }
+                       $("#District").html(s);
+                   },
+                   failure: function (response) {
+                       alert(response);
+                   }
+               }).done(function (data) {
+                   console.log(data.result);
+               })
+           });
+
+           $("#District").change(function () {
+               var selectedId = $(this).val();
+               $.ajax({
+                   type: "POST",
+                   url: '/Search?handler=FilterPreSchoolList',
+                   beforeSend: function (xhr) {
+                       xhr.setRequestHeader("XSRF-TOKEN",
+                           $('input:hidden[name="__RequestVerificationToken"]').val());
+                   },
+                   data: selectedId,
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   failure: function (response) {
+                       alert(response);
+                   }
+               }).done(function (data) {
+                   resetTable();
+               })
+           });
+
+
+
+       })();
+
+       function resetTable() {
+           $('#PreSchoolList tbody').empty();
+       }
+       
+       function GetData(id) {
+           $.ajax({
+               type: "POST",
+               url: '/Search?handler=GetPreSchoolById',
+               beforeSend: function (xhr) {
+                   xhr.setRequestHeader("XSRF-TOKEN",
+                       $('input:hidden[name="__RequestVerificationToken"]').val());
+               },
+               data: id,
+               contentType: "application/json; charset=utf-8",
+               dataType: "json",
+               failure: function (response) {
+                   alert(response);
+               }
+           }).done(function (data) {
+               if (data != 'nil') {
+                   setPreSchool(data);
+               }
+           })
+       }
+
+       function setPreSchool(d) {
+           var data = JSON.parse(d);
+           data = excludePreSchoolData(data);
+           var tbody = "";
+           var chkBoxProperty = ['SecondLanguageOffered', 'SparkCertified', 'ProvisionOfTransport', 'GovernmentSubsidy', 'GstRegistration'];
+
+           var counter = 1;
+           for (var key of Object.keys(data)) {
+               tbody += "<tr>";
+               tbody += "<th scope=\"row\">" + counter + " </th>";
+               tbody += "<th scope=\"row\">" + key + " </th>";
+
+               if (chkBoxProperty.includes(key)) {
+                   var chkBoxValue = data[key] === null ? "no" : data[key].toLowerCase();
+                   tbody += "<th scope=\"row\" class=\"ow\"><input type=\"checkbox\" id=\"" + key  + "\" value=\"" + chkBoxValue + "\"></th>";
+               }
+               else {
+                   tbody += "<th scope=\"row\" class=\"ow\">" + data[key] + " </th>";
+               }
+               tbody += "</tr>";
+               counter++;
+           }
+           $('#preSchoolTable tbody').html(tbody);
+
+           updateChkBoxStatus();
+       }
+
+       function excludePreSchoolData(d) {
+           delete d.Id;
+           delete d.CreatedBy;
+           delete d.CreatedTimeStamp;
+           delete d.ModifiedBy;
+           delete d.ModifiedTimeStamp;
+           return d;
+       }
+
+       function updateChkBoxStatus() {
+           var chkBoxes = $('#preSchoolTable tbody').find(':checkbox');
+           for (var i of chkBoxes) {
+               if (i.value === 'true') {
+                   $("#" + i.id).prop("checked", true);
+               }
+           }
+       }
+   </script>
+}
