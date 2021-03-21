@@ -22,7 +22,8 @@ namespace Services.Parent
         Task<AdmissionModel> EditApplicationForm(string encId);
         void EditApplicationForm(AdmissionModel model);
         Task<List<AdmissionModel>> ViewAllApplication(string userId);
-
+        void AcceptApplicationForm(string encId);
+        void RejectApplicationForm(string encId);
 
         //Functions to display the total in Dashboard
         Task<int> getTotalSchools();

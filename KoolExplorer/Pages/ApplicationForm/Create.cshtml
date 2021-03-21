@@ -290,11 +290,16 @@
                     $(".step-header").find(".nav-item:eq(" + currentIndex + ")").show();
 
                 }
+
+                
+
             }
 
             , onFinishing: function (event, currentIndex) {
-
-                $("form").submit();
+                if (!$("#acknowledge").is(":checked") || !$("#agree1").is(":checked"))
+                    alert("Please make sure you have agreed with the Term & Conditions!")
+                else
+                    $("form").submit();
 
             }
 

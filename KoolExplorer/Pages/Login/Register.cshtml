@@ -27,6 +27,12 @@
                 <span asp-validation-for="registerModel.ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="registerModel.RoleName"></label>
+                <select asp-for="registerModel.RoleName" asp-items="@Model.registerModel.RoleList" class="form-control select-area" data-validation="required">
+                </select>
+                <span asp-validation-for="registerModel.RoleName" class="text-danger" style="color:red"></span>
+            </div>
+            <div class="form-group">
                 <a asp-page="/Login/Login">Sign in</a>
             </div>
             <div class="form-group">

@@ -1,6 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> signInManager
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +65,7 @@
                             </ul>
                         </div>
                     }*@
-
+                
                 @if (signInManager.IsSignedIn(User))
                 {
                     <a class="navbar-brand" asp-area="" asp-page="/Index">KoolExplorer</a>
@@ -79,12 +78,23 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/About">About Us</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/ApplicationForm/Create">Application Form</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/AcceptOffer/Index">Accept Offer</a>
-                            </li>
+                            @if (User.IsInRole("Parent"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/ApplicationForm/Create">Application Form</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/AcceptOffer/Index">Accept Offer</a>
+                                </li>
+                            }
+                            @if (User.IsInRole("Operator"))
+                            {
+                                <li class="nav-item">
+                                    @*Create operator review application razor page and link here*@
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/AcceptOffer/Index">Review Application</a>
+                                </li>
+                            }
+
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Search">Pre-Schools</a>
                             </li>

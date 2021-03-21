@@ -6,21 +6,21 @@
         <div class="form-row">
             <div class="col-12 form-group">
                 <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" data-validation="required"/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
         <div class="form-row">
             <div class="col-12 col-sm-4 form-group">
                 <label asp-for="Citizenship"></label>
-                <select asp-for="Citizenship" asp-items="@Model.CitizenshipList" class="form-control select-area" >
+                <select asp-for="Citizenship" asp-items="@Model.CitizenshipList" class="form-control select-area" data-validation="required">
                 </select>
                 <span asp-validation-for="Citizenship" class="text-danger"></span>
                 
             </div>
             <div class="col-12 col-sm-4 form-group">
                 <label asp-for="Race"></label>
-                <select asp-for="Race" asp-items="@Model.RaceList" class="form-control select-area" >
+                <select asp-for="Race" asp-items="@Model.RaceList" class="form-control select-area" data-validation="required">
                 </select>
                 <span asp-validation-for="Race" class="text-danger"></span>
                 
@@ -30,14 +30,14 @@
         <div class="form-row">
             <div class="col-12 form-group">
                 <label asp-for="BirthCertNo"></label>
-                <input asp-for="BirthCertNo" class="form-control" />
+                <input asp-for="BirthCertNo" class="form-control" data-validation="required"/>
                 <span asp-validation-for="BirthCertNo" class="text-danger"></span>
             </div>
         </div>
         <div class="form-row">
             <div class="col-12 col-sm-6 form-group">
                 <label asp-for="DOB"></label>
-                <input asp-for="DOB" class="form-control DOBDateField" />
+                <input asp-for="DOB" class="form-control DOBDateField" data-validation="required"/>
                 <span asp-validation-for="DOB" class="text-danger"></span>
             </div>
             <div class="col-12 col-sm-6 form-group">

@@ -7,10 +7,12 @@ namespace Services.Login
     public partial class LoginService : ILoginService
     {
         private readonly SignInManager<IdentityUser> signInManager;
+ 
 
         public LoginService(SignInManager<IdentityUser> signInManager)
         {
             this.signInManager = signInManager;
+            
         }
 
         public virtual async Task<bool> PasswordSignInAsync(LoginViewModel loginViewModel)

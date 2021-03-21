@@ -139,3 +139,7 @@ body {
     margin-top: 15px;
     width: 1200px;
 }
+
+span.form-error {
+    color: red;
+}

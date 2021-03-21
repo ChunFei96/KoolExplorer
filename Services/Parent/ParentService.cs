@@ -58,12 +58,44 @@ namespace Services.Parent
 
         public virtual async Task<int> getTotalSubmissions(string createdBy)
         {
-            return _unitOfWork.ApplicationFormRepository.Get(p => p.CreatedBy.Equals(createdBy) && p.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Pending).ToArray().Length;
+            return _unitOfWork.ApplicationFormRepository.Get(p => p.CreatedBy.Equals(createdBy) && p.Status == Core.Expansion.Enum.Status.Active).ToArray().Length;
         }
 
         public virtual async Task<int> getTotalAcceptances(string createdBy)
         {
-            return _unitOfWork.ApplicationFormRepository.Get(p => p.CreatedBy.Equals(createdBy) && p.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Approved).ToArray().Length;
+            return _unitOfWork.ApplicationFormRepository.Get(p => p.CreatedBy.Equals(createdBy) && (p.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Approved || p.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Accepted)).ToArray().Length;
+        }
+
+        public virtual void AcceptApplicationForm(string Id)
+        {
+            var application = _unitOfWork.ApplicationFormRepository.Get(a => a.Id == Convert.ToInt32(Id)).FirstOrDefault();
+
+            application.ApplicationStatus = Core.Expansion.Enum.ApplicationStatus.Accepted;
+
+            _unitOfWork.ApplicationFormRepository.Update(application);
+
+            // auto reject other application
+            foreach(var record in _unitOfWork.ApplicationFormRepository.GetAll())
+            {
+                if(record.Id  != Convert.ToInt32(Id))
+                {
+                    record.ApplicationStatus = Core.Expansion.Enum.ApplicationStatus.Rejected;
+                    _unitOfWork.ApplicationFormRepository.Update(record);
+                }
+            }
+
+            _unitOfWork.Commit();
+        }
+
+        public virtual void RejectApplicationForm(string Id)
+        {
+            var application = _unitOfWork.ApplicationFormRepository.Get(a => a.Id == Convert.ToInt32(Id)).FirstOrDefault();
+
+            application.ApplicationStatus = Core.Expansion.Enum.ApplicationStatus.Rejected;
+
+            _unitOfWork.ApplicationFormRepository.Update(application);
+
+            _unitOfWork.Commit();
         }
 
         //public virtual async Task<AdmissionModel> ViewApplicationForm(string encId)
