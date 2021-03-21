@@ -24,7 +24,7 @@ namespace KoolExplorer.Pages
         public IActionResult OnGet()
         {
             if (signInManager.IsSignedIn(User))
-                return new RedirectToPageResult("/Home/Home");
+                return new RedirectToPageResult("/Dashboard/Dashboard");
             return new RedirectToPageResult("/Login/Login");
         }
     }

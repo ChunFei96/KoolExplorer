@@ -27,7 +27,7 @@ namespace KoolExplorer.Pages.Login
             {
                 if (await _loginService.PasswordSignInAsync(loginModel))
                 {
-                    return RedirectToPage("/Home/Home");
+                    return RedirectToPage("/Dashboard/Dashboard");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid Login Attempt");

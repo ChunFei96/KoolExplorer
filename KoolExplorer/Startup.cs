@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Services.Dashboard;
 using Services.DropDown;
 using Services.Filter;
 using Services.GovAPI;
@@ -43,6 +44,7 @@ namespace KoolExplorer
             services.AddScoped<IParentService, ParentService>();
             services.AddScoped<IDropDownService, DropDownService>();
             services.AddScoped<IFilterService, FilterService>();
+            services.AddScoped<IDashboardService, DashboardService>();
 
             services.AddDbContext<EFDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 

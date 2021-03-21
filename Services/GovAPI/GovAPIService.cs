@@ -98,7 +98,7 @@ namespace Services.GovAPI
                     var mapList = _mapper.Map<List<EnrolementRatio>>(output);
 
                     _unitOfWork.EnrolementRatioRepository.BulkInsert(mapList);
-
+                    _unitOfWork.Commit();
                     return mapList;
                 }
                 else
