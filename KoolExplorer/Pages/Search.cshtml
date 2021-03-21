@@ -25,15 +25,15 @@
                 </div>
                 <div class="form-row">
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive container">
                     <table class="table table- table_list_font table-hover table-condensed " id="PreSchoolList">
                         <thead class="thead-dark">
-                            <tr>
+                            <tr class="row">
                                 <th class="col-sm-1">No</th>
-                                <th class="col-sm-4">Center Name</th>
+                                <th class="col-sm-3">Center Name</th>
                                 <th class="col-sm-3">Center Address</th>
                                 <th class="col-sm-1">Contact Number</th>
-                                <th class="col-sm-1">Website</th>
+                                <th class="col-sm-2">Website</th>
                                 <th class="col-sm-2">Action</th>
                             </tr>
                         </thead>
@@ -44,13 +44,13 @@
                                     for (var i = 0; i < Model.PreSchools.Count; i++)
                                     {
                                         string website = @Model.PreSchools[i].Website.Equals("na") ? "-" : @Model.PreSchools[i].Website;
-                                        <tr>
+                                        <tr class="row">
                                             <td class="col-sm-1">@(Model.PreSchools[i].Id)</td>
-                                            <td class="col-sm-4">@Model.PreSchools[i].Name</td>
+                                            <td class="col-sm-3">@Model.PreSchools[i].Name</td>
                                             <td class="col-sm-3">@Model.PreSchools[i].Address</td>
                                             <td class="col-sm-1">@Model.PreSchools[i].ContactNo</td>
-                                            <td class="col-sm-1">@website</td>
-                                            <td class="col-sm-2"><button type="button" class="btn btn-dark viewMore" data-rowId="@(Model.PreSchools[i].Id)"> View More</button></td>
+                                            <td class="col-sm-2">@website</td>
+                                            <td class="col-sm-2"><button type="button" class="btn btn-dark viewMore" style="float: right;" data-rowId="@(Model.PreSchools[i].Id)"> View More</button></td>
                                         </tr>
                                     }
                                 }
@@ -104,10 +104,20 @@
 
 @section scripts
 {
-   <script>
+    <script>
        //jQuery document Ready
        (function () {
-           $('.viewMore').on('click', function (e) {
+           $("#Area").select2();
+           $("#District").select2();
+
+
+           //$('.viewMore').on('click', function (e) {
+           //    var id = e.target.dataset["rowid"];
+           //    GetData(id);
+           //    $('#myModal').modal('show');
+           //})
+
+           $("#PreSchoolList tbody").on("click", ".viewMore", function (e) {
                var id = e.target.dataset["rowid"];
                GetData(id);
                $('#myModal').modal('show');
@@ -161,6 +171,8 @@
                    }
                }).done(function (data) {
                    resetTable();
+                   //console.log(data)
+                   createPreSchoolRow(data)
                })
            });
 
@@ -171,7 +183,7 @@
        function resetTable() {
            $('#PreSchoolList tbody').empty();
        }
-       
+
        function GetData(id) {
            $.ajax({
                type: "POST",
@@ -237,5 +249,23 @@
                }
            }
        }
-   </script>
+
+       function createPreSchoolRow(arr) {
+           var tBody = $('#PreSchoolList tbody');
+ 
+           var data;
+           var i;
+           for (i = 0; i < arr.length; i++) {
+               var tr = `<tr class="row">`;
+               var tds = `<td class="col-sm-1">${i + 1}</td><td class="col-sm-3">${arr[i].name}</td><td class="col-sm-3">${arr[i].address}</td>
+                          <td class="col-sm-1">${arr[i].contactNo}</td><td class="col-sm-2">${arr[i].website}</td>
+                          <td class="col-sm-2"><button type="button" class="btn btn-dark viewMore" style="float: right;" data-rowId="${arr[i].id}"> View More</button></td>`;
+               console.log(arr[i])
+               console.log(tds)
+               data += tr + tds + "</tr>";
+           }
+           tBody.html(data);
+       }
+
+    </script>
 }
