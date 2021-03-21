@@ -71,7 +71,7 @@ namespace KoolExplorer.Pages
 
             if (PreSchools.Count > 0)
             {
-                return Page();
+                return new JsonResult(PreSchools);
             }
 
             return new JsonResult("nil");
