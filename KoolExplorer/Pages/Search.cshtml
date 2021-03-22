@@ -210,7 +210,6 @@
            data = excludePreSchoolData(data);
            var tbody = "";
            var chkBoxProperty = ['SecondLanguageOffered', 'SparkCertified', 'ProvisionOfTransport', 'GovernmentSubsidy', 'GstRegistration'];
-
            var counter = 1;
            for (var key of Object.keys(data)) {
                tbody += "<tr>";
@@ -218,11 +217,15 @@
                tbody += "<th scope=\"row\">" + key + " </th>";
 
                if (chkBoxProperty.includes(key)) {
-                   var chkBoxValue = data[key] === null ? "no" : data[key].toLowerCase();
-                   tbody += "<th scope=\"row\" class=\"ow\"><input type=\"checkbox\" id=\"" + key  + "\" value=\"" + chkBoxValue + "\"></th>";
+                   console.log(data[key])
+                   var chkBoxValue = ""
+                   if (data[key] == null)
+                       data[key] = "na"
+                           //< input disabled type =\"checkbox\" id=\"" + key + "\"" + chkBoxValue + "
+                   tbody += "<th style=\"color:darkorange\" scope=\"row\" class=\"ow\">" + data[key] + "   </th>";
                }
                else {
-                   tbody += "<th scope=\"row\" class=\"ow\">" + data[key] + " </th>";
+                   tbody += "<th style=\"color:darkorange\" scope=\"row\" class=\"ow\">" + data[key] + " </th>";
                }
                tbody += "</tr>";
                counter++;

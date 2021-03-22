@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>@ViewData["Title"] - KoolExplorer</title>
+    <title>@ViewData["Title"] KoolExplorer</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
@@ -68,7 +68,7 @@
                 
                 @if (signInManager.IsSignedIn(User))
                 {
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">KoolExplorer</a>
+                    <a class="navbar-brand" asp-area="" asp-page="/Index" ><img src="~/img/logo3.png" width="120"/></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -76,39 +76,39 @@
                     <div class="navbar-collapse collapse ">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/About">About Us</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/About" style="font-size:18px;font-weight:normal;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">About Us</a>
                             </li>
                             @if (User.IsInRole("Parent"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="/ApplicationForm/Create">Application Form</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/ApplicationForm/Create" style="font-size:18px;font-weight:normal;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Application Form</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-page="/AcceptOffer/Index">Accept Offer</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/AcceptOffer/Index" style="font-size:18px;font-weight:normal;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Accept Offer</a>
                                 </li>
                             }
                             @if (User.IsInRole("Operator"))
                             {
                                 <li class="nav-item">
                                     @*Create operator review application razor page and link here*@
-                                    <a class="nav-link text-dark" asp-area="" asp-page="/AcceptOffer/Index">Review Application</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/AcceptOffer/Index" style="font-size:18px;font-weight:normal;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Review Application</a>
                                 </li>
                             }
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Search">Pre-Schools</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Search" style="font-size:18px;font-weight:normal;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Pre-Schools</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/UsefulLink">Useful Links</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/UsefulLink" style="font-size:18px;font-weight:normal;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Useful Links</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Contact">Contact Us</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Contact" style="font-size:18px;font-weight:normal;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Contact Us</a>
                             </li>
                         </ul>
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item">
                                 <form method="post" asp-page="/Login/Login" asp-page-handler="Logout">
-                                    <button type="submit" style="width:auto"
+                                    <button type="submit" style="width:auto;font-size:px;font-weight:normal;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
                                             class="nav-link btn btn-link py-0">
                                         Logout @User.Identity.Name
                                     </button>
@@ -129,7 +129,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-white">
         <div class="container">
             &copy; 2021 - KoolExplorer - All Rights Reserved - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>

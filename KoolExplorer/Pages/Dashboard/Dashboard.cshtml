@@ -85,7 +85,11 @@
                 options: {
                     responsive: true,
                     legend: {
-                        position: 'bottom'
+                        position: 'bottom',
+                        labels: {
+                            fontColor: "white",
+                            fontSize: 18
+                        }
                     }
                 }
         })
@@ -111,13 +115,16 @@
 
 
         var OrganisationChart = new Chart(ctx2, {
-            type: 'bar',
+            type: 'horizontalBar',
             responsive: true,
             data: {
                 datasets: [{
                     backgroundColor: hexColor2,
                     data: data2,
-                    label: ""
+                    label: "",
+                    borderColor: 'rgba(255, 255, 255 , 1)',
+                    borderWidth: 3
+                    
                 }],
 
                 // These labels appear in the legend and in the tooltips when hovering different arcs
@@ -127,14 +134,35 @@
             options: {
                 scales: {
                     xAxes: [{
-                        stacked: true
+                        stacked: true,
+                        ticks: {
+                            fontColor: "white",
+                            fontSize: 18
+                        },
+                        gridLines: {
+                            drawOnChartArea: true,
+                            lineWidth: 3,
+                            color: "rgba(0, 0, 0, 0.6)"
+                        },
                     }],
                     yAxes: [{
-                        stacked: true
+                        stacked: true,
+                        ticks: {
+                            fontColor: "white",
+                            fontSize: 18
+                        },
+                        gridLines: {
+                            drawOnChartArea: true,
+                            lineWidth: 3,
+                            color: "rgba(0, 0, 0, 0.6)"
+                        },
                     }]
                 },
                 legend: {
-                    position: 'top'
+                    display: false
+                },
+                tooltips: {
+                    enabled: false
                 }
             }
         })
@@ -178,7 +206,11 @@
             options: {
                 responsive: true,
                 legend: {
-                    position: 'bottom'
+                    position: 'bottom',
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                    }
                 }
             }
         })

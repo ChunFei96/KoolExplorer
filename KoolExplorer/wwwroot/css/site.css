@@ -54,13 +54,19 @@ button.accept-policy {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+   
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url('../img/home.png');
+    background-size: cover;
+    font-size: 1em !important;
+    color: white !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
 }
 .footer {
   position: absolute;
@@ -114,9 +120,10 @@ body {
 
 .num {
     width: 300px;
-    font: 125px arial sans-serif;
-    color: blue;
-    border-bottom: 3px solid blue;
+    font-size:125px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: orange;
+    border-bottom: 3px solid white;
 }
 
 /* Pre- School Search*/
@@ -141,5 +148,10 @@ body {
 }
 
 span.form-error {
-    color: red;
+    color: darkorange;
+}
+
+.table tr td {
+    font-size: 18px;
+    color:white
 }
