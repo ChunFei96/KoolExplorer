@@ -1,22 +1,22 @@
 ﻿@model Core.Domain.Form.GeneralInformationViewModel
 
 <section class="">
-    <div role="tabpanel" class="tab-pane fade show active" id="tab1">
-        <div class="form-row">
-            <div class="col-12 col-sm-6 form-group">
+    <div role="tabpanel" class="tab-pane fade show active" id="tab1" style="font-size:20px">
+        <div class="row" style="padding-bottom:30px;padding-top:30px">
+            <div class="col-md-6 form-group">
                 <label asp-for="Area"></label>
                 <select asp-for="Area" asp-items="@Model.AreaList" class="form-control select-area" data-validation="required">
                 </select>
                 <span asp-validation-for="Area" class="text-danger" style="color:red"></span>
 
             </div>
-            <div class="col-12 col-sm-6 form-group">
+            <div class="col-md-6 form-group">
                 <label asp-for="District"></label>
                 <select asp-for="District" asp-items="@Model.DistrictList" class="form-control select-area" data-validation="required">
                 </select>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row" style="padding-bottom:30px;">
             <div class="col-12 form-group">
                 <label asp-for="PreSchool"></label>
                 <select asp-for="PreSchool" asp-items="@Model.PreSchoolList" class="form-control select-area" data-validation="required">
@@ -24,7 +24,7 @@
 
             </div>
         </div>
-        <div class="form-row">
+        <div class="row" style="padding-bottom:30px;">
             <div class="col-12 col-sm-6 form-group">
                 <label asp-for="Programme"></label>
                 <select asp-for="Programme" asp-items="@Model.ProgrammeList" class="form-control select-area" data-validation="required">

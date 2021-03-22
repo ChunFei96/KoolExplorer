@@ -2,15 +2,15 @@
 
 
 <section class="">
-    <div role="tabpanel" class="tab-pane" id="tab3">
-        <div class="form-row">
+    <div role="tabpanel" class="tab-pane" id="tab3" style="font-size:20px">
+        <div class="row" style="padding-bottom:30px;padding-top:30px">
             <div class="col-12 form-group">
                 <label asp-for="Name"></label>
                 <input asp-for="Name" class="form-control" data-validation="required"/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row" style="padding-bottom:30px">
             <div class="col-12 col-sm-4 form-group">
                 <label asp-for="Citizenship"></label>
                 <select asp-for="Citizenship" asp-items="@Model.CitizenshipList" class="form-control select-area" data-validation="required">
@@ -27,14 +27,14 @@
             </div>
            
         </div>
-        <div class="form-row">
+        <div class="row" style="padding-bottom:30px">
             <div class="col-12 form-group">
                 <label asp-for="BirthCertNo"></label>
                 <input asp-for="BirthCertNo" class="form-control" data-validation="required"/>
                 <span asp-validation-for="BirthCertNo" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row" style="padding-bottom:30px">
             <div class="col-12 col-sm-6 form-group">
                 <label asp-for="DOB"></label>
                 <input asp-for="DOB" class="form-control DOBDateField" data-validation="required"/>

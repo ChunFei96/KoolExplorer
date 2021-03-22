@@ -52,9 +52,25 @@
                 <td>
                     @Html.DisplayFor(model => item.ChildsParticularsViewModel.Name)
                 </td>
-                <td>
-                    @Html.DisplayFor(model => item.ApplicationStatus)
-                </td>
+                @if(item.ApplicationStatus.ToString() == "Rejected")
+                {
+                     <td style="color:red">
+                        @Html.DisplayFor(model => item.ApplicationStatus)
+                     </td>
+                }
+                else if (item.ApplicationStatus.ToString() == "Accepted")
+                {
+                    <td style="color:#14e05c">
+                        @Html.DisplayFor(model => item.ApplicationStatus)
+                     </td>
+                }
+                else
+                {
+                    <td style="color:white">
+                        @Html.DisplayFor(model => item.ApplicationStatus)
+                     </td>
+                }
+
                 <td align="center">
                     @if (item.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Pending)
                     {

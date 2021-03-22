@@ -42,6 +42,7 @@ namespace Services.Register
             if (registerViewModel.RoleName.Equals("Operator"))
             {
                 var school = _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.Id == registerViewModel.PreSchoolId).FirstOrDefault();
+
                 _unitOfWork.ProcessedPreSchoolRepository.Update(school);
                 _unitOfWork.Commit();
             }
