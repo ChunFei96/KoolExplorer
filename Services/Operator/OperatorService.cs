@@ -78,7 +78,11 @@ namespace Services.Operator
 
         public virtual async Task<int> TotalApplications(string userId)
         {
-            return _unitOfWork.ProcessedPreSchoolRepository.Get(c=> c.OperatorId == userId).ToArray().Length;
+            var preschools = _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).Select(c => c.Id).ToList();
+            var general = _unitOfWork.GeneralInformationItemsRepository.Get(c => preschools.Contains(c.PreSchool.Value)).Select(c => c.Id).ToList();
+            var applications = _unitOfWork.ApplicationFormRepository.Get(c => general.Contains(c.generalInformationItemsId) && c.Status == Core.Expansion.Enum.Status.Active).ToList();
+            var count = applications.Count();
+            return count;
         }
 
         //TotalAccepted

@@ -48,7 +48,8 @@
     </div>
 </div>
 
-@section scripts{\ @*sweetalert*@
+@section scripts{
+     @*sweetalert*@
     <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
     <script>
 
@@ -64,7 +65,7 @@
 
             $("form").submit(function (event) {
                 console.log($("#PreSchool").val())
-                if ($("#PreSchool").val() == "") {
+                if ($("#RoleList").val() === "Operator" && $("#PreSchool").val() == "") {
                     swal("Please select your Pre School!")
                     return false
                 }

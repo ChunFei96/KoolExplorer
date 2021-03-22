@@ -44,6 +44,13 @@ namespace KoolExplorer.Pages.Dashboard
         public int TotalSubmissions;
         public int TotalAcceptances;
 
+        [BindProperty]
+        public Dictionary<string, int> genderRatio { get; set; }
+        [BindProperty]
+        public string ageRatio { get; set; }
+        [BindProperty]
+        public string citizenshipRatio { get; set; }
+
         public DashboardModel(IDashboardService dashboardService, IOperatorService operatorService, IParentService parentService, IHttpContextAccessor httpContextAccessor)
         {
             _dashboardService = dashboardService;
@@ -70,7 +77,9 @@ namespace KoolExplorer.Pages.Dashboard
             TotalPending = _OperatorService.TotalPending(_userID).Result.ToString();
 
 
-            //age, gender,race,citizen
+            genderRatio = _dashboardService.GetGenderRatio(_userID);
+            ageRatio = _dashboardService.GetAgeRatio(_userID);
+            citizenshipRatio = _dashboardService.GetCitizenshipRatio(_userID);
         }
     }
 }

@@ -32,50 +32,89 @@
                             <h1 class="num">@Model.TotalAcceptances</h1>
                             <h3>Application Acceptance(s)</h3>
                         </div>
+
+
                     }
-                    else if(User.IsInRole("Operator"))
+                    else if (User.IsInRole("Operator"))
                     {
                         <div>
                             <h1 class="num">@Model.TotalApplications</h1>
                             <div style="width:300px;float:left">
-                                <h3>TotalApplications</h3>
+                                <h3>Total Application(s) Submitted</h3>
                             </div>
                         </div>
                         <div id="centerDiv">
                             <h1 class="num">@Model.TotalAccepted</h1>
-                            <h3>TotalAccepted</h3>
+                            <h3>Total Offer(s) Accepted</h3>
                         </div>
                         <div id="leftDiv">
                             <h1 class="num">@Model.TotalPending</h1>
-                            <h3>TotalPending</h3>
+                            <h3>Total Offer(s) Pending</h3>
                         </div>
+
+
                     }
                 }
+               
 
+               
             </div>
+             @{
+                 if (User.IsInRole("Parent"))
+                 {
+                          <div style="padding-bottom:100px"></div>
+                    <div class="row">
+                        <div class="chart-container col-md-6 col-sm-6" width="600" height="400">
+                            <h1 style="text-align:center">Spark Certified Pre School</h1>
+                            <canvas id="SparkCertifiedChart"></canvas>
+                        </div>
+                        <div class="chart-container col-md-6 col-sm-6" width="1000" height="400">
+                            <h1 style="text-align:center">Services Offered</h1>
+                            <canvas id="ServiceOfferedChart"></canvas>
+
+                        </div>
+                    </div>
+                    <div style="padding-bottom:100px"></div>
+                    <div class="row">
+                        <div class="chart-container col-12" width="1000" height="400">
+                            <h1 style="text-align:center">Organisation Type</h1>
+                            <canvas id="OrganisationChart"></canvas>
+
+                        </div>
+                    </div>
+                    <div style="padding-bottom:100px"></div>
+                 }
+                 else
+                 {
+                                  <div style="padding-bottom:100px"></div>
+                <div class="row">
+                    <div class="chart-container col-md-6 col-sm-6" width="600" height="400">
+                        <h1 style="text-align:center">Gender Ratio</h1>
+                        <canvas id="GenderChart"></canvas>
+                    </div>
+                    <div class="chart-container col-md-6 col-sm-6" width="1000" height="400">
+                        <h1 style="text-align:center">Age Distribution</h1>
+                        <canvas id="AgeChart"></canvas>
+
+                    </div>
+                </div>
+
+                <div style="padding-bottom:100px"></div>
+                <div class="row">
+                    <div class="chart-container col-12" width="1000" height="400">
+                        <h1 style="text-align:center">Citizenship Distribution</h1>
+                        <canvas id="CitizenshipChart"></canvas>
+
+                    </div>
+                </div>
+                <div style="padding-bottom:100px"></div>
+                 }
+             }
+
         </div>
-        <div style="padding-bottom:100px"></div>
+        
 
-        <div class="row">
-            <div class="chart-container col-md-6 col-sm-6" width="600" height="400">
-                <h1 style="text-align:center">Spark Certified Pre School</h1>
-                <canvas id="SparkCertifiedChart"></canvas>
-            </div>
-            <div class="chart-container col-md-6 col-sm-6" width="1000" height="400">
-                <h1 style="text-align:center">Services Offered</h1>
-                <canvas id="ServiceOfferedChart"></canvas>
-
-            </div>
-        </div>
-        <div style="padding-bottom:100px"></div>
-        <div class="row">
-            <div class="chart-container col-12" width="1000" height="400">
-                <h1 style="text-align:center">Organisation Type</h1>
-                <canvas id="OrganisationChart"></canvas>
-
-            </div>
-        </div>
-        <div style="padding-bottom:100px"></div>
+       
     </div>
 
 </body>
@@ -84,26 +123,194 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-        var labels = ['Spark-Certified', 'Non Spark-Certified']
-        var data = [@Model.sparkCertifiedRatio["Yes"], @Model.sparkCertifiedRatio["No"]]
-        var hexColor = [
-            'rgba(59, 242, 173, 0.8)',
-            'rgba(231, 58, 92, 0.8)',
-        ]
-        var ctx = document.getElementById('SparkCertifiedChart').getContext('2d');
 
-        var SparkCertifiedChart = new Chart(ctx, {
-                type: 'pie',
+        @* Parent *@
+        @if(User.IsInRole("Parent"))
+        {
+            @: GenerateParentCharts();
+        }
+        else
+        {
+            @: GenerateOperatorCharts();
+        }
+
+        function GenerateParentCharts() {
+            var labels = ['Spark-Certified', 'Non Spark-Certified']
+            var data = [@Model.sparkCertifiedRatio["Yes"], @Model.sparkCertifiedRatio["No"]]
+            var hexColor = [
+                'rgba(59, 242, 173, 0.8)',
+                'rgba(231, 58, 92, 0.8)',
+            ]
+            var ctx = document.getElementById('SparkCertifiedChart').getContext('2d');
+
+            var SparkCertifiedChart = new Chart(ctx, {
+                    type: 'pie',
+                    responsive: true,
+                     data : {
+                        datasets: [{
+                            data: data,
+                            backgroundColor: hexColor,
+                        }],
+
+                        // These labels appear in the legend and in the tooltips when hovering different arcs
+                         labels: labels,
+                        weight:20
+                    },
+                    options: {
+                        responsive: true,
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                fontColor: "white",
+                                fontSize: 18
+                            }
+                        }
+                    }
+            })
+
+
+            var label2 = []
+            var data2 = []
+            var hexColor2 = [
+                'rgba(255, 99, 132, 0.65)',
+                'rgba(255, 159, 64, 0.65)',
+                'rgba(255, 205, 86, 0.65)',
+                'rgba(75, 192, 192, 0.65)',
+                'rgba(54, 162, 235, 0.65)',
+                'rgba(153, 102, 255, 0.65)',
+            ]
+            var ctx2 = document.getElementById('OrganisationChart').getContext('2d');
+
+            var collection = @Html.Raw(Model.organisationRatio)
+                $.each(collection, function (key, value) {
+                label2.push(key)
+                data2.push(value)
+            });
+
+
+            var OrganisationChart = new Chart(ctx2, {
+                type: 'horizontalBar',
                 responsive: true,
-                 data : {
+                data: {
                     datasets: [{
-                        data: data,
-                        backgroundColor: hexColor,
+                        backgroundColor: hexColor2,
+                        data: data2,
+                        label: "",
+                        borderColor: 'rgba(255, 255, 255 , 1)',
+                        borderWidth: 3
+
                     }],
 
                     // These labels appear in the legend and in the tooltips when hovering different arcs
-                     labels: labels,
-                    weight:20
+                    labels: label2,
+                },
+
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: true,
+                            ticks: {
+                                fontColor: "white",
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                drawOnChartArea: true,
+                                lineWidth: 3,
+                                color: "rgba(0, 0, 0, 0.6)"
+                            },
+                        }],
+                        yAxes: [{
+                            stacked: true,
+                            ticks: {
+                                fontColor: "white",
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                drawOnChartArea: true,
+                                lineWidth: 3,
+                                color: "rgba(0, 0, 0, 0.6)"
+                            },
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        enabled: false
+                    }
+                }
+            })
+
+            var label3 = []
+            var data3 = []
+            var hexColor3 = [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(255, 159, 64, 0.8)',
+                'rgba(255, 205, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(210, 58, 231, 0.8)',
+                'rgba(219, 231, 24, 0.8)',
+                'rgba(52, 138, 10, 0.8)',
+            ]
+            var ctx3 = document.getElementById('ServiceOfferedChart').getContext('2d');
+
+            var collection = @Html.Raw(Model.serviceOfferedRatio)
+                $.each(collection, function (key, value) {
+                label3.push(key)
+                data3.push(value)
+            });
+
+
+            var ServiceOfferedChart = new Chart(ctx3, {
+                type: 'pie',
+                responsive: true,
+                data: {
+                    datasets: [{
+                        backgroundColor: hexColor3,
+                        data: data3,
+                        label: ""
+                    }],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: label3,
+                },
+
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            fontColor: "white",
+                            fontSize: 18
+                        }
+                    }
+                }
+            })
+        }
+
+        function GenerateOperatorCharts() {
+            var labels4 = ['Male', 'Female']
+            var data4 = [@Model.genderRatio["Male"], @Model.genderRatio["Female"]]
+            var hexColor4 = [
+                'rgba(59, 242, 173, 0.8)',
+                'rgba(231, 58, 92, 0.8)',
+            ]
+            var ctx4 = document.getElementById('GenderChart').getContext('2d');
+
+            var GenderChart = new Chart(ctx4, {
+                type: 'pie',
+                responsive: true,
+                data: {
+                    datasets: [{
+                        data: data4,
+                        backgroundColor: hexColor4,
+                    }],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: labels4,
+                    weight: 20
                 },
                 options: {
                     responsive: true,
@@ -115,128 +322,129 @@
                         }
                     }
                 }
-        })
+            })
 
 
-        var label2 = []
-        var data2 = []
-        var hexColor2 = [
-            'rgba(255, 99, 132, 0.65)',
-            'rgba(255, 159, 64, 0.65)',
-            'rgba(255, 205, 86, 0.65)',
-            'rgba(75, 192, 192, 0.65)',
-            'rgba(54, 162, 235, 0.65)',
-            'rgba(153, 102, 255, 0.65)',
-        ]
-        var ctx2 = document.getElementById('OrganisationChart').getContext('2d');
+            var label5 = []
+            var data5 = []
+            var hexColor5 = [
+                'rgba(255, 99, 132, 0.65)',
+                'rgba(255, 159, 64, 0.65)',
+                'rgba(255, 205, 86, 0.65)',
+                'rgba(75, 192, 192, 0.65)',
+                'rgba(54, 162, 235, 0.65)',
+                'rgba(153, 102, 255, 0.65)',
+            ]
+            var ctx5 = document.getElementById('CitizenshipChart').getContext('2d');
 
-        var collection = @Html.Raw(Model.organisationRatio)
+            var collection = @Html.Raw(Model.citizenshipRatio)
             $.each(collection, function (key, value) {
-            label2.push(key)
-            data2.push(value)
-        });
+                label5.push(key)
+                data5.push(value)
+            });
 
 
-        var OrganisationChart = new Chart(ctx2, {
-            type: 'horizontalBar',
-            responsive: true,
-            data: {
-                datasets: [{
-                    backgroundColor: hexColor2,
-                    data: data2,
-                    label: "",
-                    borderColor: 'rgba(255, 255, 255 , 1)',
-                    borderWidth: 3
-                    
-                }],
-
-                // These labels appear in the legend and in the tooltips when hovering different arcs
-                labels: label2,
-            },
-
-            options: {
-                scales: {
-                    xAxes: [{
-                        stacked: true,
-                        ticks: {
-                            fontColor: "white",
-                            fontSize: 18
-                        },
-                        gridLines: {
-                            drawOnChartArea: true,
-                            lineWidth: 3,
-                            color: "rgba(0, 0, 0, 0.6)"
-                        },
-                    }],
-                    yAxes: [{
-                        stacked: true,
-                        ticks: {
-                            fontColor: "white",
-                            fontSize: 18
-                        },
-                        gridLines: {
-                            drawOnChartArea: true,
-                            lineWidth: 3,
-                            color: "rgba(0, 0, 0, 0.6)"
-                        },
-                    }]
-                },
-                legend: {
-                    display: false
-                },
-                tooltips: {
-                    enabled: false
-                }
-            }
-        })
-
-        var label3 = []
-        var data3 = []
-        var hexColor3 = [
-            'rgba(255, 99, 132, 0.8)',
-            'rgba(255, 159, 64, 0.8)',
-            'rgba(255, 205, 86, 0.8)',
-            'rgba(75, 192, 192, 0.8)',
-            'rgba(54, 162, 235, 0.8)',
-            'rgba(153, 102, 255, 0.8)',
-            'rgba(210, 58, 231, 0.8)',
-            'rgba(219, 231, 24, 0.8)',
-            'rgba(52, 138, 10, 0.8)',
-        ]
-        var ctx3 = document.getElementById('ServiceOfferedChart').getContext('2d');
-
-        var collection = @Html.Raw(Model.serviceOfferedRatio)
-            $.each(collection, function (key, value) {
-            label3.push(key)
-            data3.push(value)
-        });
-
-
-        var ServiceOfferedChart = new Chart(ctx3, {
-            type: 'pie',
-            responsive: true,
-            data: {
-                datasets: [{
-                    backgroundColor: hexColor3,
-                    data: data3,
-                    label: ""
-                }],
-
-                // These labels appear in the legend and in the tooltips when hovering different arcs
-                labels: label3,
-            },
-
-            options: {
+            var CitizenshipChart = new Chart(ctx5, {
+                type: 'bar',
                 responsive: true,
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        fontColor: "white",
-                        fontSize: 18
+                data: {
+                    datasets: [{
+                        backgroundColor: hexColor5,
+                        data: data5,
+                        label: "",
+                        borderColor: 'rgba(255, 255, 255 , 1)',
+                        borderWidth: 3
+
+                    }],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: label5,
+                },
+
+                options: {
+                    scales: {
+                        xAxes: [{
+                            stacked: true,
+                            ticks: {
+                                fontColor: "white",
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                drawOnChartArea: true,
+                                lineWidth: 3,
+                                color: "rgba(0, 0, 0, 0.6)"
+                            },
+                        }],
+                        yAxes: [{
+                            stacked: true,
+                            ticks: {
+                                fontColor: "white",
+                                fontSize: 18,
+                                stepSize: 1
+                            },
+                            gridLines: {
+                                drawOnChartArea: true,
+                                lineWidth: 3,
+                                color: "rgba(0, 0, 0, 0.6)"
+                            },
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        enabled: false
                     }
                 }
-            }
-        })
+            })
 
+            var label6 = []
+            var data6 = []
+            var hexColor6 = [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(255, 159, 64, 0.8)',
+                'rgba(255, 205, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(210, 58, 231, 0.8)',
+                'rgba(219, 231, 24, 0.8)',
+                'rgba(52, 138, 10, 0.8)',
+            ]
+            var ctx6 = document.getElementById('AgeChart').getContext('2d');
+
+            var collection = @Html.Raw(Model.ageRatio)
+            $.each(collection, function (key, value) {
+                label6.push(key + " years old")
+                data6.push(value)
+            });
+
+
+            var AgeChart = new Chart(ctx6, {
+                type: 'pie',
+                responsive: true,
+                data: {
+                    datasets: [{
+                        backgroundColor: hexColor6,
+                        data: data6,
+                        label: ""
+                    }],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: label6,
+                },
+
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            fontColor: "white",
+                            fontSize: 18
+                        }
+                    }
+                }
+            }) 
+        }
     });
 </script>

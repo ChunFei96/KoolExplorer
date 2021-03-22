@@ -15,6 +15,8 @@ namespace Services.Operator
         Task<int> TotalApplications(string userId);
         Task<int> TotalAccepted(string userId);
         Task<int> TotalPending(string userId);
+
+        
      
     }
 }

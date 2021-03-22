@@ -86,5 +86,107 @@ namespace Services.Dashboard
 
             return JsonConvert.SerializeObject(dict);
         }
+        public Dictionary<string, int> GetGenderRatio(string userId)
+        {
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            dict.Add("Male", 0);
+            dict.Add("Female", 0);
+
+            try
+            {
+                var preschools = _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).Select(c => c.Id).ToList();
+                var general = _unitOfWork.GeneralInformationItemsRepository.Get(c => preschools.Contains(c.PreSchool.Value)).Select(c => c.Id).ToList();
+                var applications = _unitOfWork.ApplicationFormRepository.Get(c => general.Contains(c.generalInformationItemsId) && c.Status == Core.Expansion.Enum.Status.Active).ToList();
+                if(applications != null && applications.Count() > 0)
+                {
+                    foreach(var app in applications)
+                    {
+                        var child = _unitOfWork.ChildParticularItemsRepository.Get(c => c.Id == app.childParticularItemsId).FirstOrDefault();
+                        dict[child.Gender.Value.ToString()] += 1;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+            return dict;
+        }
+
+        public string GetAgeRatio(string userId)
+        {
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            List<int> Ages = new List<int>();
+            try
+            {
+                var preschools = _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).Select(c => c.Id).ToList();
+                var general = _unitOfWork.GeneralInformationItemsRepository.Get(c => preschools.Contains(c.PreSchool.Value)).Select(c => c.Id).ToList();
+                var applications = _unitOfWork.ApplicationFormRepository.Get(c => general.Contains(c.generalInformationItemsId) && c.Status == Core.Expansion.Enum.Status.Active).ToList();
+                if (applications != null && applications.Count() > 0)
+                {
+                    foreach (var app in applications)
+                    {
+                        var child = _unitOfWork.ChildParticularItemsRepository.Get(c => c.Id == app.childParticularItemsId).FirstOrDefault();
+
+                        var today = DateTime.Today;
+
+                        // Calculate the age.
+                        var Age = today.Year - DateTime.Parse(child.DOB).Year;
+
+                        // Go back to the year in which the person was born in case of a leap year
+                        if (DateTime.Parse(child.DOB).Date > today.AddYears(-Age)) Age--;
+
+                        Ages.Add(Age);
+                    }
+
+                    if(Ages != null && Ages.Count() > 0)
+                    {
+                        foreach(var age in Ages)
+                        {
+                            if (dict.ContainsKey(age))
+                                dict[age] += 1;
+                            else
+                                dict.Add(age, 1);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+            return JsonConvert.SerializeObject(dict);
+        }
+
+        public string GetCitizenshipRatio(string userId)
+        {
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            dict.Add("Foreigner", 0);
+            dict.Add("PR", 0);
+            dict.Add("Singaporean", 0);
+            try
+            {
+                var preschools = _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).Select(c => c.Id).ToList();
+                var general = _unitOfWork.GeneralInformationItemsRepository.Get(c => preschools.Contains(c.PreSchool.Value)).Select(c => c.Id).ToList();
+                var applications = _unitOfWork.ApplicationFormRepository.Get(c => general.Contains(c.generalInformationItemsId) && c.Status == Core.Expansion.Enum.Status.Active).ToList();
+                if (applications != null && applications.Count() > 0)
+                {
+                    foreach (var app in applications)
+                    {
+                        var child = _unitOfWork.ChildParticularItemsRepository.Get(c => c.Id == app.childParticularItemsId).FirstOrDefault();
+                        Core.Expansion.Enum.Citizenship citizenship= (Core.Expansion.Enum.Citizenship)Convert.ToInt32(child.Citizenship);
+                        dict[citizenship.ToString()] += 1;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+            return JsonConvert.SerializeObject(dict);
+        }
     }
 }
