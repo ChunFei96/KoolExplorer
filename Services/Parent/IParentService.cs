@@ -18,12 +18,12 @@ namespace Services.Parent
         //Task<string> Search(string encId);
         //Task<SearchModel> Search(SearchModel model);
 
-        void SubmitApplicationForm(AdmissionModel admissionModel);
+        Task SubmitApplicationFormAsync(AdmissionModel admissionModel);
         Task<AdmissionModel> EditApplicationForm(string encId);
-        void EditApplicationForm(AdmissionModel model);
+        Task EditApplicationForm(AdmissionModel model);
         Task<List<AdmissionModel>> ViewAllApplication(string userId);
-        void AcceptApplicationForm(string encId);
-        void RejectApplicationForm(string encId);
+        Task AcceptApplicationForm(string encId);
+        Task RejectApplicationForm(string encId);
 
         //Functions to display the total in Dashboard
         Task<int> getTotalSchools();

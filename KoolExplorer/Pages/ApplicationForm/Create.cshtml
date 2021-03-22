@@ -297,7 +297,7 @@
 
             , onFinishing: function (event, currentIndex) {
                 if (!$("#acknowledge").is(":checked") || !$("#agree1").is(":checked"))
-                    alert("Please make sure you have agreed with the Term & Conditions!")
+                    swal("Please make sure you have agreed with the Term & Conditions!", "", "");
                 else
                     $("form").submit();
 

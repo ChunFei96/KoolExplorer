@@ -16,7 +16,6 @@ using Services.Parent;
 
 namespace KoolExplorer.Pages.ApplicationForm
 {
-    [Authorize(Roles = "Parent")]
     public class FormModel : PageModel
     {
         [BindProperty]
@@ -65,7 +64,7 @@ namespace KoolExplorer.Pages.ApplicationForm
                 formViewModel.ParentsParticularsViewModel = parentsParticulars;
                 formViewModel.ChildsParticularsViewModel = childsParticulars;
 
-                _parentService.SubmitApplicationForm(formViewModel);
+                _parentService.SubmitApplicationFormAsync(formViewModel);
                 return new RedirectToPageResult("../AcceptOffer/Index");
             }
             return Page();
