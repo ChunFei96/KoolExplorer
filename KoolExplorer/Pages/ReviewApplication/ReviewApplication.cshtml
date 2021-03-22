@@ -1,0 +1,194 @@
+﻿@page
+@model KoolExplorer.Pages.ReviewApplication.ReviewApplicationModel
+@{
+    ViewData["Title"] = "Application Information";
+
+    var General = Model.formViewModel.GeneralInformationViewModel;
+    var Parent = Model.formViewModel.ParentsParticularsViewModel;
+    var Child = Model.formViewModel.ChildsParticularsViewModel;
+
+    var AreaList = General.AreaList.Where(c => c.Value == General.Area.ToString()).FirstOrDefault();
+    var DistrictList = General.DistrictList.Where(c => c.Value == General.District.ToString()).FirstOrDefault();
+    var PreSchoolList = General.PreSchoolList.Where(c => c.Value == General.PreSchool.ToString()).FirstOrDefault();
+    var ProgrammeList = General.ProgrammeList.Where(c => c.Value == General.Programme.ToString()).FirstOrDefault();
+}
+
+<div class="">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+<div class="sectionBorder">
+    <h1 class="section-header">General Information</h1>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="Area">Area</label>
+            <input type="text" class="form-control" id="" value="@AreaList.Text">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="District">District</label>
+            <input type="text" class="form-control" id="" value="@DistrictList.Text">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="preschool">Pre-School</label>
+            <input type="text" class="form-control" id="" value="@PreSchoolList.Text">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="Programme">Programme</label>
+            <input type="text" class="form-control" id="" value="@ProgrammeList.Text">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="startperiod">Start Period</label>
+            <input type="text" class="form-control" id="" value="@General.StartPeriod">
+        </div>
+    </div>
+</div>
+<div class="sectionBorder">
+    <h1 class="section-header">Parents' Particulars</h1>
+    <div class="form-row separator_line">
+        <h4>Parent/Guardian 1</h4>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="name1">Name</label>
+            <input type="text" class="form-control" id="" value="@Parent.Name1">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="passport1">Passport No.</label>
+            <input type="text" class="form-control" id="" value="@Parent.PassportNo1">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="mobile1">Mobile No.</label>
+            <input type="text" class="form-control" id="" value="@Parent.MobileNo1">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email1">Email</label>
+            <input type="text" class="form-control" id="" value="@Parent.Email1">
+        </div>
+    </div>
+    <div class="form-row separator_line">
+        <h4>Parent/Guardian 2</h4>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="name2">Name</label>
+            <input type="text" class="form-control" id="" value="@Parent.Name2">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="passport2">Passport No.</label>
+            <input type="text" class="form-control" id="" value="@Parent.PassportNo2">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="mobile2">Mobile No.</label>
+            <input type="text" class="form-control" id="" value="@Parent.MobileNo2">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email2">Email</label>
+            <input type="text" class="form-control" id="" value="@Parent.Email2">
+        </div>
+    </div>
+    <div class="form-row separator_line">
+        <h4>Others Information</h4>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="hometel">Home Tel No.</label>
+            <input type="text" class="form-control" id="" value="@Parent.HomeTelNo">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="streeName">Street Name</label>
+            <input type="text" class="form-control" id="" value="@Parent.StreetName">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="BlockNo">Block No.</label>
+            <input type="text" class="form-control" id="" value="@Parent.BlockNo">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="FloorNo">Floor No.</label>
+            <input type="text" class="form-control" id="" value="@Parent.FloorNo">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="UnitNo">Unit No.</label>
+            <input type="text" class="form-control" id="" value="@Parent.UnitNo">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="BuildingName">Building Name</label>
+            <input type="text" class="form-control" id="" value="@Parent.BuildingName">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="PostalCode">Postal Code</label>
+            <input type="text" class="form-control" id="" value="@Parent.PostalCode">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Income">Household Income</label>
+            <input type="text" class="form-control" id="" value="@Parent.HouseholdIncome">
+        </div>
+    </div>
+</div>
+
+<div class="sectionBorder">
+    <h1 class="section-header">Child's Particulars</h1>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="childName">Name </label>
+            <input type="text" class="form-control" id="" value="@Child.Name">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="Citizenship">Citizenship</label>
+            <input type="text" class="form-control" id="" value="@Child.Citizenship">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="Race">Race</label>
+            <input type="text" class="form-control" id="" value="@Child.Race">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="childBC">Birth Cert Number</label>
+            <input type="text" class="form-control" id="" value="@Child.BirthCertNo">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="childDOB">Date of Birth</label>
+            <input type="text" class="form-control" id="" value="@Child.DOB">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="childGender">Gender</label>
+            <input type="text" class="form-control" id="" value="@Child.Gender">
+        </div>
+    </div>
+</div>
+
+
+
+<h2 style="margin-left: 473px;">Approval</h2>
+<div class="separator_line"></div>
+<div class="form-row">
+    <form method="post" asp-page="../ReviewApplication/ReviewApplication" asp-page-handler="Post" style="width: 100%;">
+        <div class="form-group col-md-2 offset-5">
+            <button type="submit" name="button" class="btn btn btn-success" value="A">Accept</button>
+            <button type="submit" name="button" class="btn btn-danger" value="R">Reject</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    .sectionBorder {
+        border: 2px solid black;
+        padding: 25px;
+        /*background: url("img/about_us.jpeg");*/
+        background-color: #dedede;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .form-row {
+        width: 100%;
+    }
+
+    .separator_line {
+        border-bottom-style: solid;
+        border-bottom-color: #1c87c9;
+        border-bottom-width: 5px;
+    }
+
+
+</style>

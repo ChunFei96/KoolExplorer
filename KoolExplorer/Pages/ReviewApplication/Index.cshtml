@@ -1,0 +1,96 @@
+﻿@page
+@model KoolExplorer.Pages.ReviewApplication.ReviewAppModel
+@{
+}
+
+<h1>Review Application</h1>
+
+<div class="table-responsive container">
+    <table class="table table- table_list_font table-hover table-condensed " id="ApplicationList">
+        <thead class="thead-dark">
+            <tr class="row">
+                <th class="" hidden>Application No</th>
+                <th class="col-sm-2">No</th>
+                <th class="col-sm-3">Parent Name</th>
+                <th class="col-sm-3">Child Name</th>
+                <th class="col-sm-2">Submission Date</th>
+                <th class="col-sm-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Applications != null && Model.Applications.Count > 0)
+                {
+                    for (var i = 0; i < Model.Applications.Count; i++)
+                    {
+
+                        <tr class="row">
+                            <td class="" hidden>@(Model.Applications[i].Id)</td>
+                            <td class="col-sm-2">@(Model.Applications[i].applicationNo)</td>
+                            <td class="col-sm-3">@Model.Applications[i].parentName</td>
+                            <td class="col-sm-3">@Model.Applications[i].childName</td>
+                            <td class="col-sm-2">@Model.Applications[i].submissionDate</td>
+                            @*<td class="col-sm-2"><button type="button" class="btn btn-dark viewMore" style="" data-rowId="@(Model.Applications[i].Id)"> Review</button></td>*@
+                            <td class="col-sm-2">
+                                <form method="post" asp-page="../ReviewApplication/ReviewApplication" asp-route-id="@(Model.Applications[i].Id)" asp-page-handler="Review">
+                                    <button type="submit" style="width:auto"
+                                            class="nav-link btn py-0 btn-dark">
+                                        Edit
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td>No Data Available</td></tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="max-width: 1450px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel" style="font-weight: bold;">Application Information</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover" id="preSchoolTable">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Property Name</th>
+                            <th scope="col">Property Value</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" style="background-color: #f26b6b;" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script>
+        (function () {
+
+
+            $("#ApplicationList tbody").on("click", ".viewMore", function (e) {
+                var id = e.target.dataset["rowid"];
+                //GetData(id);
+                $('#myModal').modal('show');
+            })
+
+
+
+        })();
+    </script>
+}

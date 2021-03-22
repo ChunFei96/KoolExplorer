@@ -21,6 +21,7 @@ using Services.GovAPI;
 using Services.Login;
 using Services.Parent;
 using Services.Register;
+using Services.Operator;
 
 namespace KoolExplorer
 {
@@ -45,6 +46,7 @@ namespace KoolExplorer
             services.AddScoped<IDropDownService, DropDownService>();
             services.AddScoped<IFilterService, FilterService>();
             services.AddScoped<IDashboardService, DashboardService>();
+            services.AddScoped<IOperatorService, OperatorService>();
 
             services.AddDbContext<EFDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
