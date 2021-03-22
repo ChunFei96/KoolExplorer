@@ -82,16 +82,24 @@ namespace Services.Operator
         }
 
         //TotalAccepted
-        //public virtual async Task<int> TotalAccepted(string createdBy)
-        //{
-        //    return _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).ToArray().Length;
-        //}
+        public virtual async Task<int> TotalAccepted(string userId)
+        {
+            var preschools = _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).Select(c=> c.Id).ToList();
+            var general = _unitOfWork.GeneralInformationItemsRepository.Get(c => preschools.Contains(c.PreSchool.Value)).Select(c => c.Id).ToList();
+            var applications = _unitOfWork.ApplicationFormRepository.Get(c => general.Contains(c.generalInformationItemsId) && c.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Accepted).ToList();
+            var count = applications.Count();
+            return count;
+        }
 
-        ////TotalPending
-        //public virtual async Task<int> TotalPending(string createdBy)
-        //{
-        //    return _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).ToArray().Length;
-        //}
+        //TotalPending
+        public virtual async Task<int> TotalPending(string userId)
+        {
+            var preschools = _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).Select(c => c.Id).ToList();
+            var general = _unitOfWork.GeneralInformationItemsRepository.Get(c => preschools.Contains(c.PreSchool.Value)).Select(c => c.Id).ToList();
+            var applications = _unitOfWork.ApplicationFormRepository.Get(c => general.Contains(c.generalInformationItemsId) && c.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Pending).ToList();
+            var count = applications.Count();
+            return count;
+        }
 
 
     }

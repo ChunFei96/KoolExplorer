@@ -63,11 +63,11 @@ namespace KoolExplorer.Pages.Dashboard
             TotalSubmissions = _parentService.getTotalSubmissions(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)).Result;
             TotalAcceptances = _parentService.getTotalAcceptances(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)).Result;
 
-            var kkk = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var aa = _OperatorService.TotalApplications(kkk);
-            TotalApplications = aa.ToString(); 
-            TotalAccepted = "1";
-            TotalPending = "1";
+            var _userID = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            TotalApplications = _OperatorService.TotalApplications(_userID).Result.ToString(); 
+            TotalAccepted = _OperatorService.TotalAccepted(_userID).Result.ToString();
+            TotalPending = _OperatorService.TotalPending(_userID).Result.ToString();
 
 
             //age, gender,race,citizen

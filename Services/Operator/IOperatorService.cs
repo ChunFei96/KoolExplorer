@@ -13,5 +13,8 @@ namespace Services.Operator
         Task<List<ReviewViewModel>> RetrieveApplications(int PreSchoolID);
         void ReviewApplication(int id, string action);
         Task<int> TotalApplications(string userId);
+        Task<int> TotalAccepted(string userId);
+        Task<int> TotalPending(string userId);
+     
     }
 }

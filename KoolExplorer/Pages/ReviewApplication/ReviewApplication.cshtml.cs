@@ -62,6 +62,12 @@ namespace KoolExplorer.Pages.ReviewApplication
             generalInformationViewModel.PreSchoolList = await _dropDownService.GetDropDownByType("PreSchool");
             generalInformationViewModel.ProgrammeList = await _dropDownService.GetDropDownByType("Programme");
 
+            childsParticulars.CitizenshipList = new List<SelectListItem>() { new SelectListItem() { Value = "", Text = "Please select a Citizenship" } };
+            childsParticulars.CitizenshipList.AddRange(await _dropDownService.GetDropDownByType("Citizenship"));
+
+            childsParticulars.RaceList = new List<SelectListItem>() { new SelectListItem() { Value = "", Text = "Please select a Race" } };
+            childsParticulars.RaceList.AddRange(await _dropDownService.GetDropDownByType("Race"));
+
             var maa = 0;
         }
 
