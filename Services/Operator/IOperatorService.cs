@@ -10,7 +10,7 @@ namespace Services.Operator
 {
     public interface IOperatorService
     {
-        Task<List<ReviewViewModel>> RetrieveApplications(int PreSchoolID);
+        Task<List<ReviewViewModel>> RetrieveApplications(string userId);
         void ReviewApplication(int id, string action);
         Task<int> TotalApplications(string userId);
         Task<int> TotalAccepted(string userId);

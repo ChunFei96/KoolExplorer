@@ -24,31 +24,54 @@ namespace Services.Operator
             _mapper = mapper;
         }
 
-        public virtual async Task<List<ReviewViewModel>> RetrieveApplications(int PreSchoolID)
+        public virtual async Task<List<ReviewViewModel>> RetrieveApplications(string userId)
         {
             var results = new List<ReviewViewModel>();
-            var data = _unitOfWork.GeneralInformationItemsRepository.Get(c => c.PreSchool == PreSchoolID).Select(m => m.Id).ToList();
 
-            if (data != null)
+            var preschools = _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).Select(c => c.Id).ToList();
+            var general = _unitOfWork.GeneralInformationItemsRepository.Get(c => preschools.Contains(c.PreSchool.Value)).Select(c => c.Id).ToList();
+            var applications = _unitOfWork.ApplicationFormRepository.GetAndInclude(c => general.Contains(c.generalInformationItemsId) && 
+            c.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Pending, null,
+                    x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems).ToList();
+
+   
+            var counter = 1;
+            foreach (var i in applications)
             {
-                var applications = _unitOfWork.ApplicationFormRepository.GetAndInclude(x => data.Contains(x.Id), null,
-                    x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems);
-
-                var counter = 1;
-                foreach(var i in applications)
-                {
-                    ReviewViewModel reviewViewModel = new ReviewViewModel();
-                    reviewViewModel.Id = i.Id;
-                    reviewViewModel.applicationNo = counter.ToString();
-                    reviewViewModel.parentName = i.parentParticularItems.ParentName1;
-                    reviewViewModel.childName = i.childParticularItems.ChildName;
-                    reviewViewModel.submissionDate = i.CreatedTimeStamp.ToShortDateString();
-                    reviewViewModel.applicationStatus = i.ApplicationStatus.ToString();
-                    results.Add(reviewViewModel);
-                    counter++;
-                }
+                ReviewViewModel reviewViewModel = new ReviewViewModel();
+                reviewViewModel.Id = i.Id;
+                reviewViewModel.applicationNo = counter.ToString();
+                reviewViewModel.parentName = i.parentParticularItems.ParentName1;
+                reviewViewModel.childName = i.childParticularItems.ChildName;
+                reviewViewModel.submissionDate = i.CreatedTimeStamp.ToShortDateString();
+                reviewViewModel.applicationStatus = i.ApplicationStatus.ToString();
+                results.Add(reviewViewModel);
+                counter++;
             }
-            
+
+
+            //var data = _unitOfWork.GeneralInformationItemsRepository.Get(c => c.PreSchool == PreSchoolID).Select(m => m.Id).ToList();
+
+            //if (data != null)
+            //{
+            //    var applications = _unitOfWork.ApplicationFormRepository.GetAndInclude(x => data.Contains(x.Id), null,
+            //        x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems);
+
+            //    var counter = 1;
+            //    foreach(var i in applications)
+            //    {
+            //        ReviewViewModel reviewViewModel = new ReviewViewModel();
+            //        reviewViewModel.Id = i.Id;
+            //        reviewViewModel.applicationNo = counter.ToString();
+            //        reviewViewModel.parentName = i.parentParticularItems.ParentName1;
+            //        reviewViewModel.childName = i.childParticularItems.ChildName;
+            //        reviewViewModel.submissionDate = i.CreatedTimeStamp.ToShortDateString();
+            //        reviewViewModel.applicationStatus = i.ApplicationStatus.ToString();
+            //        results.Add(reviewViewModel);
+            //        counter++;
+            //    }
+            //}
+
             return results;
         }
 
@@ -73,15 +96,16 @@ namespace Services.Operator
                 _unitOfWork.ApplicationFormRepository.Update(application);
                 _unitOfWork.Commit();
             }
-            var maa = 0;
         }
 
         public virtual async Task<int> TotalApplications(string userId)
         {
+
             var preschools = _unitOfWork.ProcessedPreSchoolRepository.Get(c => c.OperatorId == userId).Select(c => c.Id).ToList();
             var general = _unitOfWork.GeneralInformationItemsRepository.Get(c => preschools.Contains(c.PreSchool.Value)).Select(c => c.Id).ToList();
             var applications = _unitOfWork.ApplicationFormRepository.Get(c => general.Contains(c.generalInformationItemsId) && c.Status == Core.Expansion.Enum.Status.Active).ToList();
             var count = applications.Count();
+
             return count;
         }
 
