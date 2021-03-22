@@ -65,7 +65,7 @@ namespace KoolExplorer.Pages.Dashboard
 
             var kkk = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var aa = _OperatorService.TotalApplications(kkk);
-            TotalApplications = "0"; 
+            TotalApplications = aa.ToString(); 
             TotalAccepted = "1";
             TotalPending = "1";
 
