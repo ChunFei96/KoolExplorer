@@ -106,16 +106,14 @@
 {
     <script>
        //jQuery document Ready
-       (function () {
-           $("#Area").select2();
-           $("#District").select2();
+        var schoolList;
 
+        (function () {
+           
+           //$("#Area").select2();
+           //$("#District").select2();
 
-           //$('.viewMore').on('click', function (e) {
-           //    var id = e.target.dataset["rowid"];
-           //    GetData(id);
-           //    $('#myModal').modal('show');
-           //})
+            initPreSchoolList();
 
            $("#PreSchoolList tbody").on("click", ".viewMore", function (e) {
                var id = e.target.dataset["rowid"];
@@ -124,34 +122,44 @@
            })
 
            $("#Area").change(function () {
-               $.ajax({
-                   type: "POST",
-                   url: '/ApplicationForm/Filter?handler=Filter',
-                   beforeSend: function (xhr) {
-                       xhr.setRequestHeader("XSRF-TOKEN",
-                           $('input:hidden[name="__RequestVerificationToken"]').val());
-                   },
-                   data: JSON.stringify({
-                       Target: "District",
-                       Value: $("#Area option:selected").text(),
-                   }),
-                   contentType: "application/json; charset=utf-8",
-                   dataType: "json",
-                   success: function (response) {
-                       $("#District").empty();
+               var selected = this.options[this.selectedIndex].text;
+               //console.log(selected);
 
-                       var s = '<option value="-1">Please Select a District</option>';
-                       for (var i = 0; i < response.length; i++) {
-                           s += '<option value="' + response[i].value + '">' + response[i].text + '</option>';
+               if (selected === 'Please select an Area') {
+                   $("#PreSchoolList tbody").html(schoolList);
+
+               }
+               else {
+                   //resetTable();
+                   $.ajax({
+                       type: "POST",
+                       url: '/ApplicationForm/Filter?handler=Filter',
+                       beforeSend: function (xhr) {
+                           xhr.setRequestHeader("XSRF-TOKEN",
+                               $('input:hidden[name="__RequestVerificationToken"]').val());
+                       },
+                       data: JSON.stringify({
+                           Target: "District",
+                           Value: $("#Area option:selected").text(),
+                       }),
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       success: function (response) {
+                           $("#District").empty();
+
+                           var s = '<option value="-1">Please Select a District</option>';
+                           for (var i = 0; i < response.length; i++) {
+                               s += '<option value="' + response[i].value + '">' + response[i].text + '</option>';
+                           }
+                           $("#District").html(s);
+                       },
+                       failure: function (response) {
+                           alert(response);
                        }
-                       $("#District").html(s);
-                   },
-                   failure: function (response) {
-                       alert(response);
-                   }
-               }).done(function (data) {
-                   console.log(data.result);
-               })
+                   }).done(function (data) {
+                       console.log(data.result);
+                   })
+               }
            });
 
            $("#District").change(function () {
@@ -178,7 +186,12 @@
 
 
 
-       })();
+        })();
+
+        function initPreSchoolList() {
+            schoolList = $('#PreSchoolList tbody').html();
+            //console.log(schoolList);
+        }
 
        function resetTable() {
            $('#PreSchoolList tbody').empty();

@@ -11,6 +11,8 @@
     var DistrictList = General.DistrictList.Where(c => c.Value == General.District.ToString()).FirstOrDefault();
     var PreSchoolList = General.PreSchoolList.Where(c => c.Value == General.PreSchool.ToString()).FirstOrDefault();
     var ProgrammeList = General.ProgrammeList.Where(c => c.Value == General.Programme.ToString()).FirstOrDefault();
+    var Race = Child.RaceList.Where(c => c.Value == Child.Race.ToString()).FirstOrDefault();
+    var Citizenship = Child.CitizenshipList.Where(c => c.Value == Child.Citizenship.ToString()).FirstOrDefault();
 }
 
 <div class="">
@@ -134,11 +136,11 @@
         </div>
         <div class="form-group col-md-4">
             <label for="Citizenship">Citizenship</label>
-            <input type="text" class="form-control" id="" value="@Child.Citizenship">
+            <input type="text" class="form-control" id="" value="@Citizenship.Text">
         </div>
         <div class="form-group col-md-4">
             <label for="Race">Race</label>
-            <input type="text" class="form-control" id="" value="@Child.Race">
+            <input type="text" class="form-control" id="" value="@Race.Text">
         </div>
         <div class="form-group col-md-4">
             <label for="childBC">Birth Cert Number</label>
