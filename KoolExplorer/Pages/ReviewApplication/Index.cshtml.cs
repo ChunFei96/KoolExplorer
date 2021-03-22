@@ -33,7 +33,8 @@ namespace KoolExplorer.Pages.ReviewApplication
 
         public async Task OnGet()
         {
-            Applications = await _OperatorService.RetrieveApplications(60);
+            var _userID = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Applications = await _OperatorService.RetrieveApplications(_userID);
             var maa = 0;
         }
     }

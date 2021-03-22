@@ -36,7 +36,9 @@ namespace KoolExplorer.Pages.Login
             registerModel = new RegisterViewModel();
 
             PreSchoolList = new List<SelectListItem>() { new SelectListItem() { Value = "", Text = "Please select a Pre-School" } };
-            PreSchoolList.AddRange(await _dropDownService.GetDropDownByType("PreSchool"));
+
+          
+            PreSchoolList.AddRange(await _dropDownService.GetDropDownByType("Register"));
         }
 
         public async Task<IActionResult> OnPostAsync()

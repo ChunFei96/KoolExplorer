@@ -23,6 +23,9 @@ namespace Services.DropDown
                 case "PreSchool":
                     List<ProcessedPreSchool> preSchooldropdownList = _unitOfWork.ProcessedPreSchoolRepository.Get(p => p.Status == Core.Expansion.Enum.Status.Active).ToList();
                     return new SelectList(preSchooldropdownList, "Id", "Name").ToList();
+                case "Register":
+                    List<ProcessedPreSchool> preSchdropdownList = _unitOfWork.ProcessedPreSchoolRepository.Get(p => p.Status == Core.Expansion.Enum.Status.Active && p.OperatorId == null).ToList();
+                    return new SelectList(preSchdropdownList, "Id", "Name").ToList();
                 case "Programme":
                     List<Programme> programmeDropdownList = _unitOfWork.ProgrammeRepository.Get(p => p.Status == Core.Expansion.Enum.Status.Active).ToList();
                     return new SelectList(programmeDropdownList, "Id", "Description").ToList();
