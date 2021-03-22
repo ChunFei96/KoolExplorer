@@ -294,8 +294,10 @@
             }
 
             , onFinishing: function (event, currentIndex) {
-
-                $("form").submit();
+                if (!$("#acknowledge").is(":checked") || !$("#agree1").is(":checked"))
+                    swal("Please make sure you have agreed with the Term & Conditions!", "", "");
+                else
+                    $("form").submit();
 
             }
 

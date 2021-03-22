@@ -8,7 +8,7 @@ namespace Core
     public class BaseEntity : IEntity
     {
         public int Id { get; set; }
-        public Status? Status { get; set; }
+        public Status? Status { get; set; } = Expansion.Enum.Status.Active;
         public string CreatedBy { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime CreatedTimeStamp { get; set; } = DateTime.Now;

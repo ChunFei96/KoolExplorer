@@ -23,7 +23,7 @@ namespace KoolExplorer.Pages.Login
 
         public void OnGetAsync()
         {
-
+            registerModel = new RegisterViewModel();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -34,7 +34,7 @@ namespace KoolExplorer.Pages.Login
                 if (resultModel.identityResult.Succeeded)
                 {
                     await _loginService.SignInAsync(resultModel.identityUser);
-                    return RedirectToPage("/Home/Home");
+                    return RedirectToPage("/Dashboard/Dashboard");
                 }
 
                 // If there are any errors, add them to the ModelState object

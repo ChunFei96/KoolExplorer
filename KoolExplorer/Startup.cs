@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Services.Dashboard;
 using Services.DropDown;
+using Services.Email;
 using Services.Filter;
 using Services.GovAPI;
 using Services.Login;
@@ -46,13 +47,18 @@ namespace KoolExplorer
             services.AddScoped<IDropDownService, DropDownService>();
             services.AddScoped<IFilterService, FilterService>();
             services.AddScoped<IDashboardService, DashboardService>();
+<<<<<<< HEAD
             services.AddScoped<IOperatorService, OperatorService>();
+=======
+            services.AddScoped<IMailService, MailService>();
+>>>>>>> f28d72969e2a3d76e372dd46642649e83dbe4328
 
             services.AddDbContext<EFDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddAutoMapper(typeof(Startup));
 
             services.Configure<GovAPIURLConfig>(Configuration.GetSection("Gov_API"));
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
 
             // configure password settings
             services.AddIdentity<IdentityUser, IdentityRole>(options =>

@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.Domain.Dashboard;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -33,6 +34,7 @@ namespace KoolExplorer.Pages.Dashboard
         public int TotalSchools;
         public int TotalSubmissions;
         public int TotalAcceptances;
+
         public DashboardModel(IDashboardService dashboardService, IParentService parentService, IHttpContextAccessor httpContextAccessor)
         {
             _dashboardService = dashboardService;
@@ -50,6 +52,8 @@ namespace KoolExplorer.Pages.Dashboard
             TotalSchools = _parentService.getTotalSchools().Result;
             TotalSubmissions = _parentService.getTotalSubmissions(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)).Result;
             TotalAcceptances = _parentService.getTotalAcceptances(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)).Result;
+
+
         }
     }
 }

@@ -64,7 +64,7 @@ namespace DAL
             }
             else
             {
-                return query.ToList();
+                return query.AsNoTracking().ToList();
             }
         }
 

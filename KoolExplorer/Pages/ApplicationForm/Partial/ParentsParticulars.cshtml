@@ -3,38 +3,38 @@
 <section class="parents-particulars">
     <div role="tabpanel" class="tab-pane" id="tab2">
         <p>Please provide at least <span class="text-red">1 parent/guardian's particular</span>.</p>
-        <div class="form-row">
+        <div class="row">
             <div class="col-md-12 form-group">
                 <label asp-for="Name1"></label>
-                <input id="Name1Test" asp-for="Name1" class="form-control" />
+                <input id="Name1Test" asp-for="Name1" class="form-control" data-validation="required"/>
                 <span asp-validation-for="Name1" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="col-12 col-sm-4 form-group">
                 <label asp-for="PassportNo1"></label>
-                <input asp-for="PassportNo1" class="form-control" />
+                <input asp-for="PassportNo1" class="form-control" data-validation="required"/>
                 <span asp-validation-for="PassportNo1" class="text-danger"></span>
             </div>
             <div class="col-12 col-sm-4 form-group">
                 <label asp-for="MobileNo1"></label>
-                <input asp-for="MobileNo1" class="form-control" />
+                <input asp-for="MobileNo1" class="form-control" data-validation="required"/>
                 <span asp-validation-for="MobileNo1" class="text-danger"></span>
             </div>
             <div class="col-12 col-sm-4 form-group">
                 <label asp-for="Email1"></label>
-                <input asp-for="Email1" class="form-control" />
+                <input asp-for="Email1" class="form-control" data-validation="required"/>
                 <span asp-validation-for="Email1" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="col-md-12  form-group">
                 <label asp-for="Name2"></label>
                 <input asp-for="Name2" class="form-control" />
                 <span asp-validation-for="Name2" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="col-12 col-sm-4 form-group">
                 <label asp-for="PassportNo2"></label>
                 <input asp-for="PassportNo2" class="form-control" />
@@ -51,7 +51,7 @@
                 <span asp-validation-for="Email2" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="col-12 col-sm-6 form-group">
                 <label asp-for="HomeTelNo"></label>
                 <input asp-for="HomeTelNo" class="form-control" />
@@ -63,7 +63,7 @@
                 <span asp-validation-for="StreetName" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="col-12 col-sm-4 form-group">
                 <label asp-for="BlockNo"></label>
                 <input asp-for="BlockNo" class="form-control" />
@@ -80,14 +80,14 @@
                 <span asp-validation-for="UnitNo" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="col-12 form-group">
                 <label asp-for="BuildingName"></label>
                 <input asp-for="BuildingName" class="form-control" />
                 <span asp-validation-for="BuildingName" class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row">
             <div class="col-12 col-sm-6 form-group">
                 <label asp-for="PostalCode"></label>
                 <input asp-for="PostalCode" class="form-control" />
@@ -95,14 +95,11 @@
             </div>
             <div class="col-12 col-sm-6 form-group">
                 <label asp-for="HouseholdIncome"></label>
-                <select asp-for="HouseholdIncome" asp-items="@Model.HouseholdIncomeList" class="form-control" data-validation="required">
+                <select asp-for="HouseholdIncome" asp-items="@Model.HouseholdIncomeList" class="form-control" >
                 </select>
                 <span asp-validation-for="HouseholdIncome" class="text-danger"></span>
             </div>
         </div>
         <input type="hidden" asp-for="Id" />
-        @*<div class="btns text-center">
-            <a href="#tab3" class="btn btn-orange btn-continue" data-next="3">Continue</a>
-        </div>*@
     </div>
 </section>

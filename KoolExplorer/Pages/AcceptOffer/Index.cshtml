@@ -55,13 +55,33 @@
                 <td>
                     @Html.DisplayFor(model => item.ApplicationStatus)
                 </td>
-                <td>
-                    <form method="post" asp-page="../ApplicationForm/Edit" asp-route-id="@item.Id" asp-page-handler="Edit">
-                        <button type="submit" style="width:auto" 
-                                class="nav-link btn py-0 btn-dark">
-                            Edit
-                        </button>
-                    </form>
+                <td align="center">
+                    @if (item.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Pending)
+                    {
+                        <form method="post" asp-page="../ApplicationForm/Edit" asp-route-id="@item.Id" asp-page-handler="Edit" style="padding-bottom:10px">
+                            <button type="submit" style="width:auto"
+                                    class="nav-link btn py-0 btn-dark">
+                                Edit
+                            </button>
+                        </form>
+                    }
+
+                    @if (item.ApplicationStatus == Core.Expansion.Enum.ApplicationStatus.Approved)
+                    {
+                        <form method="post" asp-page="../ApplicationForm/Edit" asp-route-id="@item.Id" asp-page-handler="AcceptOffer" style="padding-bottom:10px">
+                            <button type="submit" style="width:auto"
+                                    class="nav-link btn py-0 btn-dark">
+                                Accept
+                            </button>
+                        </form>
+                        <form method="post" asp-page="../ApplicationForm/Edit" asp-route-id="@item.Id" asp-page-handler="RejectOffer" style="padding-bottom:10px">
+                            <button type="submit" style="width:auto"
+                                    class="nav-link btn py-0 btn-dark">
+                                Reject
+                            </button>
+                        </form>
+                    }
+
                 </td>
             </tr>
         }

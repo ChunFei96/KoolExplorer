@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Domain.Filter;
 using Core.Domain.Form;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -43,8 +44,15 @@ namespace KoolExplorer.Pages.ApplicationForm
             childsParticulars = new ChildsParticularsViewModel();
 
             //Init dropdownlist
-            generalInformationViewModel.AreaList = new List<SelectListItem>() { new SelectListItem() { Value = "-", Text = "Please select an Area" } };
+            generalInformationViewModel.AreaList = new List<SelectListItem>() { new SelectListItem() { Value = "", Text = "Please select an Area" } };
             generalInformationViewModel.AreaList.AddRange(await  _dropDownService.GetDropDownByType("Area"));
+
+            childsParticulars.CitizenshipList = new List<SelectListItem>() { new SelectListItem() { Value = "", Text = "Please select a Citizenship" } };
+            childsParticulars.CitizenshipList.AddRange(await _dropDownService.GetDropDownByType("Citizenship"));
+
+            childsParticulars.RaceList = new List<SelectListItem>() { new SelectListItem() { Value = "", Text = "Please select a Race" } };
+            childsParticulars.RaceList.AddRange(await _dropDownService.GetDropDownByType("Race"));
+            
             
         }
 
@@ -56,7 +64,7 @@ namespace KoolExplorer.Pages.ApplicationForm
                 formViewModel.ParentsParticularsViewModel = parentsParticulars;
                 formViewModel.ChildsParticularsViewModel = childsParticulars;
 
-                _parentService.SubmitApplicationForm(formViewModel);
+                _parentService.SubmitApplicationFormAsync(formViewModel);
                 return new RedirectToPageResult("../AcceptOffer/Index");
             }
             return Page();

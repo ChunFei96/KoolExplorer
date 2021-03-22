@@ -149,11 +149,11 @@ namespace Core.Domain.Form
 
         [Display(Name = "Child Citizenship")]
         public string Citizenship { get; set; }
-        public IEnumerable<SelectListItem> CitizenshipList { get; set; }
+        public List<SelectListItem> CitizenshipList { get; set; }
 
         [Display(Name = "Race")]
         public string Race { get; set; }
-        public IEnumerable<SelectListItem> RaceList { get; set; }
+        public List<SelectListItem> RaceList { get; set; }
 
         [Display(Name = "Birth Cert Number")]
         public string BirthCertNo { get; set; }
