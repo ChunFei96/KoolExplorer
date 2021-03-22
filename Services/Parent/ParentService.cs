@@ -86,7 +86,7 @@ namespace Services.Parent
 
         public virtual async Task<int> getTotalSchools()
         {
-            return _unitOfWork.ProcessedPreSchoolRepository.GetAll().ToArray().Length;
+            return  _unitOfWork.ProcessedPreSchoolRepository.GetAll().ToArray().Length;
         }
 
         public virtual async Task<int> getTotalSubmissions(string createdBy)

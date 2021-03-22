@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Services.Dashboard;
 using Services.Parent;
+using Services.Operator;
 
 namespace KoolExplorer.Pages.Dashboard
 {
@@ -29,17 +30,26 @@ namespace KoolExplorer.Pages.Dashboard
         [BindProperty]
         public string serviceOfferedRatio { get; set; }
 
+        [BindProperty]
+        public string TotalApplications { get; set; } 
+        [BindProperty]
+        public string TotalAccepted { get; set; }
+        [BindProperty]
+        public string TotalPending { get; set; }
+
         private readonly IParentService _parentService;
+        private readonly IOperatorService _OperatorService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         public int TotalSchools;
         public int TotalSubmissions;
         public int TotalAcceptances;
 
-        public DashboardModel(IDashboardService dashboardService, IParentService parentService, IHttpContextAccessor httpContextAccessor)
+        public DashboardModel(IDashboardService dashboardService, IOperatorService operatorService, IParentService parentService, IHttpContextAccessor httpContextAccessor)
         {
             _dashboardService = dashboardService;
             _parentService = parentService;
             _httpContextAccessor = httpContextAccessor;
+            _OperatorService = operatorService;
         }
 
         public void OnGet()
@@ -53,7 +63,14 @@ namespace KoolExplorer.Pages.Dashboard
             TotalSubmissions = _parentService.getTotalSubmissions(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)).Result;
             TotalAcceptances = _parentService.getTotalAcceptances(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)).Result;
 
+            var kkk = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var aa = _OperatorService.TotalApplications(kkk);
+            TotalApplications = "0"; 
+            TotalAccepted = "1";
+            TotalPending = "1";
 
+
+            //age, gender,race,citizen
         }
     }
 }

@@ -28,9 +28,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="registerModel.RoleName"></label>
-                <select asp-for="registerModel.RoleName" asp-items="@Model.registerModel.RoleList" class="form-control select-area" data-validation="required">
+                <select asp-for="registerModel.RoleName" asp-items="@Model.registerModel.RoleList" class="form-control select-area" data-validation="required" id="RoleList">
                 </select>
                 <span asp-validation-for="registerModel.RoleName" class="text-danger" style="color:red"></span>
+            </div>   
+            <div class="form-group">
+                <label asp-for="registerModel.PreSchoolId"></label>
+                <select asp-for="registerModel.PreSchoolId" asp-items="@Model.PreSchoolList" class="form-control select-area" id="SchoolList">
+                </select>
+                <span asp-validation-for="registerModel.PreSchoolId" class="text-danger" style="color:red"></span>
+                <span id="PreSchoolRemarks" style="color: red;">* Please select if you are register as Pre-School operator!</span>
             </div>
             <div class="form-group">
                 <a asp-page="/Login/Login">Sign in</a>
@@ -41,3 +48,12 @@
         </form>
     </div>
 </div>
+
+@section scripts{
+    <script>
+        (function () {
+            $('#RoleList').select2();
+            $('#SchoolList').select2();
+        })();
+    </script>
+}

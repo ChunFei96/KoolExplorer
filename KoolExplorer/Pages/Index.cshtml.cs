@@ -14,12 +14,16 @@ namespace KoolExplorer.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly SignInManager<IdentityUser> signInManager;
 
+
         public IndexModel(ILogger<IndexModel> logger,
             SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
             this.signInManager = signInManager;
         }
+
+        
+      
 
         public IActionResult OnGet()
         {

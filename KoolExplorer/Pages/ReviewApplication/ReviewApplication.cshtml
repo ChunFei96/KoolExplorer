@@ -14,7 +14,7 @@
 }
 
 <div class="">
-    <h1>@ViewData["Title"]</h1>
+    <h1>@ViewData["Title"] : <span id="status" style="">@Model.formViewModel.ApplicationStatus</span></h1>
 </div>
 
 <div class="sectionBorder">
@@ -161,12 +161,70 @@
 <div class="separator_line"></div>
 <div class="form-row">
     <form method="post" asp-page="../ReviewApplication/ReviewApplication" asp-page-handler="Post" style="width: 100%;">
+        <input type="hidden" name="id" asp-for="@Model.formViewModel.Id" />
         <div class="form-group col-md-2 offset-5">
-            <button type="submit" name="button" class="btn btn btn-success" value="A">Accept</button>
-            <button type="submit" name="button" class="btn btn-danger" value="R">Reject</button>
+            <button type="submit" name="action" class="btn btn btn-success" value="A" id="AcceptBtn">Accept</button>
+            <button type="submit" name="action" class="btn btn-danger" value="R" id="RejectBtn">Reject</button>
         </div>
     </form>
 </div>
+
+
+@section scripts{
+    <script>
+        (function () {
+            initForm();
+            setHeaderBackground();
+            actionButton();
+        })();
+
+        function setHeaderBackground() {
+            var status = $('#status').text();
+
+            if (status === 'Rejected') {
+                $('#status').css({
+                    "background": "red",
+                    "color": "white"
+                });
+            }
+            else if (status === 'Approved') {
+                $('#status').css({
+                    "background": "#209c20",
+                    "color": "white"
+                });
+            }
+            else if (status === 'Pending') {
+                $('#status').css({
+                    "background": "#4242e4",
+                    "color": "white"
+                });
+            }
+            //console.log(status)
+        }
+
+        function actionButton() {
+            var status = $('#status').text();
+
+            //status = 'Pending';
+            if (status === 'Rejected') {
+                $('#AcceptBtn').attr("disabled", true);
+                $('#RejectBtn').attr("disabled", false);
+            }
+            else if (status === 'Approved') {
+                $('#AcceptBtn').attr("disabled", false);
+                $('#RejectBtn').attr("disabled", true);
+            }
+            else if (status === 'Pending') {
+                $('#AcceptBtn').attr("disabled", false);
+                $('#RejectBtn').attr("disabled", false);
+            }
+        }
+
+        function initForm() {
+            $("body :input").attr("disabled", true);
+        }
+    </script>
+}
 
 <style>
     .sectionBorder {
@@ -190,5 +248,7 @@
         border-bottom-width: 5px;
     }
 
-
+    .form-control:disabled {
+        background-color: #ffffff;
+    }
 </style>

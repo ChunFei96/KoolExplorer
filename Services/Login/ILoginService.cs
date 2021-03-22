@@ -9,6 +9,7 @@ namespace Services.Login
         Task<bool> PasswordSignInAsync(LoginViewModel loginViewModel);
 
         Task SignInAsync(IdentityUser user);
+        
 
         Task SignOutAsync();
     }

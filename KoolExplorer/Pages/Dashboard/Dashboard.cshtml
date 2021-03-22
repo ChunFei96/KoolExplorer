@@ -15,20 +15,43 @@
     <div class="container">
         <div id="mainDiv">
             <div id="bigDiv" class="row placeholders">
-                <div>
-                    <h1 class="num">@Model.TotalSchools</h1>
-                    <div style="width:300px;float:left">
-                        <h3>Pre-School Centers</h3>
-                    </div>
-                </div>
-                <div id="centerDiv">
-                    <h1 class="num">@Model.TotalSubmissions</h1>
-                    <h3>Application Submission(s)</h3>
-                </div>
-                <div id="leftDiv">
-                    <h1 class="num">@Model.TotalAcceptances</h1>
-                    <h3>Application Acceptance(s)</h3>
-                </div>
+                @{
+                    if (User.IsInRole("Parent"))
+                    {
+                        <div>
+                            <h1 class="num">@Model.TotalSchools</h1>
+                            <div style="width:300px;float:left">
+                                <h3>Pre-School Centers</h3>
+                            </div>
+                        </div>
+                        <div id="centerDiv">
+                            <h1 class="num">@Model.TotalSubmissions</h1>
+                            <h3>Application Submission(s)</h3>
+                        </div>
+                        <div id="leftDiv">
+                            <h1 class="num">@Model.TotalAcceptances</h1>
+                            <h3>Application Acceptance(s)</h3>
+                        </div>
+                    }
+                    else if(User.IsInRole("Operator"))
+                    {
+                        <div>
+                            <h1 class="num">@Model.TotalApplications</h1>
+                            <div style="width:300px;float:left">
+                                <h3>TotalApplications</h3>
+                            </div>
+                        </div>
+                        <div id="centerDiv">
+                            <h1 class="num">@Model.TotalAccepted</h1>
+                            <h3>TotalAccepted</h3>
+                        </div>
+                        <div id="leftDiv">
+                            <h1 class="num">@Model.TotalPending</h1>
+                            <h3>TotalPending</h3>
+                        </div>
+                    }
+                }
+
             </div>
         </div>
         <div style="padding-bottom:100px"></div>
@@ -59,7 +82,7 @@
 </html>
 
 
-<script>
+@*<script>
     document.addEventListener('DOMContentLoaded', (event) => {
         var labels = ['Spark-Certified', 'Non Spark-Certified']
         var data = [@Model.sparkCertifiedRatio["Yes"], @Model.sparkCertifiedRatio["No"]]
@@ -184,4 +207,4 @@
         })
 
     });
-</script>
+</script>*@

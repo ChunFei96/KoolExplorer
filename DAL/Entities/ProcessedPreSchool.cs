@@ -30,6 +30,7 @@ namespace DAL.Entities
         public string GstRegistration { get; set; }
         public string Remarks { get; set; }
         public int DistrictNo { get; set; }
+        public string OperatorId { get; set; }
         //public List<Programme> ProgrammeType { get; set; }
     }
 }

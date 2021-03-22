@@ -10,6 +10,10 @@
     <Compile Remove="Migrations\20210205080647_t1.Designer.cs" />
     <Compile Remove="Migrations\20210205080759_t22.cs" />
     <Compile Remove="Migrations\20210205080759_t22.Designer.cs" />
+    <Compile Remove="Startup_BACKUP_987.cs" />
+    <Compile Remove="Startup_BASE_987.cs" />
+    <Compile Remove="Startup_LOCAL_987.cs" />
+    <Compile Remove="Startup_REMOTE_987.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +39,10 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\img\ContactUs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="KoolExplorer.sln" />
   </ItemGroup>
 
   <ItemGroup>

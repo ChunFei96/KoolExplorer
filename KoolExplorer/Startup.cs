@@ -47,11 +47,9 @@ namespace KoolExplorer
             services.AddScoped<IDropDownService, DropDownService>();
             services.AddScoped<IFilterService, FilterService>();
             services.AddScoped<IDashboardService, DashboardService>();
-<<<<<<< HEAD
             services.AddScoped<IOperatorService, OperatorService>();
-=======
             services.AddScoped<IMailService, MailService>();
->>>>>>> f28d72969e2a3d76e372dd46642649e83dbe4328
+
 
             services.AddDbContext<EFDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -61,13 +59,14 @@ namespace KoolExplorer
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
 
             // configure password settings
+
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 8;
                 options.Password.RequiredUniqueChars = 1;
                 options.Password.RequireNonAlphanumeric = false;
             })
-            .AddEntityFrameworkStores<EFDbContext>();
+         .AddEntityFrameworkStores<EFDbContext>();
 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

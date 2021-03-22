@@ -10,10 +10,11 @@
         <thead class="thead-dark">
             <tr class="row">
                 <th class="" hidden>Application No</th>
-                <th class="col-sm-2">No</th>
+                <th class="col-sm-1">No</th>
                 <th class="col-sm-3">Parent Name</th>
                 <th class="col-sm-3">Child Name</th>
                 <th class="col-sm-2">Submission Date</th>
+                <th class="col-sm-1">Status</th>
                 <th class="col-sm-2">Action</th>
             </tr>
         </thead>
@@ -26,10 +27,11 @@
 
                         <tr class="row">
                             <td class="" hidden>@(Model.Applications[i].Id)</td>
-                            <td class="col-sm-2">@(Model.Applications[i].applicationNo)</td>
+                            <td class="col-sm-1">@(Model.Applications[i].applicationNo)</td>
                             <td class="col-sm-3">@Model.Applications[i].parentName</td>
                             <td class="col-sm-3">@Model.Applications[i].childName</td>
                             <td class="col-sm-2">@Model.Applications[i].submissionDate</td>
+                            <td class="col-sm-1">@Model.Applications[i].applicationStatus</td>
                             @*<td class="col-sm-2"><button type="button" class="btn btn-dark viewMore" style="" data-rowId="@(Model.Applications[i].Id)"> Review</button></td>*@
                             <td class="col-sm-2">
                                 <form method="post" asp-page="../ReviewApplication/ReviewApplication" asp-route-id="@(Model.Applications[i].Id)" asp-page-handler="Review">

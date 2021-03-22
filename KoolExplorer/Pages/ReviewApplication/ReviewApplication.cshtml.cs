@@ -65,13 +65,14 @@ namespace KoolExplorer.Pages.ReviewApplication
             var maa = 0;
         }
 
-        public async void OnPostAsync(string button) //Task<IActionResult>
+        public async Task<IActionResult> OnPostAsync(string action, int id) //
         {
 
-            
+            _OperatorService.ReviewApplication(id, action);
 
-            //return new RedirectToPageResult("../AcceptOffer/Index");
             var maa = 0;
+            return new RedirectToPageResult("../Dashboard/Dashboard");
+           
         }
     }
 }
