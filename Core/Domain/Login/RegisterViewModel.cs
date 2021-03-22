@@ -23,7 +23,7 @@ namespace Core.Domain.Login
         [Required]
         public string RoleName { get; set; }
         public List<SelectListItem> RoleList { get; set; }
-
+        [Display(Name = "Pre School")]
         public int? PreSchoolId { get; set; }
 
         public RegisterViewModel()

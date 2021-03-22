@@ -32,12 +32,11 @@
                 </select>
                 <span asp-validation-for="registerModel.RoleName" class="text-danger" style="color:red"></span>
             </div>   
-            <div class="form-group">
+            <div class="form-group" id="SchoolList" >
                 <label asp-for="registerModel.PreSchoolId"></label>
-                <select asp-for="registerModel.PreSchoolId" asp-items="@Model.PreSchoolList" class="form-control select-area" id="SchoolList">
+                <select asp-for="registerModel.PreSchoolId" asp-items="@Model.PreSchoolList" class="form-control select-area" id="PreSchool">
                 </select>
                 <span asp-validation-for="registerModel.PreSchoolId" class="text-danger" style="color:red"></span>
-                <span id="PreSchoolRemarks" style="color: red;">* Please select if you are register as Pre-School operator!</span>
             </div>
             <div class="form-group">
                 <a asp-page="/Login/Login">Sign in</a>
@@ -49,11 +48,28 @@
     </div>
 </div>
 
-@section scripts{
+@section scripts{\ @*sweetalert*@
+    <script src="~/js/plugins/sweetalert/sweetalert.min.js"></script>
     <script>
+
         (function () {
-            $('#RoleList').select2();
-            $('#SchoolList').select2();
+            $("#SchoolList").hide()
+            $("#RoleList").change(function () {
+                if ($("#RoleList").val() === "Operator") {
+                    $("#SchoolList").show();
+                }
+                else
+                    $("#SchoolList").hide()
+            })
+
+            $("form").submit(function (event) {
+                console.log($("#PreSchool").val())
+                if ($("#PreSchool").val() == "") {
+                    swal("Please select your Pre School!")
+                    return false
+                }
+                return true
+            });
         })();
     </script>
 }
