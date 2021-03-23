@@ -162,11 +162,20 @@
 <h2 style="margin-left: 473px;">Approval</h2>
 <div class="separator_line"></div>
 <div class="form-row">
-    <form method="post" asp-page="../ReviewApplication/ReviewApplication" asp-page-handler="Post" style="width: 100%;">
+    @*<form method="post" asp-page="../ReviewApplication/ReviewApplication" asp-page-handler="ReviewApp" style="width: 100%;">
+            <input type="hidden" name="id" asp-for="@Model.formViewModel.Id" />
+            <div class="form-group col-md-2 offset-5">
+                <button type="submit" name="action" class="btn btn btn-success" value="A" id="AcceptBtn">Accept</button>
+                <button type="submit" name="action" class="btn btn-danger" value="R" id="RejectBtn">Reject</button>
+            </div>
+        </form>*@
+    @*<form method="post" asp-page="../ReviewApplication/ReviewApplication" asp-page-handler="ReviewApp" style="width: 100%;">*@
+    <form method="post" asp-page="../ReviewApplication/ReviewApplication" asp-page-handler="ReviewApp">
         <input type="hidden" name="id" asp-for="@Model.formViewModel.Id" />
         <div class="form-group col-md-2 offset-5">
             <button type="submit" name="action" class="btn btn btn-success" value="A" id="AcceptBtn">Accept</button>
             <button type="submit" name="action" class="btn btn-danger" value="R" id="RejectBtn">Reject</button>
+            @*<button type="submit" class="btn btn-outline-success btn-lg btn-block">Register</button>*@
         </div>
     </form>
 </div>
@@ -175,9 +184,9 @@
 @section scripts{
     <script>
         (function () {
-            initForm();
+            //initForm();
             setHeaderBackground();
-            actionButton();
+            //actionButton();
         })();
 
         function setHeaderBackground() {

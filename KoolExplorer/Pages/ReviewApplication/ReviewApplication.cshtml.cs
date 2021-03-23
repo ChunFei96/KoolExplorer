@@ -67,16 +67,13 @@ namespace KoolExplorer.Pages.ReviewApplication
 
             childsParticulars.RaceList = new List<SelectListItem>() { new SelectListItem() { Value = "", Text = "Please select a Race" } };
             childsParticulars.RaceList.AddRange(await _dropDownService.GetDropDownByType("Race"));
-
-            var maa = 0;
         }
 
-        public async Task<IActionResult> OnPostAsync(string action, int id) //
+        public async Task<IActionResult> OnPostReviewAppAsync(string action, int id) //
+        //public async Task<IActionResult> OnPostReviewAppAsync() //string action, int id
         {
 
             _OperatorService.ReviewApplication(id, action);
-
-            var maa = 0;
             return new RedirectToPageResult("../Dashboard/Dashboard");
            
         }

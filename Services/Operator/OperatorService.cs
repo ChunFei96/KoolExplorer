@@ -10,6 +10,8 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using Core.Domain.Email;
+using Services.Email;
 
 namespace Services.Operator 
 {
@@ -17,11 +19,13 @@ namespace Services.Operator
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IMailService _mailService;
 
-        public OperatorService(IUnitOfWork unitOfWork, IMapper mapper)
+        public OperatorService(IUnitOfWork unitOfWork, IMapper mapper, IMailService mailService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _mailService = mailService;
         }
 
         public virtual async Task<List<ReviewViewModel>> RetrieveApplications(string userId)
@@ -49,52 +53,38 @@ namespace Services.Operator
                 counter++;
             }
 
-
-            //var data = _unitOfWork.GeneralInformationItemsRepository.Get(c => c.PreSchool == PreSchoolID).Select(m => m.Id).ToList();
-
-            //if (data != null)
-            //{
-            //    var applications = _unitOfWork.ApplicationFormRepository.GetAndInclude(x => data.Contains(x.Id), null,
-            //        x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems);
-
-            //    var counter = 1;
-            //    foreach(var i in applications)
-            //    {
-            //        ReviewViewModel reviewViewModel = new ReviewViewModel();
-            //        reviewViewModel.Id = i.Id;
-            //        reviewViewModel.applicationNo = counter.ToString();
-            //        reviewViewModel.parentName = i.parentParticularItems.ParentName1;
-            //        reviewViewModel.childName = i.childParticularItems.ChildName;
-            //        reviewViewModel.submissionDate = i.CreatedTimeStamp.ToShortDateString();
-            //        reviewViewModel.applicationStatus = i.ApplicationStatus.ToString();
-            //        results.Add(reviewViewModel);
-            //        counter++;
-            //    }
-            //}
-
             return results;
         }
 
         public virtual async void ReviewApplication(int id,string action)
         {
-            var application = _unitOfWork.ApplicationFormRepository.Get(c => c.Id == id).FirstOrDefault();
+            //var application = _unitOfWork.ApplicationFormRepository.Get(c => c.Id == id).FirstOrDefault();
+
+            var application = _unitOfWork.ApplicationFormRepository.GetAndInclude(c => c.Id == id, null,
+                    x => x.generalInformationItems, x => x.parentParticularItems, x => x.childParticularItems).FirstOrDefault();
 
             if (application != null)
             {
                 if (action.Equals("A"))
                 {
                     application.ApplicationStatus = Core.Expansion.Enum.ApplicationStatus.Accepted;
+                    _unitOfWork.ApplicationFormRepository.Update(application);
+                    _unitOfWork.Commit();
+                    await sendEmailAsync(application);
                 }
                 else if (action.Equals("R"))
                 {
                     application.ApplicationStatus = Core.Expansion.Enum.ApplicationStatus.Rejected;
+                    _unitOfWork.ApplicationFormRepository.Update(application);
+                    _unitOfWork.Commit();
+                    await sendEmailAsync(application);
                 }
                 else
                 {
                     application.ApplicationStatus = Core.Expansion.Enum.ApplicationStatus.Pending;
                 }
-                _unitOfWork.ApplicationFormRepository.Update(application);
-                _unitOfWork.Commit();
+                
+                //
             }
         }
 
@@ -129,6 +119,20 @@ namespace Services.Operator
             return count;
         }
 
+        public virtual async Task sendEmailAsync(ApplicationForm application)
+        {
+            string Email = application.parentParticularItems.Email1;
+            
+            MailRequest mailRequest = new MailRequest();
+            mailRequest.ToEmail = Email;
+            //mailRequest.ToEmail = "koolexplorer123@gmail.com";
+            //mailRequest.ToEmail = "wenjunn11@gmail.com";
+            mailRequest.Subject = string.Format("Application has been reviewed by Operator !");
+            mailRequest.Body = string.Format("We are pleased to inform you that operator has successfully reviewed your pre-school application." + 
+                                              "The status of your application is {0}", application.ApplicationStatus + 
+                                              ". Thank you for using KoolExplorer as your one-stop portal for the early childhood education system!");
+            await _mailService.SendEmailAsync(mailRequest);
+        }
 
     }
 }

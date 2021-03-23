@@ -1,5 +1,6 @@
 ﻿using Core;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,20 +9,23 @@ using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Text;
 
+
 namespace DAL
 {
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
         protected readonly EFDbContext context;
+        private readonly SignInManager<IdentityUser> signInManager;
         private DbSet<T> entities;
         string errorMessage = string.Empty;
 
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public GenericRepository(EFDbContext context, IHttpContextAccessor httpContextAccessor)
+        public GenericRepository(EFDbContext context, IHttpContextAccessor httpContextAccessor, SignInManager<IdentityUser> signInManager)
         {
             this.context = context;
             entities = context.Set<T>();
             _httpContextAccessor = httpContextAccessor;
+            this.signInManager = signInManager;
         }
         public List<T> GetAll()
         {
@@ -121,8 +125,14 @@ namespace DAL
         {
             if (entity == null) throw new ArgumentNullException("entity");
 
-            entity.CreatedBy = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) != null ?
-                               _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) : string.Empty;
+
+            var isParentRole = _httpContextAccessor.HttpContext.User.IsInRole("Parent");
+
+            if (isParentRole)
+            {
+                entity.CreatedBy = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) != null ?
+                              _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) : string.Empty;
+            }
             entity.ModifiedBy = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) != null ?
                                 _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) : string.Empty;
             entity.ModifiedTimeStamp = DateTime.Now;

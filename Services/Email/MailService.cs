@@ -34,16 +34,18 @@ namespace Services.Email
                 mail.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient();
+                //smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new NetworkCredential(_mailSettings.Mail, _mailSettings.Password);
                 smtp.Port = _mailSettings.Port;
                 smtp.Host = _mailSettings.Host;
                 smtp.EnableSsl = true;
+               
                 await smtp.SendMailAsync(mail);
                 mail.Dispose();
             }
             catch(Exception e)
             {
-                
+                var aa = 0;
             }
         }
     }
