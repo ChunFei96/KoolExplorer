@@ -65,8 +65,7 @@ namespace KoolExplorer
                 options.Password.RequiredLength = 8;
                 options.Password.RequiredUniqueChars = 1;
                 options.Password.RequireNonAlphanumeric = false;
-            })
-         .AddEntityFrameworkStores<EFDbContext>();
+            }).AddEntityFrameworkStores<EFDbContext>();
 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

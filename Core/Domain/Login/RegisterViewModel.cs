@@ -13,6 +13,7 @@ namespace Core.Domain.Login
         public string Email { get; set; }
 
         [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long with 1 unique character.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

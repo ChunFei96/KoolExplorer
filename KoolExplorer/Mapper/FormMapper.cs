@@ -117,7 +117,7 @@ namespace KoolExplorer.Mapper
                 dest.DOB,
                 opt => opt.MapFrom(src => src.BirthCertNo))
                   .ForMember(dest =>
-                dest.DOB,
+                dest.BirthCerNo,
                 opt => opt.MapFrom(src => src.DOB))
                   .ForMember(dest =>
                 dest.Gender,

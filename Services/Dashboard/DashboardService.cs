@@ -132,10 +132,12 @@ namespace Services.Dashboard
                         var today = DateTime.Today;
 
                         // Calculate the age.
-                        var Age = today.Year - DateTime.Parse(child.DOB).Year;
+                        var childAge = DateTime.ParseExact(child.DOB, "dd/MM/yyyy", null);
+
+                        var Age = today.Year - childAge.Year;
 
                         // Go back to the year in which the person was born in case of a leap year
-                        if (DateTime.Parse(child.DOB).Date > today.AddYears(-Age)) Age--;
+                        if (childAge.Date > today.AddYears(-Age)) Age--;
 
                         Ages.Add(Age);
                     }
