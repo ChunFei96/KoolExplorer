@@ -115,10 +115,10 @@ namespace KoolExplorer.Mapper
                 opt => opt.MapFrom(src => src.Race))
                  .ForMember(dest =>
                 dest.DOB,
-                opt => opt.MapFrom(src => src.BirthCertNo))
+                opt => opt.MapFrom(src => src.DOB))
                   .ForMember(dest =>
                 dest.BirthCerNo,
-                opt => opt.MapFrom(src => src.DOB))
+                opt => opt.MapFrom(src => src.BirthCertNo))
                   .ForMember(dest =>
                 dest.Gender,
                 opt => opt.MapFrom(src => src.Gender))

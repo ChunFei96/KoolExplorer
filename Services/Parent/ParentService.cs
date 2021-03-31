@@ -60,21 +60,29 @@ namespace Services.Parent
 
         public virtual async Task EditApplicationForm(AdmissionModel editmodel)
         {
-            _unitOfWork.ApplicationFormRepository.Update(_mapper.Map<ApplicationForm>(editmodel));
-            _unitOfWork.Commit();
+            try
+            {
+                _unitOfWork.ApplicationFormRepository.Update(_mapper.Map<ApplicationForm>(editmodel));
+                _unitOfWork.Commit();
 
-            string Email = editmodel.ParentsParticularsViewModel.Email1;
-            string PreSchool = _unitOfWork.ProcessedPreSchoolRepository.Get(p => p.Id == editmodel.GeneralInformationViewModel.PreSchool.Value).FirstOrDefault().Name;
-            MailRequest mailRequest = new MailRequest();
-            mailRequest.ToEmail = Email;
-            mailRequest.Subject = string.Format("Successfully updated the application for {0} !", PreSchool);
-            mailRequest.Body = string.Format("This email is to inform you that you have successfully updated your pre-school application for {0}! {1} <br><br> {2} <br><br> {3} <br><br> {4}",
-                                              PreSchool,
-                                              "Please allow the pre-school operator to review your updated application with extra time.",
-                                              "Meanwhile, you may continue submit application to your favourite pre-school centre but keep in mind that only 1 offer acceptance allowed.",
-                                              "However, if you have not done the action mentioned above, please contact our customer service for further clarification.",
-                                              "Thank you for using KoolExplorer as your one-stop portal for the early childhood education system!");
-            await _mailService.SendEmailAsync(mailRequest);
+                string Email = editmodel.ParentsParticularsViewModel.Email1;
+                string PreSchool = _unitOfWork.ProcessedPreSchoolRepository.Get(p => p.Id == editmodel.GeneralInformationViewModel.PreSchool.Value).FirstOrDefault().Name;
+                MailRequest mailRequest = new MailRequest();
+                mailRequest.ToEmail = Email;
+                mailRequest.Subject = string.Format("Successfully updated the application for {0} !", PreSchool);
+                mailRequest.Body = string.Format("This email is to inform you that you have successfully updated your pre-school application for {0}! {1} <br><br> {2} <br><br> {3} <br><br> {4}",
+                                                  PreSchool,
+                                                  "Please allow the pre-school operator to review your updated application with extra time.",
+                                                  "Meanwhile, you may continue submit application to your favourite pre-school centre but keep in mind that only 1 offer acceptance allowed.",
+                                                  "However, if you have not done the action mentioned above, please contact our customer service for further clarification.",
+                                                  "Thank you for using KoolExplorer as your one-stop portal for the early childhood education system!");
+                await _mailService.SendEmailAsync(mailRequest);
+            }
+            catch(Exception e)
+            {
+                
+            }
+            
         }
 
         public virtual async Task<List<AdmissionModel>> ViewAllApplication(string userId)
@@ -110,7 +118,7 @@ namespace Services.Parent
             // auto reject other application
             foreach(var record in _unitOfWork.ApplicationFormRepository.GetAll())
             {
-                if(record.Id  != Convert.ToInt32(Id))
+                if(record.Id  != Convert.ToInt32(Id) && record.CreatedBy == application.CreatedBy)
                 {
                     record.ApplicationStatus = Core.Expansion.Enum.ApplicationStatus.Rejected;
                     _unitOfWork.ApplicationFormRepository.Update(record);

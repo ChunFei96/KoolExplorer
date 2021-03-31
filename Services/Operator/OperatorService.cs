@@ -67,7 +67,7 @@ namespace Services.Operator
             {
                 if (action.Equals("A"))
                 {
-                    application.ApplicationStatus = Core.Expansion.Enum.ApplicationStatus.Accepted;
+                    application.ApplicationStatus = Core.Expansion.Enum.ApplicationStatus.Approved;
                     _unitOfWork.ApplicationFormRepository.Update(application);
                     _unitOfWork.Commit();
                     await sendEmailAsync(application);
